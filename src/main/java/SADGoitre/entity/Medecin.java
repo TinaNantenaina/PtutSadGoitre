@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package SADGoitre.entity;
-<<<<<<< HEAD
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,8 +15,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-=======
->>>>>>> 1b57e71636ea011bca92bb4ecfca274bfbe669a7
+
 
 /**
  *
