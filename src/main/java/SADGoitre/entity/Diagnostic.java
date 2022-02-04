@@ -4,42 +4,40 @@
  * and open the template in the editor.
  */
 package SADGoitre.entity;
-<<<<<<< HEAD
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-=======
->>>>>>> 1b57e71636ea011bca92bb4ecfca274bfbe669a7
 
 /**
  *
- * @author Tina
+ * @author agath
  */
+
+@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity
-    @Getter
-    @Setter
-    @RequiredArgsConstructor
-    @NoArgsConstructor
-    @ToString
-public class Medecin {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idMedecin;
+public class Diagnostic {
+    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    private Integer idDiagnostic;
     
     @NonNull
-    private String nom;
+    private String nomDiagnostic;
     
     @NonNull
-    private String prenom;
+    private float pourcentage;
     
-    @NonNull
-    private String RPPS;
+    // Mapping
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "idPatient")
+    private Patient patientDiagnostique;
+    
 }
