@@ -5,10 +5,13 @@
  */
 package SADGoitre.entity;
 
+import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -40,4 +43,9 @@ public class Medecin {
     
     @NonNull
     private String RPPS;
+    
+    //Mapping
+    @OneToMany(mappedBy="medecinPatient")
+    @NonNull
+    private List<Patient> mesPatients = new LinkedList<>();
 }

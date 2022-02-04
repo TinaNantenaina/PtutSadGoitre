@@ -51,5 +51,8 @@ public class Patient {
     @NonNull
     private List<Examen> mesExamens = new LinkedList<>();
     
+    @OneToMany(mappedBy="patientDiagnostique")
+    @NonNull
+    private List<Diagnostic> mesDiagnostics = new LinkedList<>();
     
 }
