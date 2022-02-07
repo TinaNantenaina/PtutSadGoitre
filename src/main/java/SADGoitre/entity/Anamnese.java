@@ -38,6 +38,13 @@ public class Anamnese {
     private boolean signeDeCompression;
     
     //Mapping
-    @OneToMany(mappedBy="anamneseSF")
+    @OneToMany(mappedBy="idSigneFonctionnel")
+    @NonNull
     private List<SigneFonctionnel> signesFonctionnels = new LinkedList<>();
+    
+    @OneToMany(mappedBy="idAtcdFam")
+    private List<AtcdFamilialMedical> atcdFamilial = new LinkedList<>();
+    
+    @OneToMany(mappedBy="idAtcdPers")
+    private List<AtcdPersonnelMedical> atcdPersonnel = new LinkedList<>();
 }
