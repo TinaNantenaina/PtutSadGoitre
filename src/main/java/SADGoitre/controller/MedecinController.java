@@ -5,10 +5,15 @@
  */
 package SADGoitre.controller;
 
+import org.springframework.stereotype.Controller;
+
 /**
  *
  * @author agath
  */
+@Controller
+
 public class MedecinController {
+    
     
 }
