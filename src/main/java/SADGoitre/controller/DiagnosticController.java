@@ -10,6 +10,8 @@ import SADGoitre.dao.ExamenRepository;
 import SADGoitre.dao.MedecinRepository;
 import SADGoitre.dao.PatientRepository;
 import SADGoitre.dao.SigneFonctionnelRepository;
+import SADGoitre.entity.Medecin;
+import SADGoitre.entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,10 +37,19 @@ public class DiagnosticController {
     @Autowired
     private ExamenRepository daoExamen;
     
+    /**
+     * Affiche toutes les diagnostics
+     *
+     * @param model pour transmettre les informations à la vue
+     * @param idDiagnostic l'id du diagnostic concerné
+     * @param patient le patient concerné 
+     * @return le nom de la vue à afficher ('afficheDiagnostics.html')
+     */
     @GetMapping(path = "show")
-    public String afficheLesDiagnostics(Model model, Integer id){
+    public String afficheLesDiagnostics(Model model, Integer idDiagnostic, Patient patient ){
         model.addAttribute("diagnostics", daoDiagnostic.findAll());
-        model.addAttribute("diagnostic", daoDiagnostic.getOne(id));        
+        model.addAttribute("diagnostic", daoDiagnostic.getOne(patient.getIdPatient()));  
+        model.addAttribute("patient", daoPatient.getOne(idDiagnostic));
         return "afficheDiagnostics";
     }
 }
