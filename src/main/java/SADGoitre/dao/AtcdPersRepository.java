@@ -5,10 +5,13 @@
  */
 package SADGoitre.dao;
 
+import SADGoitre.entity.AtcdPersonnelMedical;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
- * @author ASUS
+ * @author Tina
  */
-public class AtcdPersRepository {
+public interface AtcdPersRepository extends JpaRepository<AtcdPersonnelMedical, Integer>{
     
 }
