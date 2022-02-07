@@ -37,4 +37,6 @@ public class SigneFonctionnel {
     @NonNull
     private List<String> nomSymptome;
     
+    //Mapping
+    
 }
