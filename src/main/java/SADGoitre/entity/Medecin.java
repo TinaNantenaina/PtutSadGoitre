@@ -46,6 +46,5 @@ public class Medecin {
     
     //Mapping
     @OneToMany(mappedBy="medecinPatient")
-    @NonNull
     private List<Patient> mesPatients = new LinkedList<>();
 }
