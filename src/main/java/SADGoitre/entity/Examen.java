@@ -34,6 +34,9 @@ public class Examen {
     private String nomExamen;
     
     @NonNull
+    private boolean estExamenClinique;
+    
+    @NonNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateExamen;
     
