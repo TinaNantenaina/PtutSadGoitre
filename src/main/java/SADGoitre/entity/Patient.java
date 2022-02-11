@@ -4,7 +4,6 @@
  */
 package SADGoitre.entity;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
@@ -63,7 +62,7 @@ public class Patient{
     private Medecin medecinPatient;
     
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="anamnese_id", referencedColumnName = "idPatient")
+    @JoinColumn(name="anamnese_id", referencedColumnName = "idAnamnese")
     private Anamnese anamnese;
     
     

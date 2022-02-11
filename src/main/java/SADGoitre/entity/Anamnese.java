@@ -50,5 +50,5 @@ public class Anamnese {
     private List<AtcdPersonnelMedical> atcdPersonnel = new LinkedList<>();
     
     @OneToOne(mappedBy="anamnese")
-    Patient patient;
+    private Patient patient;
 }

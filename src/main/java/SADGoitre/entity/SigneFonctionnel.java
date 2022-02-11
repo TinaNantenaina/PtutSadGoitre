@@ -42,6 +42,7 @@ public class SigneFonctionnel {
     @Enumerated(EnumType.STRING)
     private TypeSF typeSF;
     
+    // A modifier : rajout d'une classe symptome
     @NonNull
     private List<String> nomSymptome;
     
