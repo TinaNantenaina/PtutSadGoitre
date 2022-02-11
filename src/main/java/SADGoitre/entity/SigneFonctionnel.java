@@ -5,6 +5,7 @@
  */
 package SADGoitre.entity;
 
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -20,6 +21,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -31,6 +33,10 @@ public class SigneFonctionnel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idSigneFonctionnel;
+    
+    @NonNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateSF;
     
     @NonNull
     @Enumerated(EnumType.STRING)
