@@ -4,9 +4,11 @@
  */
 package SADGoitre.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -30,7 +33,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Setter
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Patient {
+public class Patient{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPatient;
@@ -41,7 +44,6 @@ public class Patient {
     @NonNull
     private String prenom;
     
-    @NonNull
     private boolean genre;
     
     @NonNull
@@ -59,6 +61,10 @@ public class Patient {
     @ManyToOne(optional = false)
     @JoinColumn(name = "idMedecin")
     private Medecin medecinPatient;
+    
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="anamnese_id", referencedColumnName = "idPatient")
+    private Anamnese anamnese;
     
     
 }

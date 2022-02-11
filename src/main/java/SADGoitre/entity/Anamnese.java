@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -47,4 +48,7 @@ public class Anamnese {
     
     @OneToMany(mappedBy="idAtcdPers")
     private List<AtcdPersonnelMedical> atcdPersonnel = new LinkedList<>();
+    
+    @OneToOne(mappedBy="anamnese")
+    Patient patient;
 }
