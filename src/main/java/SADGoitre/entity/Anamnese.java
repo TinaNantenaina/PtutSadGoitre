@@ -51,4 +51,8 @@ public class Anamnese {
     
     @OneToOne(mappedBy="anamnese")
     private Patient patient;
+    
+    @OneToMany(mappedBy="anamnese")
+    @NonNull
+    private List<Symptome> mesSymptomes = new LinkedList<>();
 }

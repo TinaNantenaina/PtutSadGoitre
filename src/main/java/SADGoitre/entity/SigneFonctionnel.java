@@ -43,11 +43,11 @@ public class SigneFonctionnel {
     private TypeSF typeSF;
     
     // A modifier : rajout d'une classe symptome
-    @NonNull
-    private List<String> nomSymptome;
+    //@NonNull
+    //private List<String> nomSymptome;
     
     //Mapping
-    /*@ManyToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "idAnamnese")
-    private Anamnese anamnese;*/
+    private Anamnese anamnese;
 }
