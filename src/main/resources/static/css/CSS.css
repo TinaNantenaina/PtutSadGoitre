@@ -39,6 +39,9 @@ h1 {
                     margin-right: auto;
  }
 
+ #body_accueil{
+    background-color: #62E3E2;
+ }
 
 .menu, .menu ul{list-style: none;text-align: center;z-index:999;padding: 0;margin: 0;}
 .menu{width:925px;margin:0px auto;margin-top:0px;}

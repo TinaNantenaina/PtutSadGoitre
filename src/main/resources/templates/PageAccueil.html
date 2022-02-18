@@ -1,32 +1,23 @@
 <!DOCTYPE html>
-
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" media="screen" href="../css/CSS.css"/>
         <title> Page Accueil </title>
-        <style>
-            body {
-              background-color: #62E3E2;
-            }
-          </style>
-
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="../css/CSS.css"/>
     </head>
-    <body>
-        
-       
+    <body id="body_accueil">
+
+
         <center><h1 style="font-size:36pt; color:whitesmoke"><i>SAD Goître</i></h1></center> 
-      
-        
-        <input type="button" class="bouton" value="Lancer La Consultation">
-
-            <div id="imgAccueil">
-                <img src="IM1.PNG" height="970px" width="870px"/>
-            </div>
-            
-           
 
 
-</body>
+        <input type="button" class="bouton" value="Lancer La Consultation"/>
+
+        <img id="imgAccueil" src="../static/images/IM1.PNG" th:src="@{/images/IM1.PNG}" height="970" width="870" alt="Image d'accueil"/>
+
+
+
+
+    </body>
 </html>
