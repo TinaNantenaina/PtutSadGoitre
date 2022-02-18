@@ -4,6 +4,40 @@
 body {
     font-family: "Trebuchet MS";
 }
+h1 {
+    position: fixed;
+    top: 90;
+    width: 400px;
+    margin: 0 auto;
+    padding: 150px;
+}
+
+.bouton {
+    background-color: #4BB4B3;
+    border: none;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    position: fixed;
+    top: 16em;
+    width: 200px;
+    padding: 20px;
+    margin: 10px;
+    margin-left: 16%;
+}
+
+/* Pour la div de la page d'accueil'*/
+ #imgAccueil {
+                    width: 200px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+ }
 
 
 .menu, .menu ul{list-style: none;text-align: center;z-index:999;padding: 0;margin: 0;}
@@ -15,43 +49,43 @@ body {
 .menu li:hover ul, .menu li li:hover ul,.menu li li li:hover ul{left: auto;min-height:1%;}
 .menu li ul {border-top: 1px solid rgb(38,66,80);width:144px;margin-top:-1px;}
 .menu li a {
-                    
-margin-right:4px;
--moz-border-radius-topleft: 10px;
--moz-border-radius-bottomleft: 0;
--webkit-border-top-left-radius: 10px;
--webkit-border-bottom-left-radius: 0;
--goog-ms-border-top-left-radius: 10px;
--goog-ms-border-bottom-left-radius: 0;
-                    
-border-top-left-radius: 10px;
-border-bottom-left-radius: 0;
-                    
--moz-border-radius: 10px 10px 0 0;
--webkit-border-top-left-radius: 10px;
--webkit-border-top-right-radius: 10px;
--goog-ms-border-radius: 10px 10px 0 0;
-border-radius: 10px 10px 0 0;
+
+    margin-right:4px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-bottomleft: 0;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 0;
+    -goog-ms-border-top-left-radius: 10px;
+    -goog-ms-border-bottom-left-radius: 0;
+
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 0;
+
+    -moz-border-radius: 10px 10px 0 0;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -goog-ms-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
 }
-                    
+
 .menu li ul a {
--moz-border-radius-topleft: 0px;
--moz-border-radius-bottomleft: 0;
--webkit-border-top-left-radius: 0px;
--webkit-border-bottom-left-radius: 0;
--goog-ms-border-top-left-radius: 0px;
--goog-ms-border-bottom-left-radius: 0;
-border-top-left-radius: 0px;
-border-bottom-left-radius: 0;
--moz-border-radius: 0;
--webkit-border-top-left-radius: 0px;
--webkit-border-top-right-radius: 0px;
--goog-ms-border-radius: 0;
-border-radius: 0;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-bottomleft: 0;
+    -webkit-border-top-left-radius: 0px;
+    -webkit-border-bottom-left-radius: 0;
+    -goog-ms-border-top-left-radius: 0px;
+    -goog-ms-border-bottom-left-radius: 0;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-top-left-radius: 0px;
+    -webkit-border-top-right-radius: 0px;
+    -goog-ms-border-radius: 0;
+    border-radius: 0;
 }
-                    
-                    .menu li ul li a {width:125px;}
-                    .menu li ul ul{margin: -34px 0 0 144px;min-height: 0;}
-                    .menu a {color:white;background:rgb(38,66,80)  no-repeat;border-right: 1px solid rgb(38,66,80);border-bottom: 1px solid rgb(38,66,80);padding:7px 9px; display:block;text-decoration: none; font-weight:bold;font-family: arial;font-size: 14px;line-height: 14px;}
-                    .menu a:hover{color:#191970;background:white;}
-                    .menus a:hover {color:white;background:rgb(38,66,80)  no-repeat;}
+
+.menu li ul li a {width:125px;}
+.menu li ul ul{margin: -34px 0 0 144px;min-height: 0;}
+.menu a {color:white;background:rgb(38,66,80)  no-repeat;border-right: 1px solid rgb(38,66,80);border-bottom: 1px solid rgb(38,66,80);padding:7px 9px; display:block;text-decoration: none; font-weight:bold;font-family: arial;font-size: 14px;line-height: 14px;}
+.menu a:hover{color:#191970;background:white;}
+.menus a:hover {color:white;background:rgb(38,66,80)  no-repeat;}
