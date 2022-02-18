@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
     <head>
         <title> Page Accueil </title>
         <meta charset="utf-8" />
@@ -14,10 +14,7 @@
 
         <input type="button" class="bouton" value="Lancer La Consultation"/>
 
-        <img id="imgAccueil" src="../static/images/IM1.PNG" th:src="@{/images/IM1.PNG}" height="970" width="870" alt="Image d'accueil"/>
-
-
-
+        <img id="imgAccueil" src="../static/images/IM1.PNG" th:src="@{/images/IM1.PNG}" alt="Image d'accueil"/>
 
     </body>
 </html>
