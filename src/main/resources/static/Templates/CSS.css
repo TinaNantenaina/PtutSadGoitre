@@ -1,0 +1,57 @@
+/********************************************************/
+/* fiche CSS Examens                                    */
+/********************************************************/
+body {
+    font-family: "Trebuchet MS";
+}
+
+
+.menu, .menu ul{list-style: none;text-align: center;z-index:999;padding: 0;margin: 0;}
+.menu{width:925px;margin:0px auto;margin-top:0px;}
+.menu li{float: left;}
+.menu li ul{position: absolute;width: 125px;left: -999em;z-index:999;}
+.menu li:hover ul ul {left: -999em;}
+.menu li:hover ul ul ul{left: -999em;}
+.menu li:hover ul, .menu li li:hover ul,.menu li li li:hover ul{left: auto;min-height:1%;}
+.menu li ul {border-top: 1px solid rgb(38,66,80);width:144px;margin-top:-1px;}
+.menu li a {
+                    
+margin-right:4px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-bottomleft: 0;
+-webkit-border-top-left-radius: 10px;
+-webkit-border-bottom-left-radius: 0;
+-goog-ms-border-top-left-radius: 10px;
+-goog-ms-border-bottom-left-radius: 0;
+                    
+border-top-left-radius: 10px;
+border-bottom-left-radius: 0;
+                    
+-moz-border-radius: 10px 10px 0 0;
+-webkit-border-top-left-radius: 10px;
+-webkit-border-top-right-radius: 10px;
+-goog-ms-border-radius: 10px 10px 0 0;
+border-radius: 10px 10px 0 0;
+}
+                    
+.menu li ul a {
+-moz-border-radius-topleft: 0px;
+-moz-border-radius-bottomleft: 0;
+-webkit-border-top-left-radius: 0px;
+-webkit-border-bottom-left-radius: 0;
+-goog-ms-border-top-left-radius: 0px;
+-goog-ms-border-bottom-left-radius: 0;
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0;
+-moz-border-radius: 0;
+-webkit-border-top-left-radius: 0px;
+-webkit-border-top-right-radius: 0px;
+-goog-ms-border-radius: 0;
+border-radius: 0;
+}
+                    
+                    .menu li ul li a {width:125px;}
+                    .menu li ul ul{margin: -34px 0 0 144px;min-height: 0;}
+                    .menu a {color:white;background:rgb(38,66,80)  no-repeat;border-right: 1px solid rgb(38,66,80);border-bottom: 1px solid rgb(38,66,80);padding:7px 9px; display:block;text-decoration: none; font-weight:bold;font-family: arial;font-size: 14px;line-height: 14px;}
+                    .menu a:hover{color:#191970;background:white;}
+                    .menus a:hover {color:white;background:rgb(38,66,80)  no-repeat;}

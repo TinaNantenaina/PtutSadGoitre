@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+          <meta charset="UTF-8"/>
+          <link rel="stylesheet" media="screen" href="CSS.css"/>
+          <title>Page données générales</title>  
+    </head>
+    <body>
+  
+        <div class="menu">
+            <li><a href="page patient.html">Patient</a></li>
+            <li><a href="page données générales.html" target="_blank">Données générales</a></li>
+
+            <li><div class="menus"><a href="page examen.html">Examens</a></div><ul>   
+            <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
+            <li><a href="adresse url" target="_blank">Signes généraux</a></li>
+            <li><a href="adresse url" target="_blank">Examen region cevicales</a></li>
+            <li><a href="adresse url" target="_blank">Examen ophtalmologique</a></li>
+            <li><a href="adresse url" target="_blank">Examen neurologique</a></li>
+            <li><a href="adresse url" target="_blank">Examen aire ganglionnaire</a></li>
+            </ul></li>
+            
+            <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
+                <li><a href="adresse url" target="_blank">Morphologique</a></li>
+                <li><a href="adresse url" target="_blank">Biologique</a></li>
+                <li><a href="adresse url" target="_blank">Fonctionnel</a></li>
+                </ul></li>
+            </ul></li>
+        
+            <li><a href="page photos.html" target="_blank">Photos</a></li>
+
+            <li><a href="page diagnostic.html" target="_blank">Diagnostic</a></li>                                                                                              
+            </div><br><br>
+
+
+<!--***********************************************************************************************-->         
+            <section>
+                <aside>
+                    <form name="form1" action="script.php" method="post">
+                        <fieldset id="premierform">
+                            <legend>Circonstance de découverte</legend>
+                    
+                    <p>Complication par des signes de compression loco-régionale:</p>
+                        <label for="case1">dysphagie</label>
+                        <input name="case1" id="case1" type="checkbox" value="1"/><br>
+                        <label for="case2">dyspnée</label>
+                        <input name="case2" id="case2" type="checkbox" value="2"/><br>
+                        <label for="case3">dysphonie</label>
+                        <input name="case3" id="case3" type="checkbox" value="3"/><br>
+                        <label for="case4">syndrome cave supérieur</label>
+                        <input name="case4" id="case4" type="checkbox" value="4"/><br>
+                    <p>Signe fonctionnel de dysthyroïdie:</p>
+                        <label for="signe1">Hypertyroïdie</label>
+                        <select id="signe1">
+                            <option value="am" selected="selected">amaigrissement</option>
+                            <option value="ag">agitation</option>
+                            <option value="th">thermophobie</option>
+                            <option value="pa">palpation</option>
+                            <option value="di">diarrhée motrice</option>
+                            <option value="as">asthénie musculaire avec amyotrophie</option>
+                            <option value="trf">tremblement fin</option>
+                            <option value="trr">tremblement rapide régulier des extremités</option>
+                        </select><br>
+                        <label for="signe2">Hypothyroïdie</label>
+                        <select id="signe2">
+                            <option value="ast" selected="selected">asthénie physique</option>
+                            <option value="asp">asthénie psychique</option>
+                            <option value="ass">asthénie sexuelle</option>
+                            <option value="ch">chute de cheveux</option>
+                            <option value="dim">diminution pilosité</option>
+                            <option value="fr">frilosité</option>
+                            <option value="co">constipation</option>
+                            <option value="vo">voix rauque</option>
+                            <option value="ro">ronflement nocturne</option>
+                            <option value="cr">crampes musculaires</option>
+                            <option value="so">somnolence</option>
+                        </select><br>
+
+                        <label for="case1">Euthyroïdie</label>
+                        <input name="case1" id="case1" type="checkbox" value="1"/><br><br>
+
+                        <p>histoire de la maladie</p>
+                        <textarea name="histoire" id="histoire" cols="30" rows="3"></textarea>
+                </fieldset></form>
+                </aside>
+                <aside>
+
+                </aside>
+            </section>
+            <section>
+                <h2>Antécédents</h2>
+                <aside>
+                    <form name="form2" action="script.php" method="post">
+                        <fieldset id="secondform">
+                            <legend>Antécédents médicaux</legend>
+                        <label for="case5'">radiothérapie cervicale dans l'enfance</label>
+                        <input name="case5'" id="case5'" type="checkbox" value="5'"/><br>
+
+                        <p>Traitement de suivi</p>
+                        <label for="case5">iodé</label>
+                        <input name="case5" id="case5" type="checkbox" value="5"/><br>
+                        <label for="case6">lithium</label>
+                        <input name="case6" id="case6" type="checkbox" value="6"/><br>
+                        <label for="case7">bétadine</label>
+                        <input name="case7" id="case7" type="checkbox" value="7"/><br>
+                        <label for="case8">amiodarone</label>
+                        <input name="case8" id="case8" type="checkbox" value="8"/><br>
+                        <label for="case9">L-Tyroxine</label>
+                        <input name="case9" id="case9" type="checkbox" value="9"/><br>
+                
+                        <p>infection ORL</p>
+                        <label for="case10">sinusite</label>
+                        <input name="case10" id="case10" type="checkbox" value="10"/><br>
+                        <label for="case11">angine</label>
+                        <input name="case11" id="case11" type="checkbox" value="11"/><br>
+                        <label for="case12">syndrome grippal</label>
+                        <input name="case12" id="case12" type="checkbox" value="12"/><br>
+
+                        <p>Toxiques</p>
+                        <label for="case13">éthylique</label>
+                        <input name="case13" id="case13" type="checkbox" value="13"/><br>
+                        <label for="case14">tabagique</label>
+                        <input name="case14" id="case14" type="checkbox" value="14"/><br>
+
+                        <p>Aliment goitrigène</p>
+                        <label for="case15">manioc</label>
+                        <input name="case15" id="case15" type="checkbox" value="15"/><br>
+                        <label for="case16">chou</label>
+                        <input name="case16" id="case16" type="checkbox" value="16"/><br>
+                        <label for="case17">sels iodés</label>
+                        <input name="case17" id="case17" type="checkbox" value="17"/><br>
+                        <label for="case18">fruits de mer</label>
+                        <input name="case18" id="case18" type="checkbox" value="18"/><br>
+                        
+                        
+                
+                
+                
+                
+                
+                    </fieldset></form>
+
+
+                </aside>
+                <aside>
+                    
+                </aside>
+                <aside>
+
+                </aside>
+            </section>
+    </body>
+
+</html>
