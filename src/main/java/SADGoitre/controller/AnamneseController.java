@@ -39,8 +39,8 @@ public class AnamneseController {
      * @return le nom de la vue à afficher ('afficheGTableaux.html')
      */
     @GetMapping(path = "show")
-    public String afficheAnamnese(Model model, Patient patient) {
-        model.addAttribute("anamnese", daoPatient.getOne(patient.getId_patient()).getAnamnese());
+    public String afficheAnamnese(Model model, int idPatient) {
+        model.addAttribute("anamnese", daoPatient.getOne(idPatient).getAnamnese());
         return "afficheAnamnese";
     }
   
