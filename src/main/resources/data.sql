@@ -11,17 +11,17 @@
 INSERT INTO Medecin(id_medecin,nom,prenom,RPPS) VALUES
 (3,'Grey','Meredith','124569852');
 
-INSERT INTO Patient(id_patient,nom,prenom,genre,date_naissance,id_medecin,anamnese_id) VALUES
-(1,'Leroy','Julie',true,'1999-01-06', 3,1);
+INSERT INTO Patient(id_patient,nom,prenom,genre,date_naissance,id_medecin) VALUES
+(1,'Leroy','Julie',true,'1999-01-06',3);
 
 
 INSERT INTO Anamnese(id_anamnese,signe_De_Compression) VALUES
 (1,false);
 
-INSERT INTO AtcdFamialMedical(id_Atcd_Fam,NEM2,cancer_Thyroidien) VALUES
+INSERT INTO AtcdFamilialMedical(id_atcd_fam,nem2,cancer_thyroidien) VALUES
 (1,false,false);
 
-INSERT INTO AtcdPersonnelMedical(id_Atcd_Pers,nom) VALUES
+INSERT INTO AtcdPersonnelMedical(id_atcd_pers,nom) VALUES
 (1,'Diabete');
 
 INSERT INTO Diagnostic(id_diagnostic,nom_diagnostic,pourcentage) VALUES
