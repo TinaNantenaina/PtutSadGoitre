@@ -27,14 +27,14 @@ import lombok.ToString;
 public class Symptome {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idSymptome;
+    private Integer id_symptome;
     
     @NonNull
     private String nom;
     
     //Mapping
     @ManyToOne(optional = false)
-    @JoinColumn(name = "idAnamnese")
+    @JoinColumn(name = "id_anamnese")
     private Anamnese anamnese;
     
 }

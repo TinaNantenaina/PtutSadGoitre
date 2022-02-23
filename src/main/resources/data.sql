@@ -8,7 +8,7 @@
  * Created: 23 févr. 2022
  */
 INSERT INTO Medecin(idMedecin,nom,prenom,RPPS) VALUES
-(1,'Grey','Meredith','124569852');
+(3,'Grey','Meredith','124569852');
 
 INSERT INTO Patient(idPatient,nom,prenom,genre,dateNaissance) VALUES
 (1,'Leroy','Julie',true,'1999-01-06'),

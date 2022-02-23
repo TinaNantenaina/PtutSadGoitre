@@ -35,7 +35,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Patient{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idPatient;
+    private Integer id_patient;
     
     @NonNull
     private String nom;
@@ -47,22 +47,22 @@ public class Patient{
     
     @NonNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dateNaissance;
+    private LocalDate date_naissance;
     
     //Mapping
-    @OneToMany(mappedBy="patientExamen")
+    @OneToMany(mappedBy="patient_examen")
     @NonNull
-    private List<Examen> mesExamens = new LinkedList<>();
+    private List<Examen> mes_examens = new LinkedList<>();
     
-    @OneToMany(mappedBy="patientDiagnostique")
-    private List<Diagnostic> mesDiagnostics = new LinkedList<>();
+    @OneToMany(mappedBy="patient_diagnostique")
+    private List<Diagnostic> mes_diagnostics = new LinkedList<>();
     
     @ManyToOne(optional = false)
-    @JoinColumn(name = "idMedecin")
-    private Medecin medecinPatient;
+    @JoinColumn(name = "id_medecin")
+    private Medecin medecin_patient;
     
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="anamnese_id", referencedColumnName = "idAnamnese")
+    @JoinColumn(name="anamnese_id", referencedColumnName = "id_anamnese")
     private Anamnese anamnese;
     
     

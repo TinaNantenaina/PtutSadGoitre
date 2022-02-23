@@ -32,15 +32,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class SigneFonctionnel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idSigneFonctionnel;
+    private Integer id_signe_fonctionnel;
     
     @NonNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dateSF;
+    private LocalDate date_sf;
     
     @NonNull
     @Enumerated(EnumType.STRING)
-    private TypeSF typeSF;
+    private TypeSF type_sf;
     
     // A modifier : rajout d'une classe symptome
     //@NonNull
@@ -48,6 +48,6 @@ public class SigneFonctionnel {
     
     //Mapping
     @ManyToOne(optional = false)
-    @JoinColumn(name = "idAnamnese")
+    @JoinColumn(name = "id_anamnese")
     private Anamnese anamnese;
 }

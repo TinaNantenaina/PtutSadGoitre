@@ -33,7 +33,7 @@ import lombok.ToString;
 public class Medecin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idMedecin;
+    private Integer id_medecin;
     
     @NonNull
     private String nom;
@@ -45,6 +45,6 @@ public class Medecin {
     private String RPPS;
     
     //Mapping
-    @OneToMany(mappedBy="medecinPatient")
-    private List<Patient> mesPatients = new LinkedList<>();
+    @OneToMany(mappedBy="medecin_patient")
+    private List<Patient> mes_patients = new LinkedList<>();
 }
