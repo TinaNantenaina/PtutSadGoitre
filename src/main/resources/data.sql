@@ -7,17 +7,13 @@
  * Author:  Tina
  * Created: 23 févr. 2022
  */
-<<<<<<< HEAD
-INSERT INTO Medecin(idMedecin,nom,prenom,RPPS) VALUES
-(3,'Grey','Meredith','124569852');
-=======
-INSERT INTO Medecin(id_medecin,nom,prenom,RPPS) VALUES
-(1,'Grey','Meredith','124569852');
->>>>>>> 3477b9285a0659604df189adc8a85170ed3c8946
 
-INSERT INTO Patient(id_patient,nom,prenom,genre,date_naissance, id_medecin) VALUES
-(1,'Leroy','Julie',true,'1999-01-06', 1),
-(2,'Kim','Taehyung',false,'1995-12-30', 1);
+INSERT INTO Medecin(id_medecin,nom,prenom,RPPS) VALUES
+(3,'Grey','Meredith','124569852');
+
+INSERT INTO Patient(id_patient,nom,prenom,genre,date_naissance,id_medecin,anamnese_id) VALUES
+(1,'Leroy','Julie',true,'1999-01-06', 3,1);
+
 
 INSERT INTO Anamnese(id_anamnese,signe_De_Compression) VALUES
 (1,false);
