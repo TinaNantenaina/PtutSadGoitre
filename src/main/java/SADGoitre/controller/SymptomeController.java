@@ -37,7 +37,7 @@ public class SymptomeController {
     
         @GetMapping(path = "show")
     public String afficheTousLesExamens(Model model, Anamnese anamnese) {
-        model.addAttribute("symptomes", daoAnamnese.getOne(anamnese.getIdAnamnese()).getMesSymptomes());
+        model.addAttribute("symptomes", daoAnamnese.getOne(anamnese.getId_anamnese()).getMes_symptomes());
         return "afficheSymptomes";
     }
     

@@ -68,7 +68,7 @@ public class PatientController {
     @GetMapping(path = "add")
     public String montreLeFormulairePourAjout(Model model,Medecin medecin) {
         model.addAttribute("patient", new Patient());
-        model.addAttribute("patients", daoMedecin.getOne(medecin.getIdMedecin()).getMesPatients());
+        model.addAttribute("patients", daoMedecin.getOne(medecin.getId_medecin()).getMes_patients());
         return "formulairePatient";
     }
     
