@@ -15,8 +15,13 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class AccueilController {
-        @GetMapping({"/"})
+     @GetMapping({"/"})
     public String welcome(Model model) {
         return "PageAccueil";
+    }
+    
+    @GetMapping({"/error"})
+    public String error(Model model) {
+        return "error";
     }
 }
