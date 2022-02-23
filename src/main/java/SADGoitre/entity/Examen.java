@@ -28,25 +28,25 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity // Une entité JPA
 public class Examen {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer idExamen;
+    private Integer id_examen;
     
     @NonNull
-    private String nomExamen;
+    private String nom_examen;
     
     @NonNull
-    private boolean estExamenClinique;
+    private boolean est_examen_clinique;
     
     @NonNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dateExamen;
+    private LocalDate date_examen;
     
     @NonNull
     private String[] valeur;
     
     // Mapping
     @ManyToOne(optional = false)
-    @JoinColumn(name = "idPatient")
-    private Patient patientExamen;
+    @JoinColumn(name = "id_patient")
+    private Patient patient_examen;
     
     
 }

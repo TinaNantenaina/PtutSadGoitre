@@ -33,26 +33,26 @@ import lombok.ToString;
 public class Anamnese {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idAnamnese;
+    private Integer id_anamnese;
     
     @NonNull
     private boolean signeDeCompression;
     
     //Mapping
-    @OneToMany(mappedBy="idSigneFonctionnel")
+    @OneToMany(mappedBy="id_signe_fonctionnel")
     @NonNull
-    private List<SigneFonctionnel> signesFonctionnels = new LinkedList<>();
+    private List<SigneFonctionnel> signes_fonctionnels = new LinkedList<>();
     
-    @OneToMany(mappedBy="idAtcdFam")
-    private List<AtcdFamilialMedical> atcdFamilial = new LinkedList<>();
+    @OneToMany(mappedBy="id_atcd_fam")
+    private List<AtcdFamilialMedical> atcd_familial = new LinkedList<>();
     
-    @OneToMany(mappedBy="idAtcdPers")
-    private List<AtcdPersonnelMedical> atcdPersonnel = new LinkedList<>();
+    @OneToMany(mappedBy="id_atcd_pers")
+    private List<AtcdPersonnelMedical> atcd_personnel = new LinkedList<>();
     
     @OneToOne(mappedBy="anamnese")
     private Patient patient;
     
     @OneToMany(mappedBy="anamnese")
     @NonNull
-    private List<Symptome> mesSymptomes = new LinkedList<>();
+    private List<Symptome> mes_symptomes = new LinkedList<>();
 }

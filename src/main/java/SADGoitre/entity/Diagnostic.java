@@ -27,17 +27,17 @@ import lombok.ToString;
 @Entity
 public class Diagnostic {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer idDiagnostic;
+    private Integer id_diagnostic;
     
     @NonNull
-    private String nomDiagnostic;
+    private String nom_diagnostic;
     
     @NonNull
     private float pourcentage;
     
     // Mapping
     @ManyToOne(optional = false)
-    @JoinColumn(name = "idPatient")
-    private Patient patientDiagnostique;
+    @JoinColumn(name = "id_patient")
+    private Patient patient_diagnostique;
     
 }

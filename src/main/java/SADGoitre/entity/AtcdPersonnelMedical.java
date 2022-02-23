@@ -27,7 +27,7 @@ import lombok.Setter;
 public class AtcdPersonnelMedical {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idAtcdPers;
+    private Integer id_atcd_pers;
      
     @NonNull
     private String nom;

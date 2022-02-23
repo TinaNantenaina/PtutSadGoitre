@@ -27,12 +27,12 @@ import lombok.Setter;
 public class AtcdFamilialMedical {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idAtcdFam;
+    private Integer id_atcd_fam;
     
     @NonNull
-    private boolean NEM2;
+    private boolean nem2;
     
     @NonNull
-    private boolean cancerThyroidien;
+    private boolean cancer_thyroidien;
     
 }
