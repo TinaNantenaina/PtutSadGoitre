@@ -40,7 +40,7 @@ public class AnamneseController {
      */
     @GetMapping(path = "show")
     public String afficheAnamnese(Model model, Patient patient) {
-        model.addAttribute("anamnese", daoPatient.getOne(patient.getIdPatient()).getAnamnese());
+        model.addAttribute("anamnese", daoPatient.getOne(patient.getId_patient()).getAnamnese());
         return "afficheAnamnese";
     }
   

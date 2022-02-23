@@ -43,7 +43,7 @@ public class ExamenController {
     
         @GetMapping(path = "show")
     public String afficheTousLesExamens(Model model, Patient patient) {
-        model.addAttribute("examens", daoPatient.getOne(patient.getIdPatient()).getMesExamens());
+        model.addAttribute("examens", daoPatient.getOne(patient.getId_patient()).getMes_examens());
         return "afficheExamens";
     }
     
@@ -73,7 +73,7 @@ public class ExamenController {
     @GetMapping(path = "add")
     public String montreLeFormulairePourAjout (Model model, String name, Patient patient){
         model.addAttribute("examen", new Examen());
-        model.addAttribute("examens", daoPatient.getOne(patient.getIdPatient()).getMesExamens());    
+        model.addAttribute("examens", daoPatient.getOne(patient.getId_patient()).getMes_examens());    
         return "formulaireExamen";
     }
     /**
@@ -90,17 +90,17 @@ public class ExamenController {
         try {
             daoExamen.save(examen);
             // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
-            message = "L'examen '" + examen.getNomExamen() + "' a été correctement enregistrée";
+            message = "L'examen '" + examen.getNom_examen() + "' a été correctement enregistrée";
         } catch (DataIntegrityViolationException e) {
             // Les noms sont définis comme 'UNIQUE' 
             // En cas de doublon, JPA lève une exception de violation de contrainte d'intégrité
-            message = "Erreur : L'examen '" + examen.getNomExamen() + "' existe déjà";
+            message = "Erreur : L'examen '" + examen.getNom_examen() + "' existe déjà";
         }
         // RedirectAttributes permet de transmettre des informations lors d'une redirection,
         // Ici on transmet un message de succès ou d'erreur
         // Ce message est accessible et affiché dans la vue 'afficheAnimal.html'
         redirectInfo.addFlashAttribute("message", message);
-        return "redirect:/pesee/add?id=" + examen.getIdExamen(); // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
+        return "redirect:/pesee/add?id=" + examen.getId_examen(); // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
     }
     }
     
