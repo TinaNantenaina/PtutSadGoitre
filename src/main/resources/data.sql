@@ -7,31 +7,31 @@
  * Author:  Tina
  * Created: 23 févr. 2022
  */
-INSERT INTO Medecin(idMedecin,nom,prenom,RPPS) VALUES
+INSERT INTO Medecin(id_medecin,nom,prenom,RPPS) VALUES
 (1,'Grey','Meredith','124569852');
 
-INSERT INTO Patient(idPatient,nom,prenom,genre,dateNaissance) VALUES
-(1,'Leroy','Julie',true,'1999-01-06'),
-(2,'Kim','Taehyung',false,'1995-12-30');
+INSERT INTO Patient(id_patient,nom,prenom,genre,date_naissance, id_medecin) VALUES
+(1,'Leroy','Julie',true,'1999-01-06', 1),
+(2,'Kim','Taehyung',false,'1995-12-30', 1);
 
-INSERT INTO Anamnese(idAnamnese,signeDeCompression) VALUES
+INSERT INTO Anamnese(id_anamnese,signe_De_Compression) VALUES
 (1,false);
 
-INSERT INTO AtcdFamialMedical(idAtcdFam,NEM2,cancerThyroidien) VALUES
+INSERT INTO AtcdFamialMedical(id_Atcd_Fam,NEM2,cancer_Thyroidien) VALUES
 (1,false,false);
 
-INSERT INTO AtcdPersonnelMedical(idAtcdPers,nom) VALUES
+INSERT INTO AtcdPersonnelMedical(id_Atcd_Pers,nom) VALUES
 (1,'Diabete');
 
-INSERT INTO Diagnostic(idDiagnostic,nomDiagnostic,pourcentage) VALUES
+INSERT INTO Diagnostic(id_diagnostic,nom_diagnostic,pourcentage) VALUES
 (1,'Goitre Simple',50.0);
 
-INSERT INTO Examen(idExamen,nomExamen,estExamenClinique,dateExamen,valeur) VALUES
+INSERT INTO Examen(id_examen,nom_examen,est_Examen_Clinique,date_Examen,valeur) VALUES
 (1,'Examen cervicale',true,'2022-01-12','augmentation volume');
 
-INSERT INTO SigneFonctionnel(idSigneFonctionnel,dateSF,typeSF) VALUES 
+INSERT INTO SigneFonctionnel(id_Signe_Fonctionnel,date_SF,type_SF) VALUES 
 (1,'2022-01-12','HYPOTHYROIDIE');
 
-INSERT INTO Symptome(idSymptome,nom) VALUES
+INSERT INTO Symptome(id_Symptome,nom) VALUES
 (1,'Toux');
 

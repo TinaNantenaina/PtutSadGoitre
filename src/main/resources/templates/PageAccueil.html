@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
     <head>
         <title> Page Accueil </title>
         <meta charset="utf-8" />
@@ -13,10 +13,15 @@
 
 
        <input type="button" class="bouton" value="Lancer La Consultation"/>
-        <!--<a th:href="@{/}" href="affichePatient.html">Lancer la consultation</a>-->
+       
+        <a href="affichePatients.html" th:href="@{../patient/show{idMedecin=1}}">Lancer la consultation</a>
         
-
         <img id="imgAccueil" src="../static/images/imagePageAcceuil.PNG" th:src="@{/images/imagePageAcceuil.PNG}"  alt="Image d'accueil"/>
+        <div>
+            <a href='affichePatient.html'>
+             TEST
+            </a>
+        </div>
 
     </body>
 </html>

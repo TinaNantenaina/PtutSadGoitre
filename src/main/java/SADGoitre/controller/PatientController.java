@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -35,12 +36,12 @@ public class PatientController {
      * Affiche toutes les patients du médecin
      *
      * @param model pour transmettre les informations à la vue
-     * @param medecin le medecin connecté 
+     * @param idMedecin le medecin connecté 
      * @return le nom de la vue à afficher ('affichePatients.html')
      */
     @GetMapping(path = "show")
-    public String afficheTousLesPatients(Model model, Medecin medecin) {
-        model.addAttribute("patients", daoMedecin.getOne(medecin.getIdMedecin()));
+    public String afficheTousLesPatients(Model model, @RequestParam("idMedecin") int idMedecin) {
+        model.addAttribute("patients", daoMedecin.getOne(idMedecin));
         return "affichePatients";
     }
     
