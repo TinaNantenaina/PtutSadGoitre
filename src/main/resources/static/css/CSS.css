@@ -32,14 +32,14 @@ h1 {
 }
 
 /* Pour la div de la page d'accueil'*/
- #imgAccueil {
+/*#imgAccueil {
                     width: 200px;
                     display: block;
                     margin-left: auto;
                     margin-right: auto;
- }
+ }*/
 
- #body_accueil{
+#bodyAccueil{
     background-color: #62E3E2;
  }
 

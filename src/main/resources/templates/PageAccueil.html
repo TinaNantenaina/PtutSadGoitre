@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="fr">
     <head>
         <title> Page Accueil </title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<!--        <link rel="stylesheet" type="text/css" href="../css/CSS.css"/>-->
+        <link rel="stylesheet" type="text/css" href="../css/CSS.css"/>
 
     </head>
-    <body id="body_accueil">
+    <body id="bodyAccueil">
         <center><h1 style="font-size:36pt; color:whitesmoke"><i>SAD Goître</i></h1></center> 
 
         <input type="button" class="bouton" value="Lancer La Consultation"/>
        
         <a href="affichePatients.html" th:href="@{../patient/show(idMedecin=3)}">Lancer la consultation</a>
-<!--                <a href="afficheAnamnese.html" th:href="@{../anamnese/show(idPatient=1)}">Lancer la consultation</a>-->
+<!--        <a href="afficheAnamnese.html" th:href="@{../anamnese/show(idPatient=1)}">Lancer l'anamnese</a>-->
 
         <img id="imgAccueil" src="../static/images/imagePageAcceuil.PNG" th:src="@{/images/imagePageAcceuil.PNG}"  alt="Image d'accueil"/>
     </body>
