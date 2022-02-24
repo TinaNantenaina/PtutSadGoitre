@@ -9,7 +9,7 @@ package SADGoitre.entity;
  *
  * @author agath
  */
-public enum TypeSF {
+public enum Type_sf {
     HYPOTHYROIDE,
     HYPERTHYROIDE,
     EUTHYROIDE

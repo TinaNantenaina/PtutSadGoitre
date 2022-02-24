@@ -41,13 +41,13 @@ public class Anamnese {
     //Mapping
     @OneToMany(mappedBy="id_signe_fonctionnel")
     @NonNull
-    private List<SigneFonctionnel> signes_fonctionnels = new LinkedList<>();
+    private List<Signe_fonctionnel> signes_fonctionnels = new LinkedList<>();
     
     @OneToMany(mappedBy="id_atcd_fam")
-    private List<AtcdFamilialMedical> atcd_familial = new LinkedList<>();
+    private List<Atcd_familial_medical> atcd_familial = new LinkedList<>();
     
     @OneToMany(mappedBy="id_atcd_pers")
-    private List<AtcdPersonnelMedical> atcd_personnel = new LinkedList<>();
+    private List<Atcd_personnel_medical> atcd_personnel = new LinkedList<>();
     
     @OneToOne(mappedBy="anamnese")
     private Patient patient;

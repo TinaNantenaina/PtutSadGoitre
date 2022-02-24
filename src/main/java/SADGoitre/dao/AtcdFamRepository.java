@@ -5,13 +5,13 @@
  */
 package SADGoitre.dao;
 
-import SADGoitre.entity.AtcdFamilialMedical;
+import SADGoitre.entity.Atcd_familial_medical;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Tina
  */
-public interface AtcdFamRepository extends JpaRepository<AtcdFamilialMedical, Integer> {
+public interface AtcdFamRepository extends JpaRepository<Atcd_familial_medical, Integer> {
     
 }

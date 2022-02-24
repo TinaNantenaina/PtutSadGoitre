@@ -24,7 +24,7 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class AtcdFamilialMedical {
+public class Atcd_familial_medical {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_atcd_fam;

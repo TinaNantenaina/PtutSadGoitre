@@ -29,7 +29,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity
-public class SigneFonctionnel {
+public class Signe_fonctionnel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_signe_fonctionnel;
@@ -40,7 +40,7 @@ public class SigneFonctionnel {
     
     @NonNull
     @Enumerated(EnumType.STRING)
-    private TypeSF type_sf;
+    private Type_sf type_sf;
     
     // A modifier : rajout d'une classe symptome
     //@NonNull
