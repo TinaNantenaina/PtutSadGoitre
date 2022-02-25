@@ -18,19 +18,20 @@ INSERT INTO Patient(id_patient,nom,prenom,genre,date_naissance,id_medecin) VALUE
 INSERT INTO Anamnese(id_anamnese,signe_De_Compression) VALUES
 (1,false);
 
-INSERT INTO AtcdFamilialMedical(id_atcd_fam,nem2,cancer_thyroidien) VALUES
+INSERT INTO Atcd_Familial_Medical(id_atcd_fam,nem2,cancer_thyroidien) VALUES
 (1,false,false);
 
-INSERT INTO AtcdPersonnelMedical(id_atcd_pers,nom) VALUES
+INSERT INTO Atcd_Personnel_Medical(id_atcd_pers,nom) VALUES
 (1,'Diabete');
 
-INSERT INTO Diagnostic(id_diagnostic,nom_diagnostic,pourcentage) VALUES
-(1,'Goitre Simple',50.0);
+INSERT INTO Diagnostic(id_diagnostic,nom_diagnostic,pourcentage, id_patient) VALUES
+(1,'Goitre Simple',50.0,1);
 
+-- Problème sur l'examen : normalement valeur est un tableau de string --> pas possible de l'implémenter en sql autrement que dans une table
 INSERT INTO Examen(id_examen,nom_examen,est_Examen_Clinique,date_Examen,valeur) VALUES
 (1,'Examen cervicale',true,'2022-01-12','augmentation volume');
 
-INSERT INTO SigneFonctionnel(id_Signe_Fonctionnel,date_SF,type_SF) VALUES 
+INSERT INTO Signe_Fonctionnel(id_Signe_Fonctionnel,date_SF,type_SF) VALUES 
 (1,'2022-01-12','HYPOTHYROIDIE');
 
 INSERT INTO Symptome(id_Symptome,nom) VALUES

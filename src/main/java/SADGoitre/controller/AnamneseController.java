@@ -4,7 +4,7 @@ import SADGoitre.dao.AnamneseRepository;
 import SADGoitre.dao.PatientRepository;
 import SADGoitre.entity.Anamnese;
 import SADGoitre.entity.Patient;
-import SADGoitre.entity.SigneFonctionnel;
+import SADGoitre.entity.Signe_fonctionnel;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +29,7 @@ public class AnamneseController {
     
     AnamneseRepository daoAnamnese;
     PatientRepository daoPatient;
-    SigneFonctionnel daoSF;
+    Signe_fonctionnel daoSF;
     
     /**
      * Affiche l'anamnese du patient sélectionné 

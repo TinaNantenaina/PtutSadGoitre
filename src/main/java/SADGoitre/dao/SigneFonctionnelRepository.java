@@ -5,13 +5,13 @@
  */
 package SADGoitre.dao;
 
-import SADGoitre.entity.SigneFonctionnel;
+import SADGoitre.entity.Signe_fonctionnel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Tina
  */
-public interface SigneFonctionnelRepository extends JpaRepository<SigneFonctionnel, Integer> {
+public interface SigneFonctionnelRepository extends JpaRepository<Signe_fonctionnel, Integer> {
     
 }

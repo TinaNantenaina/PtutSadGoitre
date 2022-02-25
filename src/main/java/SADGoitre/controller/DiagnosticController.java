@@ -50,6 +50,6 @@ public class DiagnosticController {
         model.addAttribute("diagnostics", daoDiagnostic.findAll());
         model.addAttribute("diagnostic", daoDiagnostic.getOne(patient.getId_patient()));  
         model.addAttribute("patient", daoPatient.getOne(idDiagnostic));
-        return "afficheDiagnostics";
+        return "afficheDiagnostic";
     }
 }
