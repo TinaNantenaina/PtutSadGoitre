@@ -42,6 +42,7 @@ public class PatientController {
     @GetMapping(path = "show")
     public String afficheTousLesPatients(Model model, @RequestParam("idMedecin") int idMedecin) {
         model.addAttribute("patients", daoMedecin.getOne(idMedecin));
+        model.addAttribute("patients", daoPatient.findAll());
         return "affichePatients";
     }
     

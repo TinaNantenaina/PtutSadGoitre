@@ -1,95 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="fr">
     <head>
-          <meta charset="UTF-8"/>
-          <link rel="stylesheet" media="screen" href="CSS.css"/>
-          <title>Patient</title>  
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/CSS.css"/>
+        <title>Patient</title>  
     </head>
     <body>
         <div class="menu">
-            <li><a href="page patient.html">Patient</a></li>
-            <li><a href="page données générales.html" target="_blank">Données générales</a></li>
+            <ul>
+                <li><a href="page patient.html">Patient</a></li>
+                <li><a href="page données générales.html" target="_blank">Données générales</a></li>
 
-            <li><div class="menus"><a href="page examen.html">Examens</a></div><ul>   
-            <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
-            <li><a href="adresse url" target="_blank">Signes généraux</a></li>
-            <li><a href="adresse url" target="_blank">Examen region cevicales</a></li>
-            <li><a href="adresse url" target="_blank">Examen ophtalmologique</a></li>
-            <li><a href="adresse url" target="_blank">Examen neurologique</a></li>
-            <li><a href="adresse url" target="_blank">Examen aire ganglionnaire</a></li>
-            </ul></li>
-            
-            <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
-                <li><a href="adresse url" target="_blank">Morphologique</a></li>
-                <li><a href="adresse url" target="_blank">Biologique</a></li>
-                <li><a href="adresse url" target="_blank">Fonctionnel</a></li>
-                </ul></li>
-            </ul></li>
-        
-            <li><a href="page photos.html" target="_blank">Photos</a></li>
+                <li><div class="menus"><a href="page examen.html">Examens</a></div><ul>   
+                        <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
+                                <li><a href="adresse url" target="_blank">Signes généraux</a></li>
+                                <li><a href="adresse url" target="_blank">Examen region cevicales</a></li>
+                                <li><a href="adresse url" target="_blank">Examen ophtalmologique</a></li>
+                                <li><a href="adresse url" target="_blank">Examen neurologique</a></li>
+                                <li><a href="adresse url" target="_blank">Examen aire ganglionnaire</a></li>
+                            </ul></li>
 
-            <li><a href="page diagnostic.html" target="_blank">Diagnostic</a></li>                                                                                              
-            </div><br><br>
-<!--------------------------------------------------------------------------------------------->
+                        <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
+                                <li><a href="adresse url" target="_blank">Morphologique</a></li>
+                                <li><a href="adresse url" target="_blank">Biologique</a></li>
+                                <li><a href="adresse url" target="_blank">Fonctionnel</a></li>
+                            </ul></li>
+                    </ul></li>
 
-        <h1>Page patient</h1>
-        <a href="page formulaire patient.html" >Ajouter un patient</a><br><br>
+                <li><a href="page photos.html" target="_blank">Photos</a></li>
+
+                <li><a href="page diagnostic.html" target="_blank">Diagnostic</a></li>   
+            </ul>
+        </div><br/><br/>
+   
+
+       
+        <a th:href="@{add}" href="formulairePatient.html">Ajouter patient</a><br/><br/>
         <table>
-            <tr>
-                <th>Patient</th>
-                <td>Nom</td>
-                <td>Prenom</td>
-                <td>DTN</td>
-                <td>Symptomes</td>
-                <td>date examen</td>
-                <td>diagnostic</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td><a href="page données générales.html" >Nata</a></td>
-                <td>Tina</td>
-                <td>??</td>
-                <td>??</td>
-                <td>??</td>
-                <td>??</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><a href="page données générales.html" >Nati</a></td>
-                <td>Tina</td>
-                <td>??</td>
-                <td>??</td>
-                <td>??</td>
-                <td>??</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td><a href="page données générales.html" >Nato</a></td>
-                <td>Tina</td>
-                <td>??</td>
-                <td>??</td>
-                <td>??</td>
-                <td>??</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td><a href="page données générales.html" >Natu</a></td>
-                <td>Tina</td>
-                <td>??</td>
-                <td>??</td>
-                <td>??</td>
-                <td>??</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td><a href="page données générales.html" >Nata</a></td>
-                <td>Tina</td>
-                <td>??</td>
-                <td>??</td>
-                <td>??</td>
-                <td>??</td>
-            </tr>
-         </table>
+            <thead>
+                <tr>
+
+                    <td>Nom</td>
+                    <td>Prenom</td>
+                    <td>Genre</td>-->
+                    <td>Date de Naissance</td>
+                    <!--<td>Symptome</td>
+                    <td>Date de l'examen</td>
+                    <td>Diagnostic</td>-->
+                    <td>Medecin</td>
+                </tr>
+            </thead>
+            <tbody th:each = "p:${patients}">
+                <tr>
+
+                    <td th:text = "${p.nom}"><a href="afficheAnamnese.html" ></a></td>
+                    <td th:text = "${p.prenom}"></td>
+                    <td th:text = "${p.genre}"></td>
+                    <td th:text = "${p.date_naissance}"></td>
+                    <!--<td th:text = "${p.mes_symptomes.nom}"></td>
+                    <td th:text = "${p.patient_examen.date_examen}"></td>
+                    <td th:text = "${p.patient_diagnostique.nom_diagnostic}"></td>-->
+                    <td th:if = "${p.medecin_patient==null}">Medecin inconnu</td>
+                    <td th:unless = "${p.medecin_patient==null}">[[${p.medecin_patient.nom}]]</td>
+                </tr>
+                 <!--<tr>
+
+                    <td><a href="page données générales.html" >Nati</a></td>
+                    <td>Tina</td>
+                    <td>??</td>
+                    <td>??</td>
+                    <td>??</td>
+                    <td>??</td>
+                </tr>
+                <tr>
+
+                    <td><a href="page données générales.html" >Nato</a></td>
+                    <td>Tina</td>
+                    <td>??</td>
+                    <td>??</td>
+                    <td>??</td>
+                    <td>??</td>
+                </tr>
+                <tr>
+
+                    <td><a href="page données générales.html" >Natu</a></td>
+                    <td>Tina</td>
+                    <td>??</td>
+                    <td>??</td>
+                    <td>??</td>
+                    <td>??</td>
+                </tr>
+                <tr>
+
+                    <td><a href="page données générales.html" >Nata</a></td>
+                    <td>Tina</td>
+                    <td>??</td>
+                    <td>??</td>
+                    <td>??</td>
+                    <td>??</td>
+                </tr> -->
+            </tbody>
+        </table>
     </body>
 
 </html>
