@@ -31,9 +31,9 @@ INSERT INTO Diagnostic(id_diagnostic,nom_diagnostic,pourcentage, id_patient) VAL
 INSERT INTO Examen(id_examen,nom_examen,est_Examen_Clinique,date_Examen, id_patient) VALUES
 (1,'Examen cervicale',true,'2022-01-12',1);
 
-INSERT INTO Signe_Fonctionnel(id_Signe_Fonctionnel,date_SF,type_SF) VALUES 
-(1,'2022-01-12','HYPOTHYROIDIE');
+INSERT INTO Signe_Fonctionnel(id_Signe_Fonctionnel,date_SF, type_SF, id_anamnese) VALUES 
+(1,'2022-01-12','HYPOTHYROIDIE', 1);
 
-INSERT INTO Symptome(id_Symptome,nom) VALUES
-(1,'Toux');
+INSERT INTO Symptome(id_Symptome,nom, id_anamnese) VALUES
+(1,'Toux',1);
 

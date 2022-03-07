@@ -42,10 +42,6 @@ public class Signe_fonctionnel {
     @Enumerated(EnumType.STRING)
     private Type_sf type_sf;
     
-    // A modifier : rajout d'une classe symptome
-    //@NonNull
-    //private List<String> nomSymptome;
-    
     //Mapping
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_anamnese")
