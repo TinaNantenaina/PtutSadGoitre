@@ -5,12 +5,14 @@
 package SADGoitre.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -40,13 +42,12 @@ public class Examen {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date_examen;
     
-    @NonNull
-    private String[] valeur;
-    
     // Mapping
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_patient")
     private Patient patient_examen;
     
+    @OneToMany(mappedBy = "examen_valeur")
+    private List<Valeur_examen> valeur_examen;
     
 }

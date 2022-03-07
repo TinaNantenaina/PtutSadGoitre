@@ -35,7 +35,7 @@ public class AnamneseController {
      * Affiche l'anamnese du patient sélectionné 
      *
      * @param model pour transmettre les informations à la vue
-     * @param patient le patient dont on veut afficher l'anamnese
+     * @param idPatient le patient dont on veut afficher l'anamnese
      * @return le nom de la vue à afficher ('afficheGTableaux.html')
      */
     @GetMapping(path = "show")
