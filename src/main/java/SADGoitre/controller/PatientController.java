@@ -5,8 +5,11 @@
  */
 package SADGoitre.controller;
 
+import SADGoitre.dao.AnamneseRepository;
+import SADGoitre.dao.ExamenRepository;
 import SADGoitre.dao.MedecinRepository;
 import SADGoitre.dao.PatientRepository;
+import SADGoitre.dao.SymptomeRepository;
 import SADGoitre.entity.Medecin;
 import SADGoitre.entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,16 @@ public class PatientController {
     
     @Autowired
     private MedecinRepository daoMedecin;
+    
+    @Autowired
+    private ExamenRepository daoExamen;
+    
+    @Autowired
+    private AnamneseRepository daoAnamnese;
+    
+    @Autowired
+    private SymptomeRepository daoSymptome;
+    
     
     /**
      * Affiche toutes les patients du médecin
@@ -69,7 +82,6 @@ public class PatientController {
     @GetMapping(path = "add")
     public String montreLeFormulairePourAjout(Model model,Medecin medecin) {
         model.addAttribute("patient", new Patient());
-        model.addAttribute("patients", daoMedecin.getOne(medecin.getId_medecin()).getMes_patients());
         return "formulairePatient";
     }
     
