@@ -10,7 +10,7 @@
         <div class="menu">
             <ul>
                 <!-- id patient à changer-->
-                <li><a href="detailPatient.html" th:href="@{../patient/getPatient(idPatient=1)}">Patient</a></li>
+                <li><a href="detailPatient.html" th:href="@{../patient/getPatient(idPatient=${patient.id_patient})}">Patient</a></li>
                 <li><a href="#">Données générales</a></li>
 
                 <li><div class="menus"><a href="afficheExamen.html">Examens</a></div><ul>   
@@ -30,8 +30,8 @@
                     </ul></li>
 
                 <li><a href="page photos.html" target="_blank">Photos</a></li>
-                <!-- id patient à changer-->
-                <li><a href="afficheDiagnostic.html" th:href="@{../diagnostic/show(idPatient=${anamnese.patient.id_patient})}" target="_blank">Diagnostic</a></li>
+                <!-- id patient à changer--><!--${patient.id_patient}-->
+                <li><a href="afficheDiagnostic.html" th:href="@{../diagnostic/show(idPatient=1)}" target="_blank">Diagnostic</a></li>
             </ul>
         </div>
         <br/>

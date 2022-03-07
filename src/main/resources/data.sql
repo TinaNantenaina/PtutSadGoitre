@@ -14,7 +14,6 @@ INSERT INTO Medecin(id_medecin,nom,prenom,RPPS) VALUES
 INSERT INTO Patient(id_patient,nom,prenom,genre,date_naissance,id_medecin) VALUES
 (1,'Leroy','Julie',true,'1999-01-06',3);
 
-
 INSERT INTO Anamnese(id_anamnese,signe_De_Compression) VALUES
 (1,false);
 

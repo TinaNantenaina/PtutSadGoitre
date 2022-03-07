@@ -62,8 +62,9 @@ public class Patient{
     private Medecin medecin_patient;
     
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="anamnese_id", referencedColumnName = "id_anamnese")
+    @JoinColumn(name="anamnese_patient_id", referencedColumnName = "id_anamnese")
     private Anamnese anamnese;
-    
+    /*@OneToOne(mappedBy="patient")
+    private Anamnese anamnese;*/
     
 }

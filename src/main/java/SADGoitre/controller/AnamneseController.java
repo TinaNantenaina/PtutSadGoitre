@@ -2,9 +2,11 @@ package SADGoitre.controller;
 
 import SADGoitre.dao.AnamneseRepository;
 import SADGoitre.dao.PatientRepository;
+import SADGoitre.dao.SigneFonctionnelRepository;
 import SADGoitre.entity.Anamnese;
 import SADGoitre.entity.Patient;
 import SADGoitre.entity.Signe_fonctionnel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author agath
@@ -26,24 +27,32 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping(path = "/anamnese")
 public class AnamneseController {
-    
+
+    @Autowired
     AnamneseRepository daoAnamnese;
+    @Autowired
     PatientRepository daoPatient;
-    Signe_fonctionnel daoSF;
-    
+    @Autowired
+    SigneFonctionnelRepository daoSF;
+
     /**
-     * Affiche l'anamnese du patient sélectionné 
+     * Affiche l'anamnese du patient sélectionné
      *
      * @param model pour transmettre les informations à la vue
-     * @param idPatient le patient dont on veut afficher l'anamnese
+     * @param idPatient l'id du patient dont on veut afficher l'anamnese
      * @return le nom de la vue à afficher ('afficheGTableaux.html')
      */
     @GetMapping(path = "show")
     public String afficheAnamnese(Model model, int idPatient) {
-        model.addAttribute("anamnese", daoPatient.getOne(idPatient).getAnamnese());
+        if (daoPatient.getOne(idPatient).getAnamnese()!= null) {
+            model.addAttribute("anamnese", daoPatient.getOne(idPatient).getAnamnese());
+        } else {
+            model.addAttribute("anamnese", new Anamnese());
+        }
+        model.addAttribute("patient", daoPatient.getOne(idPatient));
         return "afficheAnamnese";
     }
-  
+
     /**
      * Affiche le formulaire permettant d'ajouter une anamnese
      *
@@ -62,7 +71,8 @@ public class AnamneseController {
      * Appelé par 'formulaireAnamnese.html', méthode POST
      *
      * @param anamnese initialisé avec les valeurs saisies dans le formulaire
-     * @param redirectInfo pour transmettre des paramètres lors de la redirection
+     * @param redirectInfo pour transmettre des paramètres lors de la
+     * redirection
      * @return une redirection vers l'affichage de l'anamnèse
      */
     @PostMapping(path = "save")
@@ -81,7 +91,4 @@ public class AnamneseController {
         redirectInfo.addFlashAttribute("message", message);
         return "redirect:/anamnese/show"; // POST-Redirect-GET : on se redirige vers l'affichage de l'anamnese		
     }
-    
-    
-    
 }
