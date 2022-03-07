@@ -76,11 +76,12 @@ public class PatientController {
      * Montre le formulaire permettant d'ajouter un patient
      *
      * @param model pour transmettre les informations à la vue
-     * @param medecin Le medecin du patient
+     * @param idMedecin Le medecin du patient
      * @return le nom de la vue à afficher ('formulairePatient.html')
      */
     @GetMapping(path = "add")
-    public String montreLeFormulairePourAjout(Model model,Medecin medecin) {
+    public String montreLeFormulairePourAjout(Model model,int idMedecin) {
+         model.addAttribute("medecin", daoMedecin.getOne(idMedecin));
         model.addAttribute("patient", new Patient());
         return "formulairePatient";
     }

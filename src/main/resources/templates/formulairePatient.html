@@ -1,13 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-          <meta charset="UTF-8"/>
-          <link rel="stylesheet" media="screen" href="CSS.css"/>
-          <title>Formulaire Patient</title>  
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/CSS.css"/>
+        <title>Formulaire Patient</title>  
     </head>
     <body>
-        <h1>Page formulaire patient</h1>
-    
-    </body>
+        <h2>Nouveau patient</h2><br>
 
-</html>
+            <form th:object="${patient}" method="POST" th:action="@{/patient/save}">  
+                <div style="display: none"><label for="medecin">Médecin</label>
+                         <select name="medecin">
+                                <option th:value="${medecin.id_medecin}" th:text="${medecin.prenom} +' '+ ${medecin.nom}" th:field="*{medecin}"></option>
+                         </select></div>
+                <label for="nom">Nom</label>
+                <input id="nom" th:field="*{nom}" th:value="*{nom}" type="text"/><br/>
+
+                <label for="prenom">Prénom</label>
+                <input id="prenom" th:field="*{prenom}" th:value="*{prenom}"type="text"/><br/>
+
+                <label for="genre">Genre</label>
+                <select id="genre" th:field="*{genre}" required="required">
+                    <option th:value="true" th:text="Homme" selected></option>
+                    <option th:value="false" th:text="Femme"></option>
+                </select><br/>
+
+                <label for="date_naissance">Date de naissance</label>
+                <input id="date_naissance" type="date" th:field="*{date_naissance}" th:value="*{date_naissance}"/><br/>
+
+                    <input type="submit" value="Enregistrer">
+                        <input type="reset" value="Réinitialiser" />
+
+                        </form>
+
+                        </body>
+
+                        </html>
