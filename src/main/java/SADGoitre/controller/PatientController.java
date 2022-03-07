@@ -106,7 +106,7 @@ public class PatientController {
             message = "Erreur : Le patient '" + patient.getNom() + patient.getPrenom() + "' existe déjà";
         }
         redirectInfo.addFlashAttribute("message", message);
-        return "redirect:show";
+        return "redirect:show?idMedecin=3";
     }
     
     
