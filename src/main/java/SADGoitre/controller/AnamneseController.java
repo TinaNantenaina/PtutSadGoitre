@@ -79,7 +79,7 @@ public class AnamneseController {
        anamneses.setPatient(daoPatient.getOne(idPatient));
       
         model.addAttribute("anamnese", anamneses);
-        model.addAttribute("patient", daoPatient.getOne(idPatient).getAnamnese());
+        model.addAttribute("patient", daoPatient.getOne(idPatient));
         return "afficheAnamnese";
     }
 
