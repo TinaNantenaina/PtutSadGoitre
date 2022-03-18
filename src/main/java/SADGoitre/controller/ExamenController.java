@@ -10,6 +10,10 @@ import SADGoitre.dao.ExamenRepository;
 import SADGoitre.dao.PatientRepository;
 import SADGoitre.entity.Examen;
 import SADGoitre.entity.Patient;
+import SADGoitre.entity.Valeur_examen;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -24,15 +28,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author Tina
  */
 @Controller
-@RequestMapping (path="/examen")
+@RequestMapping(path = "/examen")
 public class ExamenController {
+
     @Autowired
     private ExamenRepository daoExamen;
-    
-    @Autowired 
+
+    @Autowired
     private PatientRepository daoPatient;
-    
-    
+
     /**
      * Affiche toutes les catégories dans la base
      *
@@ -40,13 +44,12 @@ public class ExamenController {
      * @param patient le patient concerné
      * @return le nom de la vue à afficher ('afficheExamens.html')
      */
-    
-        @GetMapping(path = "show")
-    public String afficheTousLesExamens(Model model, Patient patient) {
-        model.addAttribute("examens", daoPatient.getOne(patient.getId_patient()).getMes_examens());
+    @GetMapping(path = "show")
+    public String afficheTousLesExamens(Model model, Integer idPatient) {
+        model.addAttribute("examens", daoPatient.getOne(idPatient).getMes_examens());
         return "afficheExamens";
     }
-    
+
     /**
      * Redirige vers la page d'un examen selon son id
      *
@@ -54,13 +57,12 @@ public class ExamenController {
      * @param idExamen l'id de l'examen
      * @return le nom de la vue à afficher ('detailExamen.html')
      */
-    
     @GetMapping(path = "getExamen")
-    public String afficheUnExamen (Model model, Integer idExamen){
+    public String afficheUnExamen(Model model, Integer idExamen) {
         model.addAttribute("examen", daoExamen.getOne(idExamen));
         return "detailExamen";
     }
-    
+
     /**
      * Montre le formulaire permettant d'ajouter un examen
      *
@@ -68,23 +70,37 @@ public class ExamenController {
      * @param idPatient L'id du patient
      * @return le nom de la vue à afficher ('formulaireExamen.html')
      */
-    
     @GetMapping(path = "add")
-    public String montreLeFormulairePourAjout (Model model, int idPatient){
-        model.addAttribute("examen", new Examen());
-        model.addAttribute("patient", daoPatient.getOne(idPatient).getMes_examens());    
+    public String montreLeFormulairePourAjout(Model model, int idPatient) {
+        List<Valeur_examen> val_examens;
+        val_examens = Arrays.asList(
+                new Valeur_examen(0, "Fièvre"),
+                new Valeur_examen(1, "Prise de poids"),
+                new Valeur_examen(2, "Perte de poids"),
+                new Valeur_examen(3, "Tachycardie"),
+                new Valeur_examen(4, "Bradychardie"),
+                new Valeur_examen(5, "Hypertension artérielle")
+        );
+        Examen exam = new Examen();
+        exam.setValeur_examen(val_examens);
+        exam.setPatient_examen(daoPatient.getOne(idPatient));
+        exam.setEst_examen_clinique(true);
+        model.addAttribute("examen", exam);
+        model.addAttribute("patient", daoPatient.getOne(idPatient));
+        model.addAttribute("localDate", LocalDate.now());
         return "formulaireExamen";
     }
+
     /**
      * Appelé par 'formulaireExamen.html', méthode POST
      *
      * @param examen initialisé avec les valeurs saisies dans le formulaire
-     * @param redirectInfo pour transmettre des paramètres lors de la redirection
+     * @param redirectInfo pour transmettre des paramètres lors de la
+     * redirection
      * @return une redirection vers l'affichage de la liste des examens
      */
-    
-    @PostMapping(path ="save")
-    public String ajouteExamenPuisMontreLaListe(Examen examen, RedirectAttributes redirectInfo){
+    @PostMapping(path = "save")
+    public String ajouteExamenPuisMontreLaListe(Examen examen, RedirectAttributes redirectInfo) {
         String message;
         try {
             daoExamen.save(examen);
@@ -99,7 +115,8 @@ public class ExamenController {
         // Ici on transmet un message de succès ou d'erreur
         // Ce message est accessible et affiché dans la vue 'afficheAnimal.html'
         redirectInfo.addFlashAttribute("message", message);
-        return "redirect:/pesee/add?id=" + examen.getId_examen(); // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
+//        return "redirect:/patient/show?idMedecin=" + examen.getPatient_examen().getMedecin_patient().getId_medecin();
+        return "redirect:/examen/show?idPatient="+ examen.getPatient_examen().getId_patient();
+        //return "redirect:/patient/get?idPatient=" + examen.getPatient_examen().getId_patient(); // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
     }
-    }
-    
+}
