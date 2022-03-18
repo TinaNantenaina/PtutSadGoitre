@@ -44,8 +44,8 @@
                     <td>Prenom</td>
                     <td>Genre</td>-->
                     <td>Date de Naissance</td>
-                    <!--<td>Symptome</td>
-                    <td>Date de l'examen</td>
+                    <td>Symptome</td>
+                    <!--<td>Date de l'examen</td>
                     <td>Diagnostic</td>-->
                     <td>Medecin</td>
                 </tr>
@@ -53,13 +53,13 @@
             <tbody th:each = "p:${patients}">
                 <tr>
 
-                    <td th:text = "${p.nom}"><a href="afficheAnamnese.html" ></a></td>
+                    <td> <a th:href="@{getPatient(id=${p.id_patient})}" th:text = "${p.nom}"></a></td>
                     <td th:text = "${p.prenom}"></td>
-                    <td th:text = "${p.genre}"></td>
+                    <td th:text = "${p.genre}? 'Femme' : 'Homme'"></td>
                     <td th:text = "${p.date_naissance}"></td>
-                    <!--<td th:text = "${p.mes_symptomes.nom}"></td>
-                    <td th:text = "${p.patient_examen.date_examen}"></td>
-                    <td th:text = "${p.patient_diagnostique.nom_diagnostic}"></td>-->
+                   <!--   <td th:text = "${p.anamnese.mes_symptomes.nom}"></td>
+                  <td th:text = "${p.patient_examen.date_examen}"></td>-->
+                    <td th:text = "${p.anamnese}">[[${p.anamnese}]]</td>
                     <td th:if = "${p.medecin_patient==null}">Medecin inconnu</td>
                     <td th:unless = "${p.medecin_patient==null}">[[${p.medecin_patient.nom}]]</td>
                 </tr>

@@ -56,6 +56,7 @@ public class PatientController {
     public String afficheTousLesPatients(Model model, @RequestParam("idMedecin") int idMedecin) {
         model.addAttribute("patients", daoMedecin.getOne(idMedecin));
         model.addAttribute("patients", daoPatient.findAll());
+        model.addAttribute("symptomes", daoSymptome.findAll());
         return "affichePatients";
     }
     
@@ -69,6 +70,8 @@ public class PatientController {
     @GetMapping(path = "getPatient")
     public String afficheUnPatient(Model model, Integer idPatient) {
         model.addAttribute("patient", daoPatient.getOne(idPatient));
+        
+        
         return "detailPatient";
     }
     
