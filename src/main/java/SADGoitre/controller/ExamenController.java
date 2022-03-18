@@ -65,15 +65,14 @@ public class ExamenController {
      * Montre le formulaire permettant d'ajouter un examen
      *
      * @param model pour transmettre les informations à la vue
-     * @param name Le nom du patient
-     * @param patient le patient concerné
+     * @param idPatient L'id du patient
      * @return le nom de la vue à afficher ('formulaireExamen.html')
      */
     
     @GetMapping(path = "add")
-    public String montreLeFormulairePourAjout (Model model, String name, Patient patient){
+    public String montreLeFormulairePourAjout (Model model, int idPatient){
         model.addAttribute("examen", new Examen());
-        model.addAttribute("examens", daoPatient.getOne(patient.getId_patient()).getMes_examens());    
+        model.addAttribute("patient", daoPatient.getOne(idPatient).getMes_examens());    
         return "formulaireExamen";
     }
     /**
