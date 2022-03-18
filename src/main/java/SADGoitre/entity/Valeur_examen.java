@@ -27,13 +27,13 @@ import lombok.ToString;
 public class Valeur_examen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NonNull
     private Integer id_valeur_examen;
     
     @NonNull
-    private String nomValeur;
+    private String nom_valeur;
     
-    @NonNull
-    private boolean estValeur;
+    private boolean est_valeur;
     
     private String valeur;
     

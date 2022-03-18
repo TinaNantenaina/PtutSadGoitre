@@ -54,7 +54,7 @@
                 <tr>
 
                     <td> <a th:href="@{getPatient(idPatient=${p.id_patient})}" th:text = "${p.nom}"></a></td>
-                    <td th:text = "${p.prenom}"></td>
+                    <td><a th:href="@{../examen/add(idPatient=${p.id_patient})}" th:text = "${p.prenom}"/></td>
                     <td th:text = "${p.genre}? 'Femme' : 'Homme'"></td>
                     <td th:text = "${p.date_naissance}"></td>
                    <!--   <td th:text = "${p.anamnese.mes_symptomes.nom}"></td>
