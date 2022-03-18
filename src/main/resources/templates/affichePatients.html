@@ -42,7 +42,7 @@
 
                     <td>Nom</td>
                     <td>Prenom</td>
-                    <td>Genre</td>-->
+                    <td>Genre</td>
                     <td>Date de Naissance</td>
                     <td>Symptome</td>
                     <!--<td>Date de l'examen</td>
@@ -53,7 +53,7 @@
             <tbody th:each = "p:${patients}">
                 <tr>
 
-                    <td> <a th:href="@{getPatient(id=${p.id_patient})}" th:text = "${p.nom}"></a></td>
+                    <td> <a th:href="@{getPatient(idPatient=${p.id_patient})}" th:text = "${p.nom}"></a></td>
                     <td th:text = "${p.prenom}"></td>
                     <td th:text = "${p.genre}? 'Femme' : 'Homme'"></td>
                     <td th:text = "${p.date_naissance}"></td>

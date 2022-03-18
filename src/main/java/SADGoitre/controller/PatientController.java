@@ -72,7 +72,7 @@ public class PatientController {
         model.addAttribute("patient", daoPatient.getOne(idPatient));
         
         
-        return "detailPatient";
+        return "afficheAnamnese";
     }
     
     /**
@@ -97,7 +97,7 @@ public class PatientController {
      * @return une redirection vers l'affichage de la liste des patients
      */
     @PostMapping(path = "save")
-    public String ajouteAnimalPuisMontreLaListe(Patient patient, RedirectAttributes redirectInfo) {
+    public String ajoutePatientPuisMontreLaListe(Patient patient, RedirectAttributes redirectInfo) {
         String message;
         try {
             daoPatient.save(patient);
