@@ -72,7 +72,7 @@ public class PatientController {
         model.addAttribute("patient", daoPatient.getOne(idPatient));
         
         
-        return "afficheAnamnese";
+        return "detailPatient";
     }
     
     /**
