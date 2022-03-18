@@ -38,7 +38,7 @@ public class Anamnese {
     private Integer id_anamnese;
     
     @NonNull
-    private boolean signeDeCompression;
+    private boolean signe_de_compression;
     
     //Mapping
     @OneToMany(mappedBy="id_signe_fonctionnel")
@@ -60,4 +60,7 @@ public class Anamnese {
     @OneToMany(mappedBy="anamnese")
     @NonNull
     private List<Symptome> mes_symptomes = new LinkedList<>();
+    
+    @OneToMany(mappedBy = "signe_compression_valeur")
+    private List<Valeur_signe_compression> valeur_signe_compression;
 }

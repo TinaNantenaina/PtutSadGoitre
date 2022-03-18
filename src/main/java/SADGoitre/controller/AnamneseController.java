@@ -6,6 +6,9 @@ import SADGoitre.dao.SigneFonctionnelRepository;
 import SADGoitre.entity.Anamnese;
 import SADGoitre.entity.Patient;
 import SADGoitre.entity.Signe_fonctionnel;
+import SADGoitre.entity.Valeur_signe_compression;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -40,7 +43,7 @@ public class AnamneseController {
      *
      * @param model pour transmettre les informations à la vue
      * @param idPatient l'id du patient dont on veut afficher l'anamnese
-     * @return le nom de la vue à afficher ('afficheGTableaux.html')
+     * @return le nom de la vue à afficher ('afficheAnamnese.html')
      */
     @GetMapping(path = "show")
     public String afficheAnamnese(Model model, int idPatient) {
@@ -57,14 +60,27 @@ public class AnamneseController {
      * Affiche le formulaire permettant d'ajouter une anamnese
      *
      * @param model pour transmettre les informations à la vue
-     * @param patient Le patient
-     * @return le nom de la vue à afficher ('formulaireAnamnese.html')
+     * @param idPatient Le patient
+     * @return le nom de la vue à afficher ('AfficheAnamnese.html')
      */
     // A MODIF SI BESOIN SF OU ATCD
     @GetMapping(path = "add")
-    public String montreLeFormulairePourAjout(Model model, Patient patient) {
-        model.addAttribute("anamnese", new Anamnese());
-        return "formulaireAnamnese";
+    public String montreLeFormulairePourAjout(Model model, int idPatient) {
+       List<Valeur_signe_compression> valeur_signe_compression;
+       valeur_signe_compression = Arrays.asList(
+       new Valeur_signe_compression("Disphagie"),
+       new Valeur_signe_compression("Dysphonie"),
+       new Valeur_signe_compression("Dyspnée"),
+       new Valeur_signe_compression("Syndrome cave supérieur")
+       );
+       
+       Anamnese anamneses = new Anamnese();
+       anamneses.setValeur_signe_compression(valeur_signe_compression);
+       anamneses.setPatient(daoPatient.getOne(idPatient));
+      
+        model.addAttribute("anamnese", anamneses);
+        model.addAttribute("patient", daoPatient.getOne(idPatient).getAnamnese());
+        return "afficheAnamnese";
     }
 
     /**
@@ -76,7 +92,7 @@ public class AnamneseController {
      * @return une redirection vers l'affichage de l'anamnèse
      */
     @PostMapping(path = "save")
-    public String ajouteAnimalPuisMontreLaListe(Anamnese anamnese, RedirectAttributes redirectInfo) {
+    public String ajouteAnamnesePuisMontreLaListe(Anamnese anamnese, RedirectAttributes redirectInfo) {
         String message;
         try {
             daoAnamnese.save(anamnese);
@@ -89,6 +105,6 @@ public class AnamneseController {
         // Ici on transmet un message de succès ou d'erreur
         // Ce message est accessible et affiché dans la vue 'afficheAnamnese.html'
         redirectInfo.addFlashAttribute("message", message);
-        return "redirect:/anamnese/show"; // POST-Redirect-GET : on se redirige vers l'affichage de l'anamnese		
+        return "redirect:show?idMedecin=3"; // POST-Redirect-GET : on se redirige vers l'affichage du patient		
     }
 }

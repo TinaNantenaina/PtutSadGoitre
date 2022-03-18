@@ -41,19 +41,25 @@
         <!--***********************************************************************************************-->         
         <section>
             <aside>
-                <form name="form1" action="script.php" method="post">
+                <form th:object="${patient}" method="POST" th:action="@{../anamnese/save}" >
                     <fieldset id="premierform">
                         <legend>Circonstance de découverte</legend>
-
-                        <p>Complication par des signes de compression loco-régionale:</p>
-                        <label for="case1">dysphagie</label>
+                        <label for="anamnese"> Complication par des signes de compression loco-régionale:</label>
+                        <select id="anamnese" th:field="*{anamnese}" required="required">
+                            <option th:value="true" th:text="Oui"></option>
+                            <option th:value="false" th:text="Non"></option>    
+                        </select> <br/>
+                       <th:block th:each ="val_sc : ${valeur_signe_compression}">
+                            <label th:text="${val_sc.nom_valeur_signe_compression}" th:field="${val_sc.nom_valeur_signe_compression}"></label><br/>
+                        </th:block>
+                       <!-- <label for="case1">dysphagie</label>
                         <input name="case1" id="case1" type="checkbox" value="1"/><br/>
                         <label for="case2">dyspnée</label>
                         <input name="case2" id="case2" type="checkbox" value="2"/><br/>
                         <label for="case3">dysphonie</label>
                         <input name="case3" id="case3" type="checkbox" value="3"/><br/>
                         <label for="case4">syndrome cave supérieur</label>
-                        <input name="case4" id="case4" type="checkbox" value="4"/><br/>
+                        <input name="case4" id="case4" type="checkbox" value="4"/><br/>-->
                         <p>Signe fonctionnel de dysthyroïdie:</p>
                         <label for="signe1">Hypertyroïdie</label>
                         <select id="signe1">
@@ -86,7 +92,11 @@
 
                         <p>histoire de la maladie</p>
                         <textarea name="histoire" id="histoire" cols="30" rows="3"></textarea>
-                    </fieldset></form>
+                    </fieldset>
+                    <input type="submit" value="Enregistrer">
+                <input type="reset" value="Réinitialiser" />
+                
+                </form>
             </aside>
             <aside>
 
