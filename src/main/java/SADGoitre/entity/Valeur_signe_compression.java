@@ -27,10 +27,13 @@ import lombok.ToString;
 public class Valeur_signe_compression {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NonNull
     private Integer id_valeur_signe_compression;
     
     @NonNull
     private String nom_valeur_signe_compression;
+    
+    private boolean est_valeur_sc;
     
     @ManyToOne(optional = false)
     @JoinColumn(name="id_anamnese")
