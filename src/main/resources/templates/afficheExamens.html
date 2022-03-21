@@ -43,8 +43,6 @@
                     <td>Date de l'examen</td>
                     <td>Patient</td>
                     <td>Valeurs</td>
-                    <!--<td>Date de l'examen</td>
-                    <td>Diagnostic</td>-->
                 </tr>
             </thead>
             <tbody th:each = "e:${examens}">
@@ -55,19 +53,16 @@
                     <td th:text = "${e.est_examen_clinique}? 'Examen clinique' : 'Examen para-clinique'"></td>
                     <td th:text = "${e.date_examen}"></td>
                     <td th:text="${e.patient_examen.prenom}+' '+${e.patient_examen.nom}"></td>
-                    <!--   <td th:text = "${p.anamnese.mes_symptomes.nom}"></td>
-                   <td th:text = "${p.patient_examen.date_examen}"></td>-->
                     <td>
                         <ul>
                             <li th:each ="v:${e.valeur_examen}">
-                                
-                            <span th:text="${v.nom_valeur}"/>
-                               
+                               <span th:text="${v.est_valeur}==true?${v.nom_valeur}+' : '+${v.valeur}:${v.nom_valeur}"/>             
                             </li>
                         </ul>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <a th:href="@{add(idPatient=${patient.id_patient})}">Retour</a>
     </body>
 </html>

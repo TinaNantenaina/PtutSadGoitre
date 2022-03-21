@@ -26,9 +26,14 @@ INSERT INTO Atcd_Personnel_Medical(id_atcd_pers,nom) VALUES
 INSERT INTO Diagnostic(id_diagnostic,nom_diagnostic,pourcentage, id_patient) VALUES
 (1,'Goitre Simple',50.0,1);
 
--- Problème sur l'examen : normalement valeur est un tableau de string --> pas possible de l'implémenter en sql autrement que dans une table
 INSERT INTO Examen(id_examen,nom_examen,est_Examen_Clinique,date_Examen, id_patient) VALUES
 (1,'Examen cervicale',true,'2022-01-12',1);
+
+INSERT INTO VALEUR_examen(id_valeur_examen, nom_valeur, est_valeur, valeur, id_examen) VALUES 
+(1, 'Fièvre', true, '39°C', 1);
+
+INSERT INTO VALEUR_examen(id_valeur_examen, nom_valeur, est_valeur, valeur, id_examen) VALUES 
+(2, 'Prise de poids', false, '', 1);
 
 INSERT INTO Signe_Fonctionnel(id_Signe_Fonctionnel,date_SF, type_SF, id_anamnese) VALUES 
 (1,'2022-01-12','HYPOTHYROIDIE', 1);

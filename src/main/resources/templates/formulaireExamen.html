@@ -55,22 +55,27 @@
                         <aside>
                             <fieldset id="examen">
                                 <legend>Signes généraux</legend>
-                                <input type="text" disabled="disabled" th:id="${nom_examen}" th:name="${nom_examen}" th:field="*{examen.nom_examen}">Signes généraux</input>
-<!--                                th:value="${#temporals.formatISO(localDate)}"-->
-                                <input th:value="${{localDate}}" type="date" th:field="*{date_examen}"/>
+                                <input type="text" style="display: none" th:value="${nom_examen}" th:field="*{nom_examen}"/>
+                                <label for="date1">Date de l'examen : </label>
+                                <input id="date1" th:value="${date_examen}" type="date" th:field="*{date_examen}"/>
                                 <br/>
                                 <th:block th:each="val, valStat : *{valeur_examen}">
-                                    <label th:text="${val.nom_valeur}" th:field="${val.nom_valeur}">null</label>
-                                    <input type="checkbox" th:field="*{valeur_examen[__${val.id_valeur_examen}__].est_valeur}" />
-                                    <!--                                    <label th:text="${val.id_valeur_examen}?:'null'"></label>-->
-                                    <!--                                    <input type="checkbox" th:value="${val.est_valeur}" th:checked="${val.est_valeur}"/>-->
+                                    <label th:text="${val.nom_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].nom_valeur}">null</label>
+                                    <input type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].est_valeur}"/>
                                     <br/>
-                                    <label for="valeur" > Saisir la valeur </label>
-                                    <input id="valeur" type="text" th:field="*{valeur_examen[__${val.id_valeur_examen}__].valeur}"/>
-                                    <!--                                    <input type="text" name="valeur" placeholder="saisir la valeur" th:field="*{val.valeur}"/>-->
-                                    <br/><br/>
-         
                                 </th:block>
+                                <!--                                <th:block th:each="val, valStat : *{valeur_examen}">
+                                                                    <label th:text="${val.nom_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].nom_valeur}">true</label>
+                                                                    <input type="checkbox" th:value="${valeur_examen[__${val.id_valeur_examen}__].est_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].est_valeur}" />
+                                                                                                        <label th:text="${val.id_valeur_examen}?:'null'"></label>
+                                                                                                        <input type="checkbox" th:value="${val.est_valeur}" th:checked="${val.est_valeur}"/>
+                                                                    <br/>
+                                                                    <label for="valeur" > Saisir la valeur </label>
+                                                                    <input id="valeur" type="text" th:field="*{valeur_examen[__${val.id_valeur_examen}__].valeur}"/>
+                                                                                                        <input type="text" name="valeur" placeholder="saisir la valeur" th:field="*{val.valeur}"/>
+                                                                    <br/><br/>
+                                
+                                                                </th:block>-->
                             </fieldset>
                         </aside>
                         <button type="submit">Ajouter l'examen</button>

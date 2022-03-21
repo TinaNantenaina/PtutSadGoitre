@@ -47,6 +47,7 @@ public class ExamenController {
     @GetMapping(path = "show")
     public String afficheTousLesExamens(Model model, Integer idPatient) {
         model.addAttribute("examens", daoPatient.getOne(idPatient).getMes_examens());
+        model.addAttribute("patient", daoPatient.getOne(idPatient));
         return "afficheExamens";
     }
 
@@ -85,9 +86,11 @@ public class ExamenController {
         exam.setValeur_examen(val_examens);
         exam.setPatient_examen(daoPatient.getOne(idPatient));
         exam.setEst_examen_clinique(true);
+        exam.setDate_examen(LocalDate.now());
+        exam.setEst_examen_clinique(true);
+        exam.setNom_examen("Signes généraux");
         model.addAttribute("examen", exam);
         model.addAttribute("patient", daoPatient.getOne(idPatient));
-        model.addAttribute("localDate", LocalDate.now());
         return "formulaireExamen";
     }
 
