@@ -59,7 +59,7 @@
                    <td th:text = "${p.patient_examen.date_examen}"></td>-->
                     <td>
                         <ul>
-                            <li th:each ="v:${e.valeur_examen}">
+                            <li th:each ="v:*{e.valeur_examen}">
                                 
                             <span th:text="${v.nom_valeur}"/>
                                

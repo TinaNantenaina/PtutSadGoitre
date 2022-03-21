@@ -41,25 +41,19 @@
         <!--***********************************************************************************************-->         
         <section>
             <aside>
-                <form th:object="${patient}" method="POST" th:action="@{../anamnese/save}" >
+                <form name="formAnamnese" th:action="@{../anamnese/save}"th:object="${anamnese}" method="post"  >
                     <fieldset id="premierform">
                         <legend>Circonstance de découverte</legend>
                         <label for="anamnese"> Complication par des signes de compression loco-régionale:</label>
-                        <select id="anamnese" th:field="*{anamnese}" required="required">
-                            <option th:value="true" th:text="Oui"></option>
-                            <option th:value="false" th:text="Non"></option>    
-                        </select> <br/>
-                       <th:block th:each ="val_sc : ${valeur_signe_compression}">
-                            <label th:text="${val_sc.nom_valeur_signe_compression}" th:field="${val_sc.nom_valeur_signe_compression}"></label><br/>
+                            <select id="anamnese" th:field="*{signe_de_compression}" required="required">
+                                <option th:value="true" th:text="Oui"></option>
+                                <option th:value="false" th:text="Non"></option>    
+                            </select> <br/>
+                       <th:block th:each ="val_sc : *{valeur_signe_compression}">
+                            <label th:text="${val_sc.nom_valeur_signe_compression}" th:field="${val_sc.nom_valeur_signe_compression}"></label>
+                            <input type="checkbox" th:field="*{valeur_signe_compression[__${val_sc.id_valeur_signe_compression}__].est_valeur_sc}"/><br/>
                         </th:block>
-                       <!-- <label for="case1">dysphagie</label>
-                        <input name="case1" id="case1" type="checkbox" value="1"/><br/>
-                        <label for="case2">dyspnée</label>
-                        <input name="case2" id="case2" type="checkbox" value="2"/><br/>
-                        <label for="case3">dysphonie</label>
-                        <input name="case3" id="case3" type="checkbox" value="3"/><br/>
-                        <label for="case4">syndrome cave supérieur</label>
-                        <input name="case4" id="case4" type="checkbox" value="4"/><br/>-->
+                       
                         <p>Signe fonctionnel de dysthyroïdie:</p>
                         <label for="signe1">Hypertyroïdie</label>
                         <select id="signe1">

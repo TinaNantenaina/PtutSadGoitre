@@ -66,19 +66,19 @@ public class AnamneseController {
     // A MODIF SI BESOIN SF OU ATCD
     @GetMapping(path = "add")
     public String montreLeFormulairePourAjout(Model model, int idPatient) {
-       List<Valeur_signe_compression> valeur_signe_compression;
-       valeur_signe_compression = Arrays.asList(
-       new Valeur_signe_compression("Disphagie"),
-       new Valeur_signe_compression("Dysphonie"),
-       new Valeur_signe_compression("Dyspnée"),
-       new Valeur_signe_compression("Syndrome cave supérieur")
+       List<Valeur_signe_compression> valeur_sc;
+       valeur_sc = Arrays.asList(
+       new Valeur_signe_compression(0,"Dysphagie"),
+       new Valeur_signe_compression(1,"Dysphonie"),
+       new Valeur_signe_compression(2,"Dyspnée"),
+       new Valeur_signe_compression(3,"Syndrome cave supérieur")
        );
        
-       Anamnese anamneses = new Anamnese();
-       anamneses.setValeur_signe_compression(valeur_signe_compression);
-       anamneses.setPatient(daoPatient.getOne(idPatient));
+       Anamnese anamnese = new Anamnese();
+       anamnese.setValeur_signe_compression(valeur_sc);
+       anamnese.setPatient(daoPatient.getOne(idPatient));
       
-        model.addAttribute("anamnese", anamneses);
+        model.addAttribute("anamnese", anamnese);
         model.addAttribute("patient", daoPatient.getOne(idPatient));
         return "afficheAnamnese";
     }
