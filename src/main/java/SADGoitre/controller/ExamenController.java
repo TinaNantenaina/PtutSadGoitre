@@ -8,6 +8,7 @@ package SADGoitre.controller;
 import SADGoitre.dao.AnamneseRepository;
 import SADGoitre.dao.ExamenRepository;
 import SADGoitre.dao.PatientRepository;
+import SADGoitre.dao.ValeurExamenRepository;
 import SADGoitre.entity.Examen;
 import SADGoitre.entity.Patient;
 import SADGoitre.entity.Valeur_examen;
@@ -75,12 +76,12 @@ public class ExamenController {
     public String montreLeFormulairePourAjout(Model model, int idPatient) {
         List<Valeur_examen> val_examens;
         val_examens = Arrays.asList(
-                new Valeur_examen(0, "Fièvre"),
-                new Valeur_examen(1, "Prise de poids"),
-                new Valeur_examen(2, "Perte de poids"),
-                new Valeur_examen(3, "Tachycardie"),
-                new Valeur_examen(4, "Bradychardie"),
-                new Valeur_examen(5, "Hypertension artérielle")
+                new Valeur_examen(0, "Fièvre", true),
+                new Valeur_examen(1, "Prise de poids", false),
+                new Valeur_examen(2, "Perte de poids", false),
+                new Valeur_examen(3, "Tachycardie", Boolean.FALSE),
+                new Valeur_examen(4, "Bradychardie", false),
+                new Valeur_examen(5, "Hypertension artérielle", false)
         );
         Examen exam = new Examen();
         exam.setValeur_examen(val_examens);

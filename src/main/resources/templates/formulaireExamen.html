@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8"/>
         <link rel="stylesheet" media="screen" href="../css/CSS.css"/>
-        <title>Formulaire examen</title>  
+        <link rel="stylesheet" href="../static/css/CSS.css" type="text/css">
+
+            <title>Formulaire examen</title>  
     </head>
     <body>
 
@@ -50,26 +52,53 @@
                             <option th:value="${patient.id_patient}" th:text="${patient.prenom} +' '+ ${patient.nom}" th:field="*{patient_examen}"></option>
                         </select>
                     </div>
-                    <fieldset id="examen">
-                        <legend th:id="est_examen_clinique" th:name="est_examen_clinique" th:value="${est_examen_clinique}" th:field="*{est_examen_clinique}">Examens Cliniques</legend>
+                    <fieldset class="examen">
+                        <legend>Examens Cliniques</legend>
+                        <input type="hidden"  th:value="${est_examen_clinique}" th:field="*{est_examen_clinique}"/>
                         <aside>
-                            <fieldset id="examen">
+                            <fieldset class="examen">
                                 <legend>Signes généraux</legend>
                                 <input type="text" style="display: none" th:value="${nom_examen}" th:field="*{nom_examen}"/>
-                                <label for="date1">Date de l'examen : </label>
-                                <input id="date1" th:value="${date_examen}" type="date" th:field="*{date_examen}"/>
-                                <br/>
-                                <th:block th:each="val, valStat : *{valeur_examen}">
-                                    <label th:text="${val.nom_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].nom_valeur}">null</label>
-                                    <input type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].est_valeur}"/>
+                                <aside>
+                                    <label for="date1">Date de l'examen : </label>
+                                    <input id="date1" th:value="${date_examen}" type="date" th:field="*{date_examen}"/>
                                     <br/>
-                                </th:block>
-                                <!--                                <th:block th:each="val, valStat : *{valeur_examen}">
-                                                                    <label th:text="${val.nom_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].nom_valeur}">true</label>
+<!--                                    <div class ="bloc" th:each="val : *{valeur_examen}">
+                                        <div>
+                                            <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].nom_valeur}" name="valeur_examen.nom_valeur"/>
+                                            <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].est_valeur}" name="valeur_examen.est_valeur"/>
+                                            <br/>
+                                            <label th:for="'comment'+${val.id_valeur_examen}">Commentaires :</label>
+                                            <br/>
+                                            <textarea th:id="'comment'+${val.id_valeur_examen}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${val.id_valeur_examen}__].valeur}" name="valeur_examen.valeur"></textarea>
+                                            <br/>
+                                            <br/>
+                                        </div>
+                                    </div>-->
+                             <div class ="bloc" th:each="val, valStat : *{valeur_examen}">
+                                        <div>
+                                            <span th:text="${valStat.count}+')'">1</td>></span>
+                                            <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" th:field="*{valeur_examen[__${valStat.index}__].nom_valeur}" th:value="${val.nom_valeur}"/>
+                                            <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${valStat.index}__].est_valeur}"/>
+                                            <br/>
+                                            <label th:for="'comment'+${val.id_valeur_examen}">Commentaires :</label>
+                                            <br/>
+                                            <input type="text" th:id="'comment'+${val.id_valeur_examen}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${valStat.index}__].valeur}"/>
+                                            <br/>
+                                            <br/>
+                                        </div>
+                                    </div>
+                                    <th:block th:each="val,state : ${valeur_examen}">
+                                        <!--                                    <input type='hidden' th:value="${val.valeur_examen}" th:field="${val.valeur_examen}"/> -->
+                                        <p th:text="${val.valeur_examen}">yo</p>
+                                    </th:block>
+                                </aside>
+                                <!--                                <th:block th:each="val, valStat : *{valeur_examen}">th:style="${val.est_valeur}==false?'disabled:disabled'" 
+                                                                    <labelxt="${val.nom_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].nom_valeur}">true</label>
                                                                     <input type="checkbox" th:value="${valeur_examen[__${val.id_valeur_examen}__].est_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].est_valeur}" />
                                                                                                         <label th:text="${val.id_valeur_examen}?:'null'"></label>
                                                                                                         <input type="checkbox" th:value="${val.est_valeur}" th:checked="${val.est_valeur}"/>
-                                                                    <br/>
+                                                                    <br/> th:te
                                                                     <label for="valeur" > Saisir la valeur </label>
                                                                     <input id="valeur" type="text" th:field="*{valeur_examen[__${val.id_valeur_examen}__].valeur}"/>
                                                                                                         <input type="text" name="valeur" placeholder="saisir la valeur" th:field="*{val.valeur}"/>
@@ -77,6 +106,7 @@
                                 
                                                                 </th:block>-->
                             </fieldset>
+
                         </aside>
                         <button type="submit">Ajouter l'examen</button>
                     </fieldset>

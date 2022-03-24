@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <link rel="stylesheet" type="text/css" href="../css/CSS.css"/>
-        <title>Patient</title>  
+        <title>Page des examens</title>  
     </head>
     <body>
         <div class="menu">
@@ -42,7 +42,7 @@
                     <td>Type de l'examen</td>
                     <td>Date de l'examen</td>
                     <td>Patient</td>
-                    <td>Valeurs</td>
+                    <td>Commentaires</td>
                 </tr>
             </thead>
             <tbody th:each = "e:${examens}">
@@ -56,7 +56,7 @@
                     <td>
                         <ul>
                             <li th:each ="v:${e.valeur_examen}">
-                               <span th:text="${v.est_valeur}==true?${v.nom_valeur}+' : '+${v.valeur}:${v.nom_valeur}"/>             
+                               <span th:text="${v.est_valeur}==true?${v.nom_valeur}+' : '+${v.valeur}:'Pas de '+${#strings.toLowerCase(v.nom_valeur)}+' tets'+${v.valeur}"/>             
                             </li>
                         </ul>
                     </td>

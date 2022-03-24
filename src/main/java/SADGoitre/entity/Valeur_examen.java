@@ -32,7 +32,7 @@ public class Valeur_examen {
     
     @NonNull
     private String nom_valeur;
-    
+    @NonNull
     private boolean est_valeur;
     
     private String valeur;

@@ -33,15 +33,15 @@ h1 {
 
 /* Pour la div de la page d'accueil'*/
 #imgAccueil {
-                    /*width: 200px;
-                    display: block;*/
-                    margin-left: auto;
-                    margin-right: auto;
- }
+    /*width: 200px;
+    display: block;*/
+    margin-left: auto;
+    margin-right: auto;
+}
 
 #bodyAccueil{
     background-color: #62E3E2;
- }
+}
 
 .menu, .menu ul{list-style: none;text-align: center;z-index:999;padding: 0;margin: 0;}
 .menu{width:925px;margin:0px auto;margin-top:0px;}
@@ -94,5 +94,18 @@ h1 {
 .menus a:hover {color:white;background:rgb(38,66,80)  no-repeat;}
 
 table, th, td {
-  border: 1px solid black;
+    border: 1px solid black;
+}
+/* CSS pour les examens*/
+.exa1men {
+
+}
+
+.comment {
+
+}
+
+.bloc {
+    display: flex;
+    flex-wrap: wrap;
 }
