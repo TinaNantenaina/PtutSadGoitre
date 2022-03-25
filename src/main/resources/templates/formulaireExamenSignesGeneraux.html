@@ -9,16 +9,16 @@
     <body>
         <div class="menu">
             <ul>
-                <li><a href="affichePatients.html"  th:href="@{../patient/show(idMedecin=${examen.patient_examen.medecin_patient.id_medecin})}">Patients</a></li>
+                <li><a href="affichePatients.html"  th:href="@{../patient/show(idMedecin=${patient.medecin_patient.id_medecin})}">Patients</a></li>
                 <li><a href="afficheAnamnese.html"  th:href="@{../anamnese/show(idPatient=${patient.id_patient})}" target="_blank">Données générales du patient</a></li>
 
                 <li><div class="menus"><a href="afficheExamens.html" th:href="@{show(idPatient=${patient.id_patient})}">Examens</a></div><ul>   
                         <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
                                 <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}">Signes généraux</a></li>
                                 <li><a href="formulaireExamenRegionCervicale" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}">Examen région cervicale</a></li>
-                                <li><a href="adresse url" target="_blank">Examen ophtalmologique</a></li>
-                                <li><a href="adresse url" target="_blank">Examen neurologique</a></li>
-                                <li><a href="adresse url" target="_blank">Examen aire ganglionnaire</a></li>
+                                <li><a href="formulaireExamenOphtalmologique" th:href="@{../examen/addexamenophtalmo(idPatient=${patient.id_patient})}">Examen ophtalmologique</a></li>
+                                <li><a href="formulaireExamenNeurologique" th:href="@{../examen/addexamenneuro(idPatient=${patient.id_patient})}" >Examen neurologique</a></li>
+                                <li><a href="formulaireExamenAireGanglionnaire" th:href="@{../examen/addexamenaireganglionnaire(idPatient=${patient.id_patient})}">Examen aire ganglionnaire</a></li>
                             </ul></li>
 
                         <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
@@ -42,8 +42,9 @@
                             <option th:value="${patient.id_patient}" th:text="${patient.prenom} +' '+ ${patient.nom}" th:field="*{patient_examen}"></option>
                         </select>
                     </div>-->
-                   <span style="color:cadetblue" th:text="'Patient '+${patient.id_patient}+' : '+${patient.prenom} +' '+ ${patient.nom}">Pas de patient</span>
-                    <input type="hidden" th:value="${patient.id_patient}" th:text="${patient.prenom} +' '+ ${patient.nom}" th:field="*{patient_examen}"/>
+                   <span style="color:cadetblue;font-weight: bold" th:text="'Patient '+${patient.id_patient}+' : '+${patient.prenom} +' '+ ${patient.nom}">Pas de patient</span>
+                    <input type="hidden" th:value="${patient.id_patient}" th:field="*{patient_examen}"/>
+                    <br/><br/>
                     <fieldset class="examen">
                         <legend th:text="*{est_examen_clinique==true}?'Examen Clinique':'Examen Para-Clinique'">Examens Cliniques</legend>
                         <input type="hidden"  th:value="${est_examen_clinique}" th:field="*{est_examen_clinique}"/>

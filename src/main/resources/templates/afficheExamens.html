@@ -8,16 +8,16 @@
     <body>
         <div class="menu">
             <ul>
-                <li><a href="page patient.html">Patient</a></li>
-                <li><a href="page données générales.html" target="_blank">Données générales</a></li>
+                <li><a href="affichePatients.html"  th:href="@{../patient/show(idMedecin=${patient.medecin_patient.id_medecin})}">Patients</a></li>
+                <li><a href="afficheAnamnese.html"  th:href="@{../anamnese/show(idPatient=${patient.id_patient})}" target="_blank">Données générales du patient</a></li>
 
                 <li><div class="menus"><a href="#">Examens</a></div><ul>   
                         <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
                                 <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}" target="_blank">Signes généraux</a></li>
                                 <li><a href="formulaireExamenRegionCervicale" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}" target="_blank">Examen région cervicale</a></li>
-                                <li><a href="adresse url" target="_blank">Examen ophtalmologique</a></li>
-                                <li><a href="adresse url" target="_blank">Examen neurologique</a></li>
-                                <li><a href="adresse url" target="_blank">Examen aire ganglionnaire</a></li>
+                                <li><a href="formulaireExamenOphtalmologique" th:href="@{../examen/addexamenophtalmo(idPatient=${patient.id_patient})}">Examen ophtalmologique</a></li>
+                                <li><a href="formulaireExamenNeurologique" th:href="@{../examen/addexamenneuro(idPatient=${patient.id_patient})}" >Examen neurologique</a></li>
+                                <li><a href="formulaireExamenAireGanglionnaire" th:href="@{../examen/addexamenaireganglionnaire(idPatient=${patient.id_patient})}">Examen aire ganglionnaire</a></li>
                             </ul></li>
 
                         <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
@@ -32,7 +32,8 @@
                 <li><a href="page diagnostic.html" target="_blank">Diagnostic</a></li>   
             </ul>
         </div><br/><br/>
-
+        <span style="color:cadetblue;font-weight: bold" th:text="'Patient '+${patient.id_patient}+' : '+${patient.prenom} +' '+ ${patient.nom}">Pas de patient</span>
+        <br/><br/>
         <table>
             <thead>
                 <tr>
@@ -57,7 +58,7 @@
                         <ul>
                             <li th:each ="v:${e.valeur_examen}">
                                 <!--si la valeur est vraie on affiche le commentaire, sinon on affiche que la valeur n'est pas vraie -->
-                               <span th:text="${v.est_valeur}==true?${v.nom_valeur}+' : '+${v.valeur}:'Pas de '+${#strings.toLowerCase(v.nom_valeur)}"/>             
+                                <span th:text="${v.est_valeur}==true?${v.nom_valeur}+' : '+${v.valeur}:'Pas de '+${#strings.toLowerCase(v.nom_valeur)}"/>             
                             </li>
                         </ul>
                     </td>

@@ -4,21 +4,21 @@
         <meta charset="UTF-8"/>
         <link rel="stylesheet" media="screen" href="../css/CSS.css"/>
         <link rel="stylesheet" href="../static/css/CSS.css" type="text/css"/>
-            <title>Formulaire examen</title>  
+        <title>Examen région cervicale</title>  
     </head>
     <body>
         <div class="menu">
             <ul>
-                <li><a href="page patient.html">Patient</a></li>
-                <li><a href="page données générales.html" target="_blank">Données générales</a></li>
+                <li><a href="affichePatients.html"  th:href="@{../patient/show(idMedecin=${examen.patient_examen.medecin_patient.id_medecin})}">Patients</a></li>
+                <li><a href="afficheAnamnese.html"  th:href="@{../anamnese/show(idPatient=${patient.id_patient})}" target="_blank">Données générales du patient</a></li>
 
                 <li><div class="menus"><a href="afficheExamens.html" th:href="@{show(idPatient=${patient.id_patient})}">Examens</a></div><ul>   
                         <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
                                 <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}" target="_blank">Signes généraux</a></li>
                                 <li><a href="#" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}" target="_blank">Examen région cervicale</a></li>
-                                <li><a href="adresse url" target="_blank">Examen ophtalmologique</a></li>
-                                <li><a href="adresse url" target="_blank">Examen neurologique</a></li>
-                                <li><a href="adresse url" target="_blank">Examen aire ganglionnaire</a></li>
+                                <li><a href="formulaireExamenOphtalmologique" th:href="@{../examen/addexamenophtalmo(idPatient=${patient.id_patient})}">Examen ophtalmologique</a></li>
+                                <li><a href="formulaireExamenNeurologique" th:href="@{../examen/addexamenneuro(idPatient=${patient.id_patient})}" >Examen neurologique</a></li>
+                                <li><a href="formulaireExamenAireGanglionnaire" th:href="@{../examen/addexamenaireganglionnaire(idPatient=${patient.id_patient})}">Examen aire ganglionnaire</a></li>
                             </ul></li>
 
                         <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
@@ -33,16 +33,13 @@
                 <li><a href="page diagnostic.html" target="_blank">Diagnostic</a></li>   
             </ul>
         </div><br/><br/>
-        
+
         <section>
             <aside>
                 <form name="form2" th:action="@{../examen/save}" th:object="${examen}" method="post">
-                    <div style="">
-                        <label for="patient_examen">Patient</label>
-                        <select name="patient_examen">
-                            <option th:value="${patient.id_patient}" th:text="${patient.prenom} +' '+ ${patient.nom}" th:field="*{patient_examen}"></option>
-                        </select>
-                    </div>
+                    <span style="color:cadetblue" th:text="'Patient '+${patient.id_patient}+' : '+${patient.prenom} +' '+ ${patient.nom}">Pas de patient</span>
+                    <input type="hidden" th:value="${patient.id_patient}" th:field="*{patient_examen}"/>
+                    <br/>
                     <fieldset class="examen">
                         <legend th:text="*{est_examen_clinique==true}?'Examen Clinique':'Examen Para-Clinique'">Examens Cliniques</legend>
                         <input type="hidden"  th:value="${est_examen_clinique}" th:field="*{est_examen_clinique}"/>
@@ -50,36 +47,25 @@
                             <fieldset class="examen">
                                 <legend th:text="*{nom_examen}">Signes généraux</legend>
                                 <input type="text" style="display: none" th:value="${nom_examen}" th:field="*{nom_examen}"/>
-                                    <label for="date1">Date de l'examen : </label>
-                                    <input id="date1" th:value="${date_examen}" type="date" th:field="*{date_examen}"/>
-                                    <br/>
-                                    <!--                                    <div class ="bloc" th:each="val : *{valeur_examen}">
-                                                                            <div>
-                                                                                <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].nom_valeur}" name="valeur_examen.nom_valeur"/>
-                                                                                <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].est_valeur}" name="valeur_examen.est_valeur"/>
-                                                                                <br/>
-                                                                                <label th:for="'comment'+${val.id_valeur_examen}">Commentaires :</label>
-                                                                                <br/>
-                                                                                <textarea th:id="'comment'+${val.id_valeur_examen}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${val.id_valeur_examen}__].valeur}" name="valeur_examen.valeur"></textarea>
-                                                                                <br/>
-                                                                                <br/>
-                                                                            </div>
-                                                                        </div>-->
-                                    <div class ="bloc" th:each="val, valStat : *{valeur_examen}">
-                                        <div>
-                                           <input type="hidden"  th:value="${val.id_valeur_examen}" th:field="*{valeur_examen[__${valStat.index}__].id_valeur_examen}"/>
-                                            <span th:text="${valStat.count}+')'">1</span>
-                                            <input type="hidden"  th:value="${val.nom_valeur}" th:field="*{valeur_examen[__${valStat.index}__].nom_valeur}"/>
-                                            <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" />
-                                            <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${valStat.index}__].est_valeur}"/>
-                                            <br/>
-                                            <label th:for="'comment'+${val.id_valeur_examen}">Commentaires :</label>
-                                            <br/>
-                                            <input type="text" th:id="'comment'+${val.id_valeur_examen}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${valStat.index}__].valeur}"/>
-                                            <br/>
-                                            <br/>
-                                        </div>
-                                    </div>                   
+                                <label for="date1">Date de l'examen : </label>
+                                <input id="date1" th:value="${date_examen}" type="date" th:field="*{date_examen}"/>
+                                <br/>
+                                <div class ="bloc" th:each="val, valStat : *{valeur_examen}">
+                                    <div>
+                                        <input type="hidden"  th:value="${val.id_valeur_examen}" th:field="*{valeur_examen[__${valStat.index}__].id_valeur_examen}"/>
+                                        <span th:text="${valStat.count}+')'">1</span>
+                                        <input type="hidden"  th:value="${val.nom_valeur}" th:field="*{valeur_examen[__${valStat.index}__].nom_valeur}"/>
+                                        <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" />
+                                        <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${valStat.index}__].est_valeur}"/>
+                                        <br/>
+                                        <label th:for="'comment'+${val.id_valeur_examen}">Commentaires :</label>
+                                        <br/>
+                                        <input type="text" th:id="'comment'+${val.id_valeur_examen}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${valStat.index}__].valeur}"/>
+                                        <br/>
+                                        <br/>
+                                    </div>
+                                    <!-- th:if="${valStat.count>8 && valStat.count<15}"-->
+                                </div>                   
                             </fieldset>
 
                         </aside>
@@ -176,7 +162,7 @@
                                             </aside>
                                             <input name="case1" id="case1" type="checkbox" value="1"/>
                                             <label for="case1">Myxoedème prétibial</label><br/>-->
-                                
+
 
     </body>
 </html>

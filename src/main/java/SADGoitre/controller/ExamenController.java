@@ -44,7 +44,7 @@ public class ExamenController {
      * Affiche toutes les catégories dans la base
      *
      * @param model pour transmettre les informations à la vue
-     * @param patient le patient concerné
+     * @param idPatient le numéro du patient
      * @return le nom de la vue à afficher ('afficheExamens.html')
      */
     @GetMapping(path = "show")
@@ -99,9 +99,10 @@ public class ExamenController {
         model.addAttribute("patient", daoPatient.getOne(idPatient));
         return "formulaireExamenSignesGeneraux";
     }
-    
-      /**
-     * Montre le formulaire permettant d'ajouter un examen de signes generaux
+
+    /**
+     * Montre le formulaire permettant d'ajouter un examen de la région
+     * cervicale
      *
      * @param model pour transmettre les informations à la vue
      * @param idPatient L'id du patient
@@ -121,7 +122,7 @@ public class ExamenController {
                 new Valeur_examen("Topographie : normale (sinon plongeant)"),
                 new Valeur_examen("Consistance : molle"),
                 new Valeur_examen("Consistance : élastique"),
-                 new Valeur_examen("Consistance : dure"),
+                new Valeur_examen("Consistance : dure"),
                 new Valeur_examen("Consistance : ferme"),
                 new Valeur_examen("Consistance : souple"),
                 new Valeur_examen("Consistance : pierreuse"),
@@ -135,7 +136,7 @@ public class ExamenController {
                 new Valeur_examen("Goitre non visible mais palpable"),
                 new Valeur_examen("Goître visible lors de l'hyper-extention du cou"),
                 new Valeur_examen("Goître visible inférieur 5m"),
-                new Valeur_examen("Myxoedème prétibial")                
+                new Valeur_examen("Myxoedème prétibial")
         );
         /*for (Valeur_examen v : val_examens) {
             System.out.println(" here" + v.getId_valeur_examen());
@@ -153,6 +154,87 @@ public class ExamenController {
     }
 
     /**
+     * Montre le formulaire permettant d'ajouter un examen ophtalmologique
+     *
+     * @param model pour transmettre les informations à la vue
+     * @param idPatient L'id du patient
+     * @return le nom de la vue à afficher ('formulaireExamen.html')
+     */
+    @GetMapping(path = "addexamenophtalmo")
+    public String ajoutExamenOphtalmo(Model model, int idPatient) {
+        List<Valeur_examen> val_examens;
+        val_examens = Arrays.asList(
+                new Valeur_examen("Exophtalmie"),
+                new Valeur_examen("Perte de queue")
+        );
+        Examen exam = new Examen();
+        exam.setValeur_examen(val_examens);
+        exam.setPatient_examen(daoPatient.getOne(idPatient));
+        exam.setEst_examen_clinique(true);
+        exam.setDate_examen(LocalDate.now());
+        exam.setEst_examen_clinique(true);
+        exam.setNom_examen("Examen ophtalmologique");
+        model.addAttribute("examen", exam);
+        model.addAttribute("patient", daoPatient.getOne(idPatient));
+        return "formulaireExamenOphtalmologique";
+    }
+
+    /**
+     * Montre le formulaire permettant d'ajouter un examen de la région
+     * cervicale
+     *
+     * @param model pour transmettre les informations à la vue
+     * @param idPatient L'id du patient
+     * @return le nom de la vue à afficher ('formulaireExamen.html')
+     */
+    @GetMapping(path = "addexamenneuro")
+    public String ajoutExamenNeuro(Model model, int idPatient) {
+        List<Valeur_examen> val_examens;
+        val_examens = Arrays.asList(
+                new Valeur_examen("ROT vif"),
+                new Valeur_examen("ROT ralenti")
+        );
+        Examen exam = new Examen();
+        exam.setValeur_examen(val_examens);
+        exam.setPatient_examen(daoPatient.getOne(idPatient));
+        exam.setEst_examen_clinique(true);
+        exam.setDate_examen(LocalDate.now());
+        exam.setEst_examen_clinique(true);
+        exam.setNom_examen("Examen neurologique");
+        model.addAttribute("examen", exam);
+        model.addAttribute("patient", daoPatient.getOne(idPatient));
+        return "formulaireExamenNeurologique";
+    }
+    
+    /**
+     * Montre le formulaire permettant d'ajouter un examen de l'aire ganglionnaire
+     *
+     * @param model pour transmettre les informations à la vue
+     * @param idPatient L'id du patient
+     * @return le nom de la vue à afficher ('formulaireExamen.html')
+     */
+    @GetMapping(path = "addexamenaireganglionnaire")
+    public String ajoutExamenAireGanglionnaire(Model model, int idPatient) {
+        List<Valeur_examen> val_examens;
+        val_examens = Arrays.asList(
+                new Valeur_examen("Ganglion cervicale"),
+                new Valeur_examen("Ganglion axillaire"),
+                new Valeur_examen("Ganglion inguinal"),
+                new Valeur_examen("Ganglion généralisé")             
+        );
+        Examen exam = new Examen();
+        exam.setValeur_examen(val_examens);
+        exam.setPatient_examen(daoPatient.getOne(idPatient));
+        exam.setEst_examen_clinique(true);
+        exam.setDate_examen(LocalDate.now());
+        exam.setEst_examen_clinique(true);
+        exam.setNom_examen("Examen aire ganglionnaire");
+        model.addAttribute("examen", exam);
+        model.addAttribute("patient", daoPatient.getOne(idPatient));
+        return "formulaireExamenAireGanglionnaire";
+    }
+
+    /**
      * Appelé par 'formulaireExamen.html', méthode POST
      *
      * @param examen initialisé avec les valeurs saisies dans le formulaire
@@ -165,10 +247,10 @@ public class ExamenController {
         String message;
         try {
             daoExamen.save(examen);
-            System.out.println("SADGoitre.controller.ExamenController.ajouteExamenPuisMontreLaListe()" + examen.getId_examen());
+            //System.out.println("SADGoitre.controller.ExamenController.ajouteExamenPuisMontreLaListe()" + examen.getId_examen());
             for (Valeur_examen v : examen.getValeur_examen()) {
-               //System.out.println("nom " + v.getNom_valeur() + " " + v.getValeur() + " " + v.isEst_valeur() + " id " + v.getId_valeur_examen());
-               v.setExamen_valeur(examen);
+                //System.out.println("nom " + v.getNom_valeur() + " " + v.getValeur() + " " + v.isEst_valeur() + " id " + v.getId_valeur_examen());
+                v.setExamen_valeur(examen);
                 daoValeurExam.save(v);
             }
             // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
