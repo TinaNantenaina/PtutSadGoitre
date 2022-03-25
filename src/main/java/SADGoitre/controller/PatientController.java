@@ -70,8 +70,6 @@ public class PatientController {
     @GetMapping(path = "getPatient")
     public String afficheUnPatient(Model model, Integer idPatient) {
         model.addAttribute("patient", daoPatient.getOne(idPatient));
-        
-        
         return "afficheAnamnese";
     }
     

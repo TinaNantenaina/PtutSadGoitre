@@ -5,7 +5,6 @@
  */
 package SADGoitre.controller;
 
-import SADGoitre.dao.AnamneseRepository;
 import SADGoitre.dao.ExamenRepository;
 import SADGoitre.dao.PatientRepository;
 import SADGoitre.dao.ValeurExamenRepository;
@@ -38,6 +37,9 @@ public class ExamenController {
     @Autowired
     private PatientRepository daoPatient;
 
+    @Autowired
+    private ValeurExamenRepository daoValeurExam;
+
     /**
      * Affiche toutes les catégories dans la base
      *
@@ -66,23 +68,26 @@ public class ExamenController {
     }
 
     /**
-     * Montre le formulaire permettant d'ajouter un examen
+     * Montre le formulaire permettant d'ajouter un examen de signes generaux
      *
      * @param model pour transmettre les informations à la vue
      * @param idPatient L'id du patient
      * @return le nom de la vue à afficher ('formulaireExamen.html')
      */
-    @GetMapping(path = "add")
-    public String montreLeFormulairePourAjout(Model model, int idPatient) {
+    @GetMapping(path = "addSignesGeneraux")
+    public String ajoutSignesGeneraux(Model model, int idPatient) {
         List<Valeur_examen> val_examens;
         val_examens = Arrays.asList(
-                new Valeur_examen(0, "Fièvre", true),
-                new Valeur_examen(1, "Prise de poids", false),
-                new Valeur_examen(2, "Perte de poids", false),
-                new Valeur_examen(3, "Tachycardie", Boolean.FALSE),
-                new Valeur_examen(4, "Bradychardie", false),
-                new Valeur_examen(5, "Hypertension artérielle", false)
+                new Valeur_examen("Fièvre"),
+                new Valeur_examen("Prise de poids"),
+                new Valeur_examen("Perte de poids"),
+                new Valeur_examen("Tachycardie"),
+                new Valeur_examen("Bradychardie"),
+                new Valeur_examen("Hypertension artérielle")
         );
+        /*for (Valeur_examen v : val_examens) {
+            System.out.println(" here" + v.getId_valeur_examen());
+        }*/
         Examen exam = new Examen();
         exam.setValeur_examen(val_examens);
         exam.setPatient_examen(daoPatient.getOne(idPatient));
@@ -92,7 +97,59 @@ public class ExamenController {
         exam.setNom_examen("Signes généraux");
         model.addAttribute("examen", exam);
         model.addAttribute("patient", daoPatient.getOne(idPatient));
-        return "formulaireExamen";
+        return "formulaireExamenSignesGeneraux";
+    }
+    
+      /**
+     * Montre le formulaire permettant d'ajouter un examen de signes generaux
+     *
+     * @param model pour transmettre les informations à la vue
+     * @param idPatient L'id du patient
+     * @return le nom de la vue à afficher ('formulaireExamen.html')
+     */
+    @GetMapping(path = "addregioncervicale")
+    public String ajoutRegionCervicale(Model model, int idPatient) {
+        List<Valeur_examen> val_examens;
+        val_examens = Arrays.asList(
+                new Valeur_examen("Circulation veineuse collatérale"),
+                new Valeur_examen("Turgescence de la veine jugulaire"),
+                new Valeur_examen("Coloration de la peau"),
+                new Valeur_examen("Tachycardie"),
+                new Valeur_examen("Bradychardie"),
+                new Valeur_examen("Nature thyroïdienne de la masse : fixe (sinon mobile)"),
+                new Valeur_examen("Volume thyroïdien supérieur à 1er phalange"),
+                new Valeur_examen("Topographie : normale (sinon plongeant)"),
+                new Valeur_examen("Consistance : molle"),
+                new Valeur_examen("Consistance : élastique"),
+                 new Valeur_examen("Consistance : dure"),
+                new Valeur_examen("Consistance : ferme"),
+                new Valeur_examen("Consistance : souple"),
+                new Valeur_examen("Consistance : pierreuse"),
+                new Valeur_examen("Caractère symmétrique"),
+                new Valeur_examen("Caractère régulier"),
+                new Valeur_examen("Caractère douloureux"),
+                new Valeur_examen("Signe vasculaire : thrill (sinon goître soufflant)"),
+                new Valeur_examen("Adénopathie cervicale : jugulo-carotidienne"),
+                new Valeur_examen("Adénopathie cervicale : pré-trachéale"),
+                new Valeur_examen("Adénopathie cervicale : sus claviculaire"),
+                new Valeur_examen("Goitre non visible mais palpable"),
+                new Valeur_examen("Goître visible lors de l'hyper-extention du cou"),
+                new Valeur_examen("Goître visible inférieur 5m"),
+                new Valeur_examen("Myxoedème prétibial")                
+        );
+        /*for (Valeur_examen v : val_examens) {
+            System.out.println(" here" + v.getId_valeur_examen());
+        }*/
+        Examen exam = new Examen();
+        exam.setValeur_examen(val_examens);
+        exam.setPatient_examen(daoPatient.getOne(idPatient));
+        exam.setEst_examen_clinique(true);
+        exam.setDate_examen(LocalDate.now());
+        exam.setEst_examen_clinique(true);
+        exam.setNom_examen("Région cervicale");
+        model.addAttribute("examen", exam);
+        model.addAttribute("patient", daoPatient.getOne(idPatient));
+        return "formulaireExamenRegionCervicale";
     }
 
     /**
@@ -108,8 +165,14 @@ public class ExamenController {
         String message;
         try {
             daoExamen.save(examen);
+            System.out.println("SADGoitre.controller.ExamenController.ajouteExamenPuisMontreLaListe()" + examen.getId_examen());
+            for (Valeur_examen v : examen.getValeur_examen()) {
+               //System.out.println("nom " + v.getNom_valeur() + " " + v.getValeur() + " " + v.isEst_valeur() + " id " + v.getId_valeur_examen());
+               v.setExamen_valeur(examen);
+                daoValeurExam.save(v);
+            }
             // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
-            message = "L'examen '" + examen.getNom_examen() + "' a été correctement enregistrée";
+            message = "L'examen '" + examen.getNom_examen() + "' a été correctement enregistré";
         } catch (DataIntegrityViolationException e) {
             // Les noms sont définis comme 'UNIQUE' 
             // En cas de doublon, JPA lève une exception de violation de contrainte d'intégrité
@@ -120,7 +183,7 @@ public class ExamenController {
         // Ce message est accessible et affiché dans la vue 'afficheAnimal.html'
         redirectInfo.addFlashAttribute("message", message);
 //        return "redirect:/patient/show?idMedecin=" + examen.getPatient_examen().getMedecin_patient().getId_medecin();
-        return "redirect:/examen/show?idPatient="+ examen.getPatient_examen().getId_patient();
+        return "redirect:/examen/show?idPatient=" + examen.getPatient_examen().getId_patient();
         //return "redirect:/patient/get?idPatient=" + examen.getPatient_examen().getId_patient(); // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
     }
 }

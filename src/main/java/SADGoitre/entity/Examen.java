@@ -35,7 +35,6 @@ public class Examen {
     @NonNull
     private String nom_examen;
     
-    @NonNull
     private boolean est_examen_clinique;
     
     @NonNull

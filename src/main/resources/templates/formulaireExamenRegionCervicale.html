@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="fr">
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" media="screen" href="../css/CSS.css"/>
+        <link rel="stylesheet" href="../static/css/CSS.css" type="text/css"/>
+            <title>Formulaire examen</title>  
+    </head>
+    <body>
+        <div class="menu">
+            <ul>
+                <li><a href="page patient.html">Patient</a></li>
+                <li><a href="page données générales.html" target="_blank">Données générales</a></li>
+
+                <li><div class="menus"><a href="afficheExamens.html" th:href="@{show(idPatient=${patient.id_patient})}">Examens</a></div><ul>   
+                        <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
+                                <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}" target="_blank">Signes généraux</a></li>
+                                <li><a href="#" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}" target="_blank">Examen région cervicale</a></li>
+                                <li><a href="adresse url" target="_blank">Examen ophtalmologique</a></li>
+                                <li><a href="adresse url" target="_blank">Examen neurologique</a></li>
+                                <li><a href="adresse url" target="_blank">Examen aire ganglionnaire</a></li>
+                            </ul></li>
+
+                        <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
+                                <li><a href="adresse url" target="_blank">Morphologique</a></li>
+                                <li><a href="adresse url" target="_blank">Biologique</a></li>
+                                <li><a href="adresse url" target="_blank">Fonctionnel</a></li>
+                            </ul></li>
+                    </ul></li>
+
+                <li><a href="page photos.html" target="_blank">Photos</a></li>
+
+                <li><a href="page diagnostic.html" target="_blank">Diagnostic</a></li>   
+            </ul>
+        </div><br/><br/>
+        
+        <section>
+            <aside>
+                <form name="form2" th:action="@{../examen/save}" th:object="${examen}" method="post">
+                    <div style="">
+                        <label for="patient_examen">Patient</label>
+                        <select name="patient_examen">
+                            <option th:value="${patient.id_patient}" th:text="${patient.prenom} +' '+ ${patient.nom}" th:field="*{patient_examen}"></option>
+                        </select>
+                    </div>
+                    <fieldset class="examen">
+                        <legend th:text="*{est_examen_clinique==true}?'Examen Clinique':'Examen Para-Clinique'">Examens Cliniques</legend>
+                        <input type="hidden"  th:value="${est_examen_clinique}" th:field="*{est_examen_clinique}"/>
+                        <aside>
+                            <fieldset class="examen">
+                                <legend th:text="*{nom_examen}">Signes généraux</legend>
+                                <input type="text" style="display: none" th:value="${nom_examen}" th:field="*{nom_examen}"/>
+                                    <label for="date1">Date de l'examen : </label>
+                                    <input id="date1" th:value="${date_examen}" type="date" th:field="*{date_examen}"/>
+                                    <br/>
+                                    <!--                                    <div class ="bloc" th:each="val : *{valeur_examen}">
+                                                                            <div>
+                                                                                <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].nom_valeur}" name="valeur_examen.nom_valeur"/>
+                                                                                <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].est_valeur}" name="valeur_examen.est_valeur"/>
+                                                                                <br/>
+                                                                                <label th:for="'comment'+${val.id_valeur_examen}">Commentaires :</label>
+                                                                                <br/>
+                                                                                <textarea th:id="'comment'+${val.id_valeur_examen}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${val.id_valeur_examen}__].valeur}" name="valeur_examen.valeur"></textarea>
+                                                                                <br/>
+                                                                                <br/>
+                                                                            </div>
+                                                                        </div>-->
+                                    <div class ="bloc" th:each="val, valStat : *{valeur_examen}">
+                                        <div>
+                                           <input type="hidden"  th:value="${val.id_valeur_examen}" th:field="*{valeur_examen[__${valStat.index}__].id_valeur_examen}"/>
+                                            <span th:text="${valStat.count}+')'">1</span>
+                                            <input type="hidden"  th:value="${val.nom_valeur}" th:field="*{valeur_examen[__${valStat.index}__].nom_valeur}"/>
+                                            <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" />
+                                            <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${valStat.index}__].est_valeur}"/>
+                                            <br/>
+                                            <label th:for="'comment'+${val.id_valeur_examen}">Commentaires :</label>
+                                            <br/>
+                                            <input type="text" th:id="'comment'+${val.id_valeur_examen}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${valStat.index}__].valeur}"/>
+                                            <br/>
+                                            <br/>
+                                        </div>
+                                    </div>                   
+                            </fieldset>
+
+                        </aside>
+                        <button type="submit">Ajouter l'examen</button>
+                    </fieldset>
+                </form>
+            </aside>
+        </section>
+        <!--        
+                                                   <aside>
+                                    <form name="form2" action="script.php" method="post">
+                                        <fieldset id="examen">
+                                            <legend>Examen région cervicale</legend>
+        
+                                            <h2><u>Inspection</u></h2>
+        
+                                            <input name="case7" id="case7" type="checkbox" value="7"/>
+                                            <label for="case7">Circulation veineuse collatérale</label></br>
+        
+                                            <input name="case8" id="case8" type="checkbox" value="8"/>
+                                            <label for="case8">Turgescence de la veine jugulaire</label></br>
+        
+                                            <input name="case6" id="case6" type="checkbox" value="6"/>
+                                            <label for="case6">Coloration de la peau</label>
+                                            <input type="text" name="valeur" placeholder="Observation"/></br>
+        
+                                            <h2><u>Palpation</u></h2>
+        
+                                            <label for="signe1">nature thyroïdienne de la masse</label>
+                                            <select id="signe1">
+                                                <option value="am" selected="selected">fixe</option>
+                                                <option value="ag">mobile</option>
+                                            </select></br>
+        
+                                            <label for="signe1">Volume thyroïdien supérieur à 1er phalange</label>
+                                            <select id="signe1">
+                                                <option value="am" selected="selected">oui</option>
+                                                <option value="ag">non</option>
+                                            </select><br/>
+        
+                                            <label for="signe1">Topographie</label>
+                                            <select id="signe1">
+                                                <option value="am" selected="selected">normale</option>
+                                                <option value="ag">goître plongeant</option>
+                                            </select><br/>
+                                            <label for="signe1">Consistance</label>
+                                            <select id="signe1">
+                                                <option value="am" selected="selected">molle</option>
+                                                <option value="ag">élastique</option>
+                                                <option value="ag">dure</option>
+                                                <option value="ag">ferme</option>
+                                                <option value="ag">souple</option>
+                                                <option value="ag">pierreuse</option>
+                                            </select><br/>
+                                            <label for="signe1">Caractère symétrique</label>
+                                            <select id="signe1">
+                                                <option value="am" selected="selected">oui</option>
+                                                <option value="ag">non</option>
+                                            </select><br/>
+                                            <label for="signe1">Caractère régulier</label>
+                                            <select id="signe1">
+                                                <option value="am" selected="selected">oui</option>
+                                                <option value="ag">non</option>
+                                            </select><br/>
+                                            <label for="signe1">Caractère douloureux</label>
+                                            <select id="signe1">
+                                                <option value="am" selected="selected">oui</option>
+                                                <option value="ag">non</option>
+                                            </select><br/>
+                                            <label for="signe1">Signe vasculaire</label>
+                                            <select id="signe1">
+                                                <option value="am" selected="selected">thrill</option>
+                                                <option value="ag">goître soufflant</option>
+                                            </select><br/>
+                                            <label for="signe1">adénopathie cervicale</label>
+                                            <select id="signe1">
+                                                <option value="am" selected="selected">jugulo-carotidienne</option>
+                                                <option value="ag">pré-trachéale</option>
+                                                <option value="th">sus claviculaire</option>
+                                            </select><br/><br/>
+        
+                                            <input name="case1" id="case1" type="checkbox" value="1"/>
+                                            <label for="case1">goître non visible mais palpable</label><br/>
+        
+                                            <input name="case1" id="case1" type="checkbox" value="1"/>
+                                            <label for="case1">goître visible lors de l'hyper-extention du cou</label><br/>
+        
+                                            <input name="case1" id="case1" type="checkbox" value="1"/>
+                                            <label for="case1">goître visible inférieur 5m </label><br/>
+        
+                                            <input name="case1" id="case1" type="checkbox" value="1"/>
+                                            <label for="case1">goître visible supérieur 5m</label><br/>
+        
+                                            </aside>
+                                            <input name="case1" id="case1" type="checkbox" value="1"/>
+                                            <label for="case1">Myxoedème prétibial</label><br/>-->
+                                
+
+    </body>
+</html>

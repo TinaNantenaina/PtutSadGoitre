@@ -3,82 +3,64 @@
     <head>
         <meta charset="UTF-8"/>
         <link rel="stylesheet" media="screen" href="../css/CSS.css"/>
-        <link rel="stylesheet" href="../static/css/CSS.css" type="text/css">
-
-            <title>Formulaire examen</title>  
+        <link rel="stylesheet" href="../static/css/CSS.css" type="text/css"/>
+        <title>Formulaire examen signes généraux</title>  
     </head>
     <body>
-
         <div class="menu">
-            <ul> 
+            <ul>
                 <li><a href="affichePatients.html"  th:href="@{../patient/show(idMedecin=${examen.patient_examen.medecin_patient.id_medecin})}">Patients</a></li>
-                <!--                <li><a href="detailPatient.html"  th:href="@{../patient/getPatient(idPatient=${patient_examen.id_patient})}" target="_blank">Données générales</a></li>-->
+                <li><a href="afficheAnamnese.html"  th:href="@{../anamnese/show(idPatient=${patient.id_patient})}" target="_blank">Données générales du patient</a></li>
 
-                <li><div class="menus"><a href="#">Examens</a></div>
-                    <ul>   
-                        <li><div class="menus"><a href="#">Examens cliniques</a></div>
-                            <ul>
-                                <li><a href="adresse url" target="_blank">Signes généraux</a></li>
-                                <li><a href="adresse url" target="_blank">Examen region cevicales</a></li>
+                <li><div class="menus"><a href="afficheExamens.html" th:href="@{show(idPatient=${patient.id_patient})}">Examens</a></div><ul>   
+                        <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
+                                <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}">Signes généraux</a></li>
+                                <li><a href="formulaireExamenRegionCervicale" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}">Examen région cervicale</a></li>
                                 <li><a href="adresse url" target="_blank">Examen ophtalmologique</a></li>
                                 <li><a href="adresse url" target="_blank">Examen neurologique</a></li>
                                 <li><a href="adresse url" target="_blank">Examen aire ganglionnaire</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul>
+                            </ul></li>
 
-                        <li><div class="menus"><a href="#">Examens paracliniques</a></div>
-                            <ul>
+                        <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
                                 <li><a href="adresse url" target="_blank">Morphologique</a></li>
                                 <li><a href="adresse url" target="_blank">Biologique</a></li>
                                 <li><a href="adresse url" target="_blank">Fonctionnel</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                            </ul></li>
+                    </ul></li>
+
                 <li><a href="page photos.html" target="_blank">Photos</a></li>
 
-                <li><a href="afficheDiagnostics.html" target="_blank">Diagnostic</a></li>      
+                <li><a href="page diagnostic.html" target="_blank">Diagnostic</a></li>   
             </ul>
-        </div>
-        <br/><br/>
+        </div><br/><br/>
         <section>
             <aside>
                 <form name="form2" th:action="@{../examen/save}" th:object="${examen}" method="post">
-                    <div style="">
+                   <!-- <div style="">
                         <label for="patient_examen">Patient</label>
                         <select name="patient_examen">
                             <option th:value="${patient.id_patient}" th:text="${patient.prenom} +' '+ ${patient.nom}" th:field="*{patient_examen}"></option>
                         </select>
-                    </div>
+                    </div>-->
+                   <span style="color:cadetblue" th:text="'Patient '+${patient.id_patient}+' : '+${patient.prenom} +' '+ ${patient.nom}">Pas de patient</span>
+                    <input type="hidden" th:value="${patient.id_patient}" th:text="${patient.prenom} +' '+ ${patient.nom}" th:field="*{patient_examen}"/>
                     <fieldset class="examen">
-                        <legend>Examens Cliniques</legend>
+                        <legend th:text="*{est_examen_clinique==true}?'Examen Clinique':'Examen Para-Clinique'">Examens Cliniques</legend>
                         <input type="hidden"  th:value="${est_examen_clinique}" th:field="*{est_examen_clinique}"/>
                         <aside>
                             <fieldset class="examen">
-                                <legend>Signes généraux</legend>
+                                <legend th:text="*{nom_examen}">Signes généraux</legend>
                                 <input type="text" style="display: none" th:value="${nom_examen}" th:field="*{nom_examen}"/>
                                 <aside>
                                     <label for="date1">Date de l'examen : </label>
                                     <input id="date1" th:value="${date_examen}" type="date" th:field="*{date_examen}"/>
                                     <br/>
-<!--                                    <div class ="bloc" th:each="val : *{valeur_examen}">
+                                    <div class ="bloc" th:each="val, valStat : *{valeur_examen}">
                                         <div>
-                                            <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].nom_valeur}" name="valeur_examen.nom_valeur"/>
-                                            <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].est_valeur}" name="valeur_examen.est_valeur"/>
-                                            <br/>
-                                            <label th:for="'comment'+${val.id_valeur_examen}">Commentaires :</label>
-                                            <br/>
-                                            <textarea th:id="'comment'+${val.id_valeur_examen}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${val.id_valeur_examen}__].valeur}" name="valeur_examen.valeur"></textarea>
-                                            <br/>
-                                            <br/>
-                                        </div>
-                                    </div>-->
-                             <div class ="bloc" th:each="val, valStat : *{valeur_examen}">
-                                        <div>
-                                            <span th:text="${valStat.count}+')'">1</td>></span>
-                                            <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" th:field="*{valeur_examen[__${valStat.index}__].nom_valeur}" th:value="${val.nom_valeur}"/>
+                                            <input type="hidden"  th:value="${val.id_valeur_examen}" th:field="*{valeur_examen[__${valStat.index}__].id_valeur_examen}"/>
+                                            <span th:text="${valStat.count}+')'">1</span>
+                                            <input type="hidden"  th:value="${val.nom_valeur}" th:field="*{valeur_examen[__${valStat.index}__].nom_valeur}"/>
+                                            <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" />
                                             <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${valStat.index}__].est_valeur}"/>
                                             <br/>
                                             <label th:for="'comment'+${val.id_valeur_examen}">Commentaires :</label>
@@ -88,23 +70,7 @@
                                             <br/>
                                         </div>
                                     </div>
-                                    <th:block th:each="val,state : ${valeur_examen}">
-                                        <!--                                    <input type='hidden' th:value="${val.valeur_examen}" th:field="${val.valeur_examen}"/> -->
-                                        <p th:text="${val.valeur_examen}">yo</p>
-                                    </th:block>
                                 </aside>
-                                <!--                                <th:block th:each="val, valStat : *{valeur_examen}">th:style="${val.est_valeur}==false?'disabled:disabled'" 
-                                                                    <labelxt="${val.nom_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].nom_valeur}">true</label>
-                                                                    <input type="checkbox" th:value="${valeur_examen[__${val.id_valeur_examen}__].est_valeur}" th:field="*{valeur_examen[__${val.id_valeur_examen}__].est_valeur}" />
-                                                                                                        <label th:text="${val.id_valeur_examen}?:'null'"></label>
-                                                                                                        <input type="checkbox" th:value="${val.est_valeur}" th:checked="${val.est_valeur}"/>
-                                                                    <br/> th:te
-                                                                    <label for="valeur" > Saisir la valeur </label>
-                                                                    <input id="valeur" type="text" th:field="*{valeur_examen[__${val.id_valeur_examen}__].valeur}"/>
-                                                                                                        <input type="text" name="valeur" placeholder="saisir la valeur" th:field="*{val.valeur}"/>
-                                                                    <br/><br/>
-                                
-                                                                </th:block>-->
                             </fieldset>
 
                         </aside>
@@ -115,41 +81,7 @@
         </section>
         <!---------------------------------------------------------------------------------------------------------------->
         <!--        
-                        <form name="form2" th:action="@{../examen/save}" th:object="${examen}" method="post">
-                            <fieldset id="examen">
-                                <legend>Examens Cliniques</legend>
-                                <aside>
-                                    <form name="form2" action="script.php" method="post">
-                                        <fieldset id="examen">
-                                            <legend>Signes généraux</legend>
-        
-                                            <input name="case1" id="case1" type="checkbox" value="true" th:checked="${true}" th:field="*{valeur_examen.estValeur}"/>
-                                            <label for="case1" th:field="*{valeur_examen.nomValeur}">fièvre</label>
-                                            <input type="text" name="valeur" placeholder="saisir la valeur" th:field="*{valeur_examen.valeur}"/><br/>
-        
-                                            <input name="case2" id="case2" type="checkbox" value="2"/>
-                                            <label for="case2">prise de poids</label>
-                                            <input type="text" name="valeur" placeholder="saisir la valeur"/><br/>
-        
-                                            <input name="case3" id="case3" type="checkbox" value="3"/>
-                                            <label for="case3">perte de poids</label>
-                                            <input type="text" name="valeur" placeholder="saisir la valeur"/><br/>
-        
-                                            <input name="case4" id="case4" type="checkbox" value="4"/>
-                                            <label for="case4">tachycardie</label>
-                                            <input type="text" name="valeur" placeholder="saisir la valeur"/><br/>
-        
-                                            <input name="case5" id="case5" type="checkbox" value="5"/>
-                                            <label for="case5">bradychardie</label>
-                                            <input type="text" name="valeur" placeholder="saisir la valeur"/><br/>
-        
-                                            <input name="case6" id="case6" type="checkbox" value="6"/>
-                                            <label for="case6">hypertention artériel</label>
-                                            <input type="text" name="valeur" placeholder="saisir la valeur"/><br/>
-        
-                                        </fieldset>
-                                    </form>
-                                </aside>
+                   
                                 --------------------------------------------------------------------------------------------
                                 <aside>
                                     <form name="form2" action="script.php" method="post">

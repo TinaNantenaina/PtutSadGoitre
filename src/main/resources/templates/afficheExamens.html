@@ -11,10 +11,10 @@
                 <li><a href="page patient.html">Patient</a></li>
                 <li><a href="page données générales.html" target="_blank">Données générales</a></li>
 
-                <li><div class="menus"><a href="page examen.html">Examens</a></div><ul>   
+                <li><div class="menus"><a href="#">Examens</a></div><ul>   
                         <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
-                                <li><a href="adresse url" target="_blank">Signes généraux</a></li>
-                                <li><a href="adresse url" target="_blank">Examen region cevicales</a></li>
+                                <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}" target="_blank">Signes généraux</a></li>
+                                <li><a href="formulaireExamenRegionCervicale" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}" target="_blank">Examen région cervicale</a></li>
                                 <li><a href="adresse url" target="_blank">Examen ophtalmologique</a></li>
                                 <li><a href="adresse url" target="_blank">Examen neurologique</a></li>
                                 <li><a href="adresse url" target="_blank">Examen aire ganglionnaire</a></li>
@@ -56,13 +56,14 @@
                     <td>
                         <ul>
                             <li th:each ="v:${e.valeur_examen}">
-                               <span th:text="${v.est_valeur}==true?${v.nom_valeur}+' : '+${v.valeur}:'Pas de '+${#strings.toLowerCase(v.nom_valeur)}+' tets'+${v.valeur}"/>             
+                                <!--si la valeur est vraie on affiche le commentaire, sinon on affiche que la valeur n'est pas vraie -->
+                               <span th:text="${v.est_valeur}==true?${v.nom_valeur}+' : '+${v.valeur}:'Pas de '+${#strings.toLowerCase(v.nom_valeur)}"/>             
                             </li>
                         </ul>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <a th:href="@{add(idPatient=${patient.id_patient})}">Retour</a>
+        <a th:href="@{addSignesGeneraux(idPatient=${patient.id_patient})}">Retour</a>
     </body>
 </html>

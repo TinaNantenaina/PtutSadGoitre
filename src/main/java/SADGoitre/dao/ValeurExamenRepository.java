@@ -7,11 +7,12 @@ package SADGoitre.dao;
 
 import SADGoitre.entity.Valeur_examen;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  *
  * @author agath
  */
 public interface ValeurExamenRepository extends JpaRepository <Valeur_examen, Integer>{
-    
+
 }
