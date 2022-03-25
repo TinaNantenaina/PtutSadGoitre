@@ -12,5 +12,9 @@ package SADGoitre.entity;
 public enum Type_sf {
     HYPOTHYROIDE,
     HYPERTHYROIDE,
-    EUTHYROIDE
+    EUTHYROIDE;
+    
+    public String getValue(){
+        return this.toString();
+    }
 }

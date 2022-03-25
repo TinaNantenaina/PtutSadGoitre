@@ -1,0 +1,14 @@
+package KieRule;
+import SADGoitre.entity.Diagnostic;
+
+
+
+
+rule "Goitre_simple"
+
+when 
+diagnosticObject : Diagnostic(argument=="Euthyroidie")
+then
+diagnosticObject.setNom_diagnostic("Goitre simple");
+end
+

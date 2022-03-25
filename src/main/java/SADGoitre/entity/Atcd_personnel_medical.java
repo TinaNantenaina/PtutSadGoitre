@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -30,5 +32,13 @@ public class Atcd_personnel_medical {
     private Integer id_atcd_pers;
      
     @NonNull
-    private String nom;
+    private String nom_atcd_perso;
+    
+    private String valeur_atcd_perso;
+    
+    @ManyToOne(optional=false)
+    @JoinColumn(name="id_anamnese")
+    private Anamnese anamnese;
+    
+    
 }

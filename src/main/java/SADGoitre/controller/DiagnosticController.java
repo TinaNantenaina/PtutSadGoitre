@@ -10,12 +10,16 @@ import SADGoitre.dao.ExamenRepository;
 import SADGoitre.dao.MedecinRepository;
 import SADGoitre.dao.PatientRepository;
 import SADGoitre.dao.SigneFonctionnelRepository;
+import SADGoitre.entity.Diagnostic;
 import SADGoitre.entity.Medecin;
 import SADGoitre.entity.Patient;
+import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -37,6 +41,9 @@ public class DiagnosticController {
     @Autowired
     private ExamenRepository daoExamen;
     
+    @Autowired
+    private KieSession session;
+    
     /**
      * Affiche toutes les diagnostics
      *
@@ -51,5 +58,12 @@ public class DiagnosticController {
         model.addAttribute("diagnostic", daoDiagnostic.getOne(patient.getId_patient()));  
         model.addAttribute("patient", daoPatient.getOne(idDiagnostic));
         return "afficheDiagnostics";
+    }
+    
+    @PostMapping("/diagnostic")
+    public Diagnostic recuperationDiagnostics(@RequestBody Diagnostic diagnostic){
+        session.insert(diagnostic);
+        session.fireAllRules();
+        return diagnostic;
     }
 }

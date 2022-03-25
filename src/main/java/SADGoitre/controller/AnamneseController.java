@@ -4,8 +4,6 @@ import SADGoitre.dao.AnamneseRepository;
 import SADGoitre.dao.PatientRepository;
 import SADGoitre.dao.SigneFonctionnelRepository;
 import SADGoitre.entity.Anamnese;
-import SADGoitre.entity.Patient;
-import SADGoitre.entity.Signe_fonctionnel;
 import SADGoitre.entity.Valeur_signe_compression;
 import java.util.Arrays;
 import java.util.List;
@@ -77,9 +75,13 @@ public class AnamneseController {
        Anamnese anamnese = new Anamnese();
        anamnese.setValeur_signe_compression(valeur_sc);
        anamnese.setPatient(daoPatient.getOne(idPatient));
+       
+   
       
         model.addAttribute("anamnese", anamnese);
         model.addAttribute("patient", daoPatient.getOne(idPatient));
+        //model.addAttribute("sf", daoSF.findAll());
+       
         return "afficheAnamnese";
     }
 

@@ -20,8 +20,8 @@ INSERT INTO Anamnese(id_anamnese,signe_De_Compression) VALUES
 INSERT INTO Atcd_Familial_Medical(id_atcd_fam,nem2,cancer_thyroidien) VALUES
 (1,false,false);
 
-INSERT INTO Atcd_Personnel_Medical(id_atcd_pers,nom) VALUES
-(1,'Diabete');
+INSERT INTO Atcd_Personnel_Medical(id_atcd_pers,nom_atcd_perso,id_anamnese) VALUES
+(1,'Diabete',1);
 
 INSERT INTO Diagnostic(id_diagnostic,nom_diagnostic,pourcentage, id_patient) VALUES
 (1,'Goitre Simple',50.0,1);

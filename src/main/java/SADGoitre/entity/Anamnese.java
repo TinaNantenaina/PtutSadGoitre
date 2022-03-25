@@ -48,7 +48,7 @@ public class Anamnese {
     @OneToMany(mappedBy="id_atcd_fam")
     private List<Atcd_familial_medical> atcd_familial = new LinkedList<>();
     
-    @OneToMany(mappedBy="id_atcd_pers")
+    @OneToMany(mappedBy="anamnese")
     private List<Atcd_personnel_medical> atcd_personnel = new LinkedList<>();
     
     @OneToOne(mappedBy="anamnese")

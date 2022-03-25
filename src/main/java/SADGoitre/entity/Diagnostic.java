@@ -32,6 +32,8 @@ public class Diagnostic {
     @NonNull
     private String nom_diagnostic;
     
+    private String argument;
+    
     @NonNull
     private float pourcentage;
     
@@ -39,5 +41,6 @@ public class Diagnostic {
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_patient")
     private Patient patient_diagnostique;
+    
     
 }
