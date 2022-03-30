@@ -48,13 +48,14 @@
                     <!--<td>Date de l'examen</td>
                     <td>Diagnostic</td>-->
                     <td>Medecin</td>
+                    <td>Examens</td>
                 </tr>
             </thead>
             <tbody th:each = "p:${patients}">
                 <tr>
 
                     <td> <a th:href="@{../anamnese/add(idPatient=${p.id_patient})}" th:text = "${p.nom}"></a></td>
-                    <td><a th:href="@{../examen/addSignesGeneraux(idPatient=${p.id_patient})}" th:text = "${p.prenom}"/></td>
+                    <td th:text = "${p.prenom}"></td>
                     <td th:text = "${p.genre}? 'Femme' : 'Homme'"></td>
                     <td th:text = "${p.date_naissance}"></td>
                    <!--   <td th:text = "${p.anamnese.mes_symptomes.nom}"></td>
@@ -62,6 +63,7 @@
                     <td th:text = "${p.anamnese}">[[${p.anamnese}]]</td>
                     <td th:if = "${p.medecin_patient==null}">Medecin inconnu</td>
                     <td th:unless = "${p.medecin_patient==null}">[[${p.medecin_patient.nom}]]</td>
+                    <td><a th:href="@{../examen/show(idPatient=${p.id_patient})}">Voir les examens</a></td>
                 </tr>
                  <!--<tr>
 

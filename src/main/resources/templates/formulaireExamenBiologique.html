@@ -4,26 +4,26 @@
         <meta charset="UTF-8"/>
         <link rel="stylesheet" media="screen" href="../css/CSS.css"/>
         <link rel="stylesheet" href="../static/css/CSS.css" type="text/css"/>
-        <title>Formulaire examen neurologique</title>  
+        <title>Examen biologique</title>  
     </head>
     <body>
         <div class="menu">
             <ul>
-                <li><a href="affichePatients.html"  th:href="@{../patient/show(idMedecin=${patient.medecin_patient.id_medecin})}">Patients</a></li>
+                <li><a href="affichePatients.html"  th:href="@{../patient/show(idMedecin=${examen.patient_examen.medecin_patient.id_medecin})}">Patients</a></li>
                 <li><a href="afficheAnamnese.html"  th:href="@{../anamnese/show(idPatient=${patient.id_patient})}" target="_blank">Données générales du patient</a></li>
 
-                <li><div class="menus"><a href="afficheExamens.html" th:href="@{show(idPatient=${patient.id_patient})}">Examens</a></div><ul>   
+         <li><div class="menus"><a href="afficheExamens.html" th:href="@{show(idPatient=${patient.id_patient})}">Examens</a></div><ul>   
                         <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
-                                <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}">Signes généraux</a></li>
-                                <li><a href="formulaireExamenRegionCervicale" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}">Examen région cervicale</a></li>
+                                <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}" target="_blank">Signes généraux</a></li>
+                                <li><a href="formulaireExamenRegionCervicale" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}" target="_blank">Examen région cervicale</a></li>
                                 <li><a href="formulaireExamenOphtalmologique" th:href="@{../examen/addexamenophtalmo(idPatient=${patient.id_patient})}">Examen ophtalmologique</a></li>
-                                <li><a href="#">Examen neurologique</a></li>
+                                <li><a href="formulaireExamenNeurologique" th:href="@{../examen/addexamenneuro(idPatient=${patient.id_patient})}" >Examen neurologique</a></li>
                                 <li><a href="formulaireExamenAireGanglionnaire" th:href="@{../examen/addexamenaireganglionnaire(idPatient=${patient.id_patient})}">Examen aire ganglionnaire</a></li>
                             </ul></li>
 
                         <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
-                                <li><a href="adresse url" target="_blank">Morphologique</a></li>
-                                <li><a href="formulaireExamenBiologique" th:href="@{../examen/addexamenbio(idPatient=${patient.id_patient})}">Examen biologique</a></li>
+                                <li><a href="formulaireExamenMorphologique" th:href="@{../examen/addexamenmorphologique(idPatient=${patient.id_patient})}">Examen morphologique</a></li>
+                                <li><a href="#" >Examen biologique</a></li>
                                 <li><a href="formulaireExamenSignesFonctionnels" th:href="@{../examen/addexamensf(idPatient=${patient.id_patient})}">Signe fonctionnel</a></li>
                             </ul></li>
                     </ul></li>
@@ -33,17 +33,19 @@
                 <li><a href="page diagnostic.html" target="_blank">Diagnostic</a></li>   
             </ul>
         </div><br/><br/>
+
         <section>
             <aside>
                 <form name="form2" th:action="@{../examen/save}" th:object="${examen}" method="post">
                     <span style="color:cadetblue" th:text="'Patient '+${patient.id_patient}+' : '+${patient.prenom} +' '+ ${patient.nom}">Pas de patient</span>
                     <input type="hidden" th:value="${patient.id_patient}" th:field="*{patient_examen}"/>
+                    <br/>
                     <fieldset class="examen">
-                        <legend th:text="*{est_examen_clinique==true}?'Examen Clinique':'Examen Para-Clinique'">Examens Cliniques</legend>
+                        <legend th:text="*{est_examen_clinique==true}?'Examen Clinique':'Examen Para-Clinique'">Examens Para-cliniques</legend>
                         <input type="hidden"  th:value="${est_examen_clinique}" th:field="*{est_examen_clinique}"/>
                         <aside>
                             <fieldset class="examen">
-                                <legend th:text="*{nom_examen}">Ophtalmo</legend>
+                                <legend th:text="*{nom_examen}">Examen biologique</legend>
                                 <input type="text" style="display: none" th:value="${nom_examen}" th:field="*{nom_examen}"/>
                                 <label for="date1">Date de l'examen : </label>
                                 <input id="date1" th:value="${date_examen}" type="date" th:field="*{date_examen}"/>
@@ -53,15 +55,16 @@
                                         <input type="hidden"  th:value="${val.id_valeur_examen}" th:field="*{valeur_examen[__${valStat.index}__].id_valeur_examen}"/>
                                         <span th:text="${valStat.count}+')'">1</span>
                                         <input type="hidden"  th:value="${val.nom_valeur}" th:field="*{valeur_examen[__${valStat.index}__].nom_valeur}"/>
-                                        <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" />
+                                        <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}+' présent : '" />
                                         <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${valStat.index}__].est_valeur}"/>
                                         <br/>
-                                        <label th:for="'comment'+${val.id_valeur_examen}">Commentaires :</label>
+                                        <label th:for="'comment'+${val.id_valeur_examen}">Valeur :</label>
                                         <br/>
                                         <input type="text" th:id="'comment'+${val.id_valeur_examen}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${valStat.index}__].valeur}"/>
                                         <br/>
                                         <br/>
                                     </div>
+                                    <!-- th:if="${valStat.count>8 && valStat.count<15}"-->
                                 </div>                   
                             </fieldset>
 
@@ -70,6 +73,6 @@
                     </fieldset>
                 </form>
             </aside>
-        </section>      
+        </section>
     </body>
 </html>

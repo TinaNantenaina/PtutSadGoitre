@@ -21,9 +21,9 @@
                             </ul></li>
 
                         <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
-                                <li><a href="adresse url" target="_blank">Morphologique</a></li>
-                                <li><a href="adresse url" target="_blank">Biologique</a></li>
-                                <li><a href="adresse url" target="_blank">Fonctionnel</a></li>
+                                <li><a href="formulaireExamenMorphologique" th:href="@{../examen/addexamenmorphologique(idPatient=${patient.id_patient})}">Examen morphologique</a></li>
+                                <li><a href="formulaireExamenBiologique" th:href="@{../examen/addexamenbiologique(idPatient=${patient.id_patient})}">Examen biologique</a></li>
+                                <li><a href="formulaireExamenSignesFonctionnels" th:href="@{../examen/addexamensf(idPatient=${patient.id_patient})}">Signe fonctionnel</a></li>
                             </ul></li>
                     </ul></li>
 
@@ -65,6 +65,17 @@
                 </tr>
             </tbody>
         </table>
-        <a th:href="@{addSignesGeneraux(idPatient=${patient.id_patient})}">Retour</a>
+        <ul>Examens cliniques :
+            <li><a th:href="@{addSignesGeneraux(idPatient=${patient.id_patient})}">Ajouter un examen de signes généraux</a></li> 
+            <li><a href="formulaireExamenRegionCervicale" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}" target="_blank">Ajouter un examen de la région cervicale</a></li>
+            <li><a href="formulaireExamenOphtalmologique" th:href="@{../examen/addexamenophtalmo(idPatient=${patient.id_patient})}">Ajouter un examen ophtalmologique</a></li>
+            <li><a href="formulaireExamenNeurologique" th:href="@{../examen/addexamenneuro(idPatient=${patient.id_patient})}" >Ajouter un examen neurologique</a></li>
+            <li><a href="formulaireExamenAireGanglionnaire" th:href="@{../examen/addexamenaireganglionnaire(idPatient=${patient.id_patient})}">Ajouter un examen de l'aire ganglionnaire</a></li>
+        </ul>
+        <ul>Examens para-cliniques :
+            <li><a href="formulaireExamenBiologique" th:href="@{../examen/addexamenbiologique(idPatient=${patient.id_patient})}">Ajouter un examen biologique</a></li>
+            <li><a href="formulaireExamenMorphologique" th:href="@{../examen/addexamenmorphologique(idPatient=${patient.id_patient})}">Ajouter un examen morphologique</a></li>
+            <li><a href="formulaireExamenSignesFonctionnels" th:href="@{../examen/addexamensf(idPatient=${patient.id_patient})}">Ajouter un signe fonctionnel</a></li>
+        </ul>
     </body>
 </html>

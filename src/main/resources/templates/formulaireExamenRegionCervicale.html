@@ -23,8 +23,8 @@
 
                         <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
                                 <li><a href="adresse url" target="_blank">Morphologique</a></li>
-                                <li><a href="adresse url" target="_blank">Biologique</a></li>
-                                <li><a href="adresse url" target="_blank">Fonctionnel</a></li>
+                                <li><a href="formulaireExamenBiologique" th:href="@{../examen/addexamenbio(idPatient=${patient.id_patient})}">Examen biologique</a></li>
+                                <li><a href="formulaireExamenSignesFonctionnels" th:href="@{../examen/addexamensf(idPatient=${patient.id_patient})}">Signe fonctionnel</a></li>
                             </ul></li>
                     </ul></li>
 

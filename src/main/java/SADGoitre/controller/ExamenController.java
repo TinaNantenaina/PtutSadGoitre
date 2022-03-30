@@ -205,9 +205,10 @@ public class ExamenController {
         model.addAttribute("patient", daoPatient.getOne(idPatient));
         return "formulaireExamenNeurologique";
     }
-    
+
     /**
-     * Montre le formulaire permettant d'ajouter un examen de l'aire ganglionnaire
+     * Montre le formulaire permettant d'ajouter un examen de l'aire
+     * ganglionnaire
      *
      * @param model pour transmettre les informations à la vue
      * @param idPatient L'id du patient
@@ -220,7 +221,7 @@ public class ExamenController {
                 new Valeur_examen("Ganglion cervicale"),
                 new Valeur_examen("Ganglion axillaire"),
                 new Valeur_examen("Ganglion inguinal"),
-                new Valeur_examen("Ganglion généralisé")             
+                new Valeur_examen("Ganglion généralisé")
         );
         Examen exam = new Examen();
         exam.setValeur_examen(val_examens);
@@ -232,6 +233,95 @@ public class ExamenController {
         model.addAttribute("examen", exam);
         model.addAttribute("patient", daoPatient.getOne(idPatient));
         return "formulaireExamenAireGanglionnaire";
+    }
+
+    /**
+     * Montre le formulaire permettant d'ajouter un examen biologique
+     *
+     * @param model pour transmettre les informations à la vue
+     * @param idPatient L'id du patient
+     * @return le nom de la vue à afficher ('formulaireExamenBiologique.html')
+     */
+    @GetMapping(path = "addexamenbiologique")
+    public String ajoutExamenBiologique(Model model, int idPatient) {
+        List<Valeur_examen> val_examens;
+        val_examens = Arrays.asList(
+                new Valeur_examen("TSH"),
+                new Valeur_examen("T4L"),
+                new Valeur_examen("T3L"),
+                new Valeur_examen("NFS"),
+                new Valeur_examen("Plaquettes"),
+                new Valeur_examen("Glycémie"),
+                new Valeur_examen("Cholesterolémie"),
+                new Valeur_examen("Protéinurie"),
+                new Valeur_examen("Acétonurie"),
+                new Valeur_examen("Créatininémie"),
+                new Valeur_examen("Iodémie"),
+                new Valeur_examen("Anticorps antithyroïdiens")
+        );
+        Examen exam = new Examen();
+        exam.setValeur_examen(val_examens);
+        exam.setPatient_examen(daoPatient.getOne(idPatient));
+        exam.setEst_examen_clinique(true);
+        exam.setDate_examen(LocalDate.now());
+        exam.setEst_examen_clinique(false);
+        exam.setNom_examen("Examen biologique");
+        model.addAttribute("examen", exam);
+        model.addAttribute("patient", daoPatient.getOne(idPatient));
+        return "formulaireExamenBiologique";
+    }
+
+    /**
+     * Montre le formulaire permettant d'ajouter un examen morphologique
+     *
+     * @param model pour transmettre les informations à la vue
+     * @param idPatient L'id du patient
+     * @return le nom de la vue à afficher ('formulaireExamenMorphologique.html')
+     */
+    @GetMapping(path = "addexamenmorphologique")
+    public String ajoutExamenMorphologique(Model model, int idPatient) {
+        List<Valeur_examen> val_examens;
+        val_examens = Arrays.asList(
+                new Valeur_examen("Echographie Doppler Cervicale"),
+                new Valeur_examen("Radiographie du thoraxL"),
+                new Valeur_examen("Scanner cervicomédiastinal"),
+                new Valeur_examen("Scintographie thyroïdienne")
+        );
+        Examen exam = new Examen();
+        exam.setValeur_examen(val_examens);
+        exam.setPatient_examen(daoPatient.getOne(idPatient));
+        exam.setEst_examen_clinique(true);
+        exam.setDate_examen(LocalDate.now());
+        exam.setEst_examen_clinique(false);
+        exam.setNom_examen("Examen morphologique");
+        model.addAttribute("examen", exam);
+        model.addAttribute("patient", daoPatient.getOne(idPatient));
+        return "formulaireExamenMorphologique";
+    }
+    
+       /**
+     * Montre le formulaire permettant d'ajouter un examen sf
+     *
+     * @param model pour transmettre les informations à la vue
+     * @param idPatient L'id du patient
+     * @return le nom de la vue à afficher ('formulaireExamenSignesFonctionnels.html')
+     */
+    @GetMapping(path = "addexamensf")
+    public String ajoutExamenSignesFonctionnels(Model model, int idPatient) {
+        List<Valeur_examen> val_examens;
+        val_examens = Arrays.asList(
+                new Valeur_examen("Cytoponction à l'aiguille fine")
+        );
+        Examen exam = new Examen();
+        exam.setValeur_examen(val_examens);
+        exam.setPatient_examen(daoPatient.getOne(idPatient));
+        exam.setEst_examen_clinique(true);
+        exam.setDate_examen(LocalDate.now());
+        exam.setEst_examen_clinique(false);
+        exam.setNom_examen("Examen signe fonctionnel");
+        model.addAttribute("examen", exam);
+        model.addAttribute("patient", daoPatient.getOne(idPatient));
+        return "formulaireExamenSignesFonctionnels";
     }
 
     /**
