@@ -13,7 +13,7 @@
                 <li><a href="affichePatients.html"  th:href="@{../patient/show(idMedecin=${patient.medecin_patient.id_medecin})}">Patients</a></li>
                 <li><a href="#">Données générales</a></li>
 
-                <li><div class="menus"><a href="afficheExamens.html" th:href="@{show(idPatient=${patient.id_patient})}">Examens</a></div><ul>   
+                <li><div class="menus"><a href="afficheExamens.html" th:href="@{../examen/show(idPatient=${patient.id_patient})}">Examens</a></div><ul>   
                         <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
                                 <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}" target="_blank">Signes généraux</a></li>
                                 <li><a href="formulaireExamenRegionCervicale" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}" target="_blank">Examen région cervicale</a></li>
@@ -98,7 +98,7 @@
                     </fieldset>
                     <input type="submit" value="Enregistrer">
                 <input type="reset" value="Réinitialiser" />
-                <a th:href="@{/atcdperso/add(idPatient=${patient.id_patient})}">Entrer les antécedents personnels</a>
+                <a th:href="@{../atcdperso/add(idPatient=${patient.id_patient})}">Renseigner les antécedents personnels</a>
                 </form>
             </aside>
             <aside>
