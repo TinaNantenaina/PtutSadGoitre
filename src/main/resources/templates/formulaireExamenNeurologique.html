@@ -13,7 +13,7 @@
                 <li><a href="afficheAnamnese.html"  th:href="@{../anamnese/show(idPatient=${patient.id_patient})}" target="_blank">Données générales du patient</a></li>
 
                 <li><div class="menus"><a href="afficheExamens.html" th:href="@{show(idPatient=${patient.id_patient})}">Examens</a></div><ul>   
-                        <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
+                        <li><div class="menus">Examens cliniques</div><ul>
                                 <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}">Signes généraux</a></li>
                                 <li><a href="formulaireExamenRegionCervicale" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}">Examen région cervicale</a></li>
                                 <li><a href="formulaireExamenOphtalmologique" th:href="@{../examen/addexamenophtalmo(idPatient=${patient.id_patient})}">Examen ophtalmologique</a></li>
@@ -21,8 +21,8 @@
                                 <li><a href="formulaireExamenAireGanglionnaire" th:href="@{../examen/addexamenaireganglionnaire(idPatient=${patient.id_patient})}">Examen aire ganglionnaire</a></li>
                             </ul></li>
 
-                        <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
-                                <li><a href="adresse url" target="_blank">Morphologique</a></li>
+                        <li><div class="menus"><a>Examens paracliniques</a></div><ul>
+                                <li><a href="formulaireExamenMorphologique" th:href="@{../examen/addexamenmorphologique(idPatient=${patient.id_patient})}">Examen morphologique</a></li>
                                 <li><a href="formulaireExamenBiologique" th:href="@{../examen/addexamenbio(idPatient=${patient.id_patient})}">Examen biologique</a></li>
                                 <li><a href="formulaireExamenSignesFonctionnels" th:href="@{../examen/addexamensf(idPatient=${patient.id_patient})}">Signe fonctionnel</a></li>
                             </ul></li>

@@ -9,11 +9,9 @@
     </head>
     <body id="bodyAccueil">
         <center><h1 style="font-size:36pt; color:whitesmoke"><i>SAD Goître</i></h1></center> 
-
-        <input type="button" class="bouton" value="Lancer La Consultation"/>
-       
-        <a href="affichePatients.html" th:href="@{../patient/show(idMedecin=3)}">Lancer la consultation</a>
-       <!-- <a href="afficheAnamnese.html" th:href="@{../anamnese/show(idPatient=1)}">Lancer l'anamnese</a>-->
+        <h2 style='color:gray' th:text="'Dr. '+${medecin.nom}">Bienvenue</h2>
+        <a class="bouton" href="affichePatients.html" th:href="@{../patient/show(idMedecin=${medecin.id_medecin})}">Lancer la consultation</a>
+        <!-- <a href="afficheAnamnese.html" th:href="@{../anamnese/show(idPatient=1)}">Lancer l'anamnese</a>-->
 
         <img id="imgAccueil" src="../static/images/imagePageAcceuil.PNG" th:src="@{/images/imagePageAcceuil.PNG}"  alt="Image d'accueil"/>
     </body>

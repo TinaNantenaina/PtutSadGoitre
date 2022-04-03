@@ -10,28 +10,29 @@
         <div class="menu">
             <ul>
                 <!-- id patient à changer-->
-                <li><a href="detailPatient.html" th:href="@{../patient/getPatient(idPatient=${patient.id_patient})}">Patient</a></li>
+                <li><a href="affichePatients.html"  th:href="@{../patient/show(idMedecin=${patient.medecin_patient.id_medecin})}">Patients</a></li>
                 <li><a href="#">Données générales</a></li>
 
-                <li><div class="menus"><a href="afficheExamen.html">Examens</a></div><ul>   
+                <li><div class="menus"><a href="afficheExamens.html" th:href="@{show(idPatient=${patient.id_patient})}">Examens</a></div><ul>   
                         <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
-                                <li><a href="adresse url" target="_blank">Signes généraux</a></li>
-                                <li><a href="adresse url" target="_blank">Examen region cevicales</a></li>
-                                <li><a href="adresse url" target="_blank">Examen ophtalmologique</a></li>
-                                <li><a href="adresse url" target="_blank">Examen neurologique</a></li>
-                                <li><a href="adresse url" target="_blank">Examen aire ganglionnaire</a></li>
+                                <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}" target="_blank">Signes généraux</a></li>
+                                <li><a href="formulaireExamenRegionCervicale" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}" target="_blank">Examen région cervicale</a></li>
+                                <li><a href="formulaireExamenOphtalmologique" th:href="@{../examen/addexamenophtalmo(idPatient=${patient.id_patient})}">Examen ophtalmologique</a></li>
+                                <li><a href="formulaireExamenNeurologique" th:href="@{../examen/addexamenneuro(idPatient=${patient.id_patient})}" >Examen neurologique</a></li>
+                                <li><a href="formulaireExamenAireGanglionnaire" th:href="@{../examen/addexamenaireganglionnaire(idPatient=${patient.id_patient})}">Examen aire ganglionnaire</a></li>
                             </ul></li>
 
                         <li><div class="menus"><a href="#">Examens paracliniques</a></div><ul>
-                                <li><a href="adresse url" target="_blank">Morphologique</a></li>
-                                <li><a href="adresse url" target="_blank">Biologique</a></li>
-                                <li><a href="adresse url" target="_blank">Fonctionnel</a></li>
-                            </ul></li>
+                                <li><a href="formulaireExamenMorphologique" th:href="@{../examen/addexamenmorphologique(idPatient=${patient.id_patient})}">Examen morphologique</a></li>
+                                <li><a href="formulaireExamenBiologique" th:href="@{../examen/addexamenbiologique(idPatient=${patient.id_patient})}">Examen biologique</a></li>
+                                <li><a href="formulaireExamenSignesFonctionnels" th:href="@{../examen/addexamensf(idPatient=${patient.id_patient})}">Signe fonctionnel</a></li>
+                            </ul>
+                        </li>
                     </ul></li>
 
                 <li><a href="page photos.html" target="_blank">Photos</a></li>
                 <!-- id patient à changer--><!--${patient.id_patient}-->
-                <li><a href="afficheDiagnostic.html" th:href="@{../diagnostic/show(idPatient=1)}" target="_blank">Diagnostic</a></li>
+                <li><a href="afficheDiagnostic.html" th:href="@{../diagnostic/show(idPatient=${patient.id_patient})}" target="_blank">Diagnostic</a></li>
             </ul>
         </div>
         <br/>
@@ -97,7 +98,7 @@
                     </fieldset>
                     <input type="submit" value="Enregistrer">
                 <input type="reset" value="Réinitialiser" />
-                <a th:href="@{/atcdperso/add}">Entrée les antécedents personnels</a>
+                <a th:href="@{/atcdperso/add(idPatient=${patient.id_patient})}">Entrer les antécedents personnels</a>
                 </form>
             </aside>
             <aside>

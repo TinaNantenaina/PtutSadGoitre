@@ -5,6 +5,9 @@
  */
 package SADGoitre.controller;
 
+import SADGoitre.dao.MedecinRepository;
+import SADGoitre.entity.Medecin;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +18,13 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class AccueilController {
+    @Autowired
+    private MedecinRepository daoMedecin;
+    
      @GetMapping({"/"})
     public String welcome(Model model) {
+        Medecin medecin = daoMedecin.getOne(3);
+        model.addAttribute("medecin", medecin);
         return "PageAccueil";
     }
     
