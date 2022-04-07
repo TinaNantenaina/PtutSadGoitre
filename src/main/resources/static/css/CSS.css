@@ -44,8 +44,9 @@ h1 {
     background-color: #62E3E2;
 }
 
+
 .menu, .menu ul{list-style: none;text-align: center;z-index:999;padding: 0;margin: 0;}
-.menu{width:925px;margin:0px auto;margin-top:0px;}
+.menu{width:1000px;margin:0px auto;margin-top:0px;}
 .menu li{float: left;}
 .menu li ul{position: absolute;width: 125px;left: -999em;z-index:999;}
 .menu li:hover ul ul {left: -999em;}
