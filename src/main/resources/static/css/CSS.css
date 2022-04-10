@@ -3,32 +3,55 @@
 /********************************************************/
 body {
     font-family: "Trebuchet MS";
+    background-color: #191970;
+    font-family: 'Open Sans', sans-serif;
+    color: "6a859c";
+    font-size: 16px;
+    line-height: 20px;
 }
 h1 {
-    position: fixed;
-    top: 90;
-    width: 400px;
-    margin: 0 auto;
-    padding: 150px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 38px;
+    line-height: 44px;
+    font-weight: 700;
+}
+
+.hero-section.centered {
+    padding-top: 195px;
+    padding-bottom: 195px;
+    border-bottom: 4px solid #69b9ff;
+    background-image: linear-gradient(180deg, rgba(46, 156, 255, 0.5), rgba(46, 157, 255,0.5));
+    background-position: 0% 0%, 50% 50%;
+    background-size: auto, cover;
+    text-align: center;
+}
+
+.titre1{
+    margin-bottom: 15px;
+    font-size: 50px;
+}
+
+.hero-subheading{
+    font-size: 18px;
 }
 
 .bouton {
-    background-color: #4BB4B3;
-    border: none;
-    color: white;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-    text-decoration: none;
     display: inline-block;
-    font-size: 15px;
-    cursor: pointer;
-    position: fixed;
-    top: 16em;
-    width: 200px;
-    padding: 20px;
-    margin: 10px;
+    margin-right: 10px;
     margin-left: 16%;
+    padding: 10px;
+    background-color: #69b9ff;
+    border-radius: 4px;
+    -webkit-transition: background-color 300ms;
+    color: #fff;
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
 /* Pour la div de la page d'accueil'*/
