@@ -7,8 +7,8 @@
     </head>
     <body>
         <h2>Nouveau patient</h2><br/>
-
-        <form th:object="${patient}" method="POST" th:action="@{/patient/save}">  
+        <div class="AjoutPatient">
+        <form th:object="${patient}" method="POST" th:action="@{/patient/save}" >  
 
             <label for="nom">Nom</label>
             <input id="nom" th:field="*{nom}" th:value="*{nom}" type="text"/><br/>
@@ -36,7 +36,7 @@
                 <input type="reset" value="Réinitialiser" />
 
         </form>
-
+</div>
     </body>
 
 </html>

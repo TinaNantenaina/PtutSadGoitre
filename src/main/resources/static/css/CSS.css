@@ -2,12 +2,14 @@
 /* fiche CSS Examens                                    */
 /********************************************************/
 body {
-    font-family: "Trebuchet MS";
-    background-color: #191970;
+    
     font-family: 'Open Sans', sans-serif;
     color: "6a859c";
     font-size: 16px;
     line-height: 20px;
+}
+a{
+    text-decoration: none;
 }
 h1 {
     margin-top: 0px;
@@ -30,16 +32,17 @@ h1 {
 .titre1{
     margin-bottom: 15px;
     font-size: 50px;
+    
 }
 
 .hero-subheading{
     font-size: 18px;
+    font-family: "Dancing Script";
+    
 }
 
 .bouton {
-    display: inline-block;
-    margin-right: 10px;
-    margin-left: 16%;
+
     padding: 10px;
     background-color: #69b9ff;
     border-radius: 4px;
@@ -51,13 +54,25 @@ h1 {
     text-align: center;
     letter-spacing: 2px;
     text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    position: fixed;
+    top: 16em;
+    width: 200px;
+    padding: 20px;
+    margin: 10px;
+    margin-left: 40%;
     text-transform: uppercase;
+     box-shadow: 1px 2px 5px rgba(0, 0, 0, 5)
+}
+
+.bouton:hover {
+  background-color: #4BB4B3;
 }
 
 /* Pour la div de la page d'accueil'*/
 #imgAccueil {
-    /*width: 200px;
-    display: block;*/
+    width: 400px;
     margin-left: auto;
     margin-right: auto;
     float:right;
@@ -183,4 +198,48 @@ tbody tr:nth-child(even) {
     font-weight: 600;
     font-size: 1.1em;
     line-height: 1.4;
+}
+label {
+  width: 200px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 6px;
+}
+input{
+    border: none;
+  border-bottom: 1px solid #5c6866;
+  background: transparent;
+  outline: none;
+ 
+}
+
+.AjoutPatient{
+  position: absolute;
+  top: 25%;
+  right: 30%;
+  box-sizing: border-box;
+  width: 400px;
+  background-color: rgba(241, 249, 248, 0.5);
+  border-radius: 15px;
+  padding-bottom: 50px;
+}
+button, input[type="submit"], input[type="reset"] {
+    
+    border: none;
+    border-radius: 10px;
+    background-color: #62E3E2;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 15px 10px 15px;
+    margin-right: 60px;
+    outline: none; 
+    text-align: center;
+     cursor: pointer;
+   
+     
+}
+
+input:hover{
+    background-color: #4BB4B3;
 }

@@ -57,12 +57,11 @@
                                         <input type="hidden"  th:value="${val.nom_valeur}" th:field="*{valeur_examen[__${valStat.index}__].nom_valeur}"/>
                                         <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}+' présent : '" />
                                         <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${valStat.index}__].est_valeur}"/>
-                                        <br/>
+                                      
                                         <label th:for="'comment'+${val.id_valeur_examen}">Valeur :</label>
-                                        <br/>
+                                        
                                         <input type="text" th:id="'comment'+${val.id_valeur_examen}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${valStat.index}__].valeur}"/>
-                                        <br/>
-                                        <br/>
+                                      
                                     </div>
                                     <!-- th:if="${valStat.count>8 && valStat.count<15}"-->
                                 </div>                   
