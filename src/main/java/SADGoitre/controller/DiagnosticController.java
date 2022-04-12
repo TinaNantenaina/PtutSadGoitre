@@ -40,10 +40,10 @@ public class DiagnosticController {
     private SigneFonctionnelRepository daoSF;
     @Autowired
     private ExamenRepository daoExamen;
-    
-    @Autowired
-    private KieSession session;
-    
+   
+   /* @Autowired
+    private KieSession kiesession;
+    */
     /**
      * Affiche toutes les diagnostics
      *
@@ -60,10 +60,10 @@ public class DiagnosticController {
         return "afficheDiagnostics";
     }
     
-    @PostMapping("/diagnostic")
+   /* @PostMapping("/diagnostic")
     public Diagnostic recuperationDiagnostics(@RequestBody Diagnostic diagnostic){
-        session.insert(diagnostic);
-        session.fireAllRules();
+        kiesession.insert(diagnostic);
+        kiesession.fireAllRules();
         return diagnostic;
-    }
+    }*/
 }

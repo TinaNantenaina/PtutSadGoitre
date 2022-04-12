@@ -3,6 +3,7 @@ package SADGoitre.controller;
 import SADGoitre.dao.AnamneseRepository;
 import SADGoitre.dao.PatientRepository;
 import SADGoitre.dao.SigneFonctionnelRepository;
+import SADGoitre.dao.ValeurSigneCompressionRepository;
 import SADGoitre.entity.Anamnese;
 import SADGoitre.entity.Valeur_signe_compression;
 import java.util.Arrays;
@@ -35,12 +36,14 @@ public class AnamneseController {
     PatientRepository daoPatient;
     @Autowired
     SigneFonctionnelRepository daoSF;
+    @Autowired
+    ValeurSigneCompressionRepository daoSigneCompression;
 
     /**
-     * Affiche l'anamnese du patient sélectionné
+     * Affiche l'anamneses du patient sélectionné
      *
      * @param model pour transmettre les informations à la vue
-     * @param idPatient l'id du patient dont on veut afficher l'anamnese
+     * @param idPatient l'id du patient dont on veut afficher l'anamneses
      * @return le nom de la vue à afficher ('afficheAnamnese.html')
      */
     @GetMapping(path = "show")
@@ -55,7 +58,7 @@ public class AnamneseController {
     }
 
     /**
-     * Affiche le formulaire permettant d'ajouter une anamnese
+     * Affiche le formulaire permettant d'ajouter une anamneses
      *
      * @param model pour transmettre les informations à la vue
      * @param idPatient Le patient
@@ -72,13 +75,13 @@ public class AnamneseController {
        new Valeur_signe_compression(3,"Syndrome cave supérieur")
        );
        
-       Anamnese anamnese = new Anamnese();
-       anamnese.setValeur_signe_compression(valeur_sc);
-       anamnese.setPatient(daoPatient.getOne(idPatient));
+       Anamnese anamneses = new Anamnese();
+       anamneses.setValeur_signe_compression(valeur_sc);
+       anamneses.setPatient(daoPatient.getOne(idPatient));
        
    
       
-        model.addAttribute("anamnese", anamnese);
+        model.addAttribute("anamnese", anamneses);
         model.addAttribute("patient", daoPatient.getOne(idPatient));
         //model.addAttribute("sf", daoSF.findAll());
        
@@ -98,15 +101,20 @@ public class AnamneseController {
         String message;
         try {
             daoAnamnese.save(anamnese);
-            message = "L'anamnese du patient'" + anamnese.getPatient().getNom() + "' a été correctement enregistré";
+            for(Valeur_signe_compression vc : anamnese.getValeur_signe_compression()){
+                vc.setSigne_compression_valeur(anamnese);
+                daoSigneCompression.save(vc);
+                
+            }
+            message = "L'anamnese du patient'" + anamnese.getPatient().getAnamnese() + "' a été correctement enregistré";
         } catch (DataIntegrityViolationException e) {
             // En cas de doublon, JPA lève une exception de violation de contrainte d'intégrité
-            message = "Erreur : L'anamnese du patient'" + anamnese.getPatient().getNom() + "' existe déjà";
+            message = "Erreur : L'anamnese du patient'" + anamnese.getPatient().getAnamnese() + "' existe déjà";
         }
         // RedirectAttributes permet de transmettre des informations lors d'une redirection,
         // Ici on transmet un message de succès ou d'erreur
         // Ce message est accessible et affiché dans la vue 'afficheAnamnese.html'
         redirectInfo.addFlashAttribute("message", message);
-        return "redirect:show?idMedecin=3"; // POST-Redirect-GET : on se redirige vers l'affichage du patient		
+        return "redirect:/anamnese/show?idPatient=" + anamnese.getPatient().getId_patient(); // POST-Redirect-GET : on se redirige vers l'affichage du patient		
     }
 }

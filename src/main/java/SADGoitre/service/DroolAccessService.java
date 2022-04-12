@@ -5,8 +5,11 @@ import SADGoitre.dao.DiagnosticRepository;
 import SADGoitre.entity.Diagnostic;
 import SADGoitre.entity.Valeur_examen;
 import java.util.List;
+import javax.transaction.Transactional;
+import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 /**
  *
@@ -24,5 +27,6 @@ public class DroolAccessService {
 
     public void insererDiagnostic (Diagnostic nouveauDiagnostic) {
         //utiliser diagnostic respository pour inserer le nouveau diagnostic dans la base de donnÃ©es
+           
     }
 }

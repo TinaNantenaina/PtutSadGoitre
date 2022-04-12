@@ -95,8 +95,29 @@ h1 {
 .menu a:hover{color:#191970;background:white;}
 .menus a:hover {color:white;background:rgb(38,66,80)  no-repeat;}
 
-table, th, td {
-    border: 1px solid black;
+table{
+    border-collapse: collapse;
+  border-top: 0.2px;
+  min-width: 400px;
+  width: auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 5);
+  margin: 30px auto;
+}
+
+th,
+td {
+  padding: 15px 20px;
+  
+}
+tbody tr,
+td,
+th {
+  border-bottom: 1px solid #f5f8f8ce;
+  text-align: center;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #3ff9e1;
 }
 /* CSS pour les examens*/
 .exa1men {
@@ -110,4 +131,33 @@ table, th, td {
 .bloc {
     display: flex;
     flex-wrap: wrap;
+}
+
+/*Ajout*/
+.plus {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-top: 2px;
+    background-color: #4BB4B3;
+    color: white;
+    width: 50px;
+    height: 50px;
+    font-size: 2.5em;
+    text-align: center;
+    align-items: center;
+    border-radius: 30px;
+    border: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.texteajout {
+    text-align: center;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height: 1.4;
 }
