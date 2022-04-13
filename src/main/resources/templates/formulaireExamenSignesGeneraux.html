@@ -14,7 +14,7 @@
 
                 <li><div class="menus"><a href="afficheExamens.html" th:href="@{show(idPatient=${patient.id_patient})}">Examens</a></div><ul>   
                         <li><div class="menus"><a href="#">Examens cliniques</a></div><ul>
-                                <li><a href="formulaireExamenSignesGeneraux" th:href="@{../examen/addSignesGeneraux(idPatient=${patient.id_patient})}">Signes généraux</a></li>
+                                <li><a href="#">Signes généraux</a></li>
                                 <li><a href="formulaireExamenRegionCervicale" th:href="@{../examen/addregioncervicale(idPatient=${patient.id_patient})}">Examen région cervicale</a></li>
                                 <li><a href="formulaireExamenOphtalmologique" th:href="@{../examen/addexamenophtalmo(idPatient=${patient.id_patient})}">Examen ophtalmologique</a></li>
                                 <li><a href="formulaireExamenNeurologique" th:href="@{../examen/addexamenneuro(idPatient=${patient.id_patient})}" >Examen neurologique</a></li>
@@ -56,19 +56,20 @@
                                     <label for="date1">Date de l'examen : </label>
                                     <input id="date1" th:value="${date_examen}" type="date" th:field="*{date_examen}"/>
                                     <br/>
-                                    <div class ="bloc" th:each="val, valStat : *{valeur_examen}">
+                                    <div th:each="val, valStat : *{valeur_examen}">
                                         <div>
                                             <input type="hidden"  th:value="${val.id_valeur_examen}" th:field="*{valeur_examen[__${valStat.index}__].id_valeur_examen}"/>
                                             <span th:text="${valStat.count}+')'">1</span>
                                             <input type="hidden"  th:value="${val.nom_valeur}" th:field="*{valeur_examen[__${valStat.index}__].nom_valeur}"/>
-                                            <label th:for="'estexam'+${val.id_valeur_examen}" th:text="${val.nom_valeur}" />
-                                            <input th:id="'estexam'+${val.id_valeur_examen}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${valStat.index}__].est_valeur}"/>
+                                            <label th:for="'estexam'+${valStat.count}" th:text="${val.nom_valeur}" />
+                                            <input th:id="'estexam'+${valStat.count}" type="checkbox" th:checked="${val.est_valeur}" th:field="*{valeur_examen[__${valStat.index}__].est_valeur}"/>
                                             
-                                            <label th:for="'comment'+${val.id_valeur_examen}">Commentaires :</label>
+                                            <label th:for="'comment'+${valStat.count}">Commentaires :</label>
                                  
-                                            <input type="text" th:id="'comment'+${val.id_valeur_examen}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${valStat.index}__].valeur}"/>
+                                            <input type="text" th:id="'comment'+${valStat.count}" placeholder='Renseigner valeur' th:field="*{valeur_examen[__${valStat.index}__].valeur}"/>
                                             
                                         </div>
+                                        <hr/>
                                     </div>
                                 </aside>
                             </fieldset>
@@ -79,273 +80,6 @@
                 </form>
             </aside>
         </section>
-        <!---------------------------------------------------------------------------------------------------------------->
-        <!--        
-                   
-                                --------------------------------------------------------------------------------------------
-                                <aside>
-                                    <form name="form2" action="script.php" method="post">
-                                        <fieldset id="examen">
-                                            <legend>Examen région cervicale</legend>
-        
-                                            <h2><u>Inspection</u></h2>
-        
-                                            <input name="case7" id="case7" type="checkbox" value="7"/>
-                                            <label for="case7">Circulation veineuse collatérale</label></br>
-        
-                                            <input name="case8" id="case8" type="checkbox" value="8"/>
-                                            <label for="case8">Turgescence de la veine jugulaire</label></br>
-        
-                                            <input name="case6" id="case6" type="checkbox" value="6"/>
-                                            <label for="case6">Coloration de la peau</label>
-                                            <input type="text" name="valeur" placeholder="Observation"/></br>
-        
-                                            <h2><u>Palpation</u></h2>
-        
-                                            <label for="signe1">nature thyroïdienne de la masse</label>
-                                            <select id="signe1">
-                                                <option value="am" selected="selected">fixe</option>
-                                                <option value="ag">mobile</option>
-                                            </select></br>
-        
-                                            <label for="signe1">Volume thyroïdien supérieur à 1er phalange</label>
-                                            <select id="signe1">
-                                                <option value="am" selected="selected">oui</option>
-                                                <option value="ag">non</option>
-                                            </select><br/>
-        
-                                            <label for="signe1">Topographie</label>
-                                            <select id="signe1">
-                                                <option value="am" selected="selected">normale</option>
-                                                <option value="ag">goître plongeant</option>
-                                            </select><br/>
-                                            <label for="signe1">Consistance</label>
-                                            <select id="signe1">
-                                                <option value="am" selected="selected">molle</option>
-                                                <option value="ag">élastique</option>
-                                                <option value="ag">dure</option>
-                                                <option value="ag">ferme</option>
-                                                <option value="ag">souple</option>
-                                                <option value="ag">pierreuse</option>
-                                            </select><br/>
-                                            <label for="signe1">Caractère symétrique</label>
-                                            <select id="signe1">
-                                                <option value="am" selected="selected">oui</option>
-                                                <option value="ag">non</option>
-                                            </select><br/>
-                                            <label for="signe1">Caractère régulier</label>
-                                            <select id="signe1">
-                                                <option value="am" selected="selected">oui</option>
-                                                <option value="ag">non</option>
-                                            </select><br/>
-                                            <label for="signe1">Caractère douloureux</label>
-                                            <select id="signe1">
-                                                <option value="am" selected="selected">oui</option>
-                                                <option value="ag">non</option>
-                                            </select><br/>
-                                            <label for="signe1">Signe vasculaire</label>
-                                            <select id="signe1">
-                                                <option value="am" selected="selected">thrill</option>
-                                                <option value="ag">goître soufflant</option>
-                                            </select><br/>
-                                            <label for="signe1">adénopathie cervicale</label>
-                                            <select id="signe1">
-                                                <option value="am" selected="selected">jugulo-carotidienne</option>
-                                                <option value="ag">pré-trachéale</option>
-                                                <option value="th">sus claviculaire</option>
-                                            </select><br/><br/>
-        
-                                            <input name="case1" id="case1" type="checkbox" value="1"/>
-                                            <label for="case1">goître non visible mais palpable</label><br/>
-        
-                                            <input name="case1" id="case1" type="checkbox" value="1"/>
-                                            <label for="case1">goître visible lors de l'hyper-extention du cou</label><br/>
-        
-                                            <input name="case1" id="case1" type="checkbox" value="1"/>
-                                            <label for="case1">goître visible inférieur 5m </label><br/>
-        
-                                            <input name="case1" id="case1" type="checkbox" value="1"/>
-                                            <label for="case1">goître visible supérieur 5m</label><br/>
-        
-                                            </aside>
-                                            <input name="case1" id="case1" type="checkbox" value="1"/>
-                                            <label for="case1">Myxoedème prétibial</label><br/>
-        
-                                            -------------------------------------------------------------------------------------
-                                            <aside>
-                                                <form name="form2" action="script.php" method="post">
-                                                    <fieldset id="examen">
-                                                        <legend>Examen Ophtalmologique</legend>
-        
-                                                        <input name="case1" id="case1" type="checkbox" value="1"/>
-                                                        <label for="case1">Exophtalmie</label><br/>
-        
-                                                        <input name="case2" id="case2" type="checkbox" value="2"/>
-                                                        <label for="case2">Perte queue</label><br/>
-        
-                                                    </fieldset>
-                                                </form>
-                                            </aside>
-                                            --------------------------------------------------------------------------------------------
-                                            <aside>
-                                                <form name="form2" action="script.php" method="post">
-                                                    <fieldset id="examen">
-                                                        <legend>Examen Neurologique</legend>
-        
-                                                        <input name="case1" id="case1" type="checkbox" value="1"/>
-                                                        <label for="case1">ROT vif</label><br/>
-        
-                                                        <input name="case2" id="case2" type="checkbox" value="2"/>
-                                                        <label for="case2">ROT ralantis</label><br/>
-        
-                                                    </fieldset>
-                                                </form>
-                                            </aside>
-                                            --------------------------------------------------------------------------------------------
-                                            <aside>
-                                                <form name="form2" action="script.php" method="post">
-                                                    <fieldset id="examen">
-                                                        <legend>Examen Aire ganglionnaire</legend>
-        
-                                                        <input name="case1" id="case1" type="checkbox" value="1"/>
-                                                        <label for="case1">ganglion cervicale</label><br/>
-        
-                                                        <input name="case2" id="case2" type="checkbox" value="2"/>
-                                                        <label for="case2">ganglion axillaire</label><br/>
-        
-                                                        <input name="case2" id="case2" type="checkbox" value="2"/>
-                                                        <label for="case2">ganglion inguinal</label><br/>
-        
-                                                        <input name="case2" id="case2" type="checkbox" value="2"/>
-                                                        <label for="case2">ganglion généralisé</label><br/>
-        
-                                                    </fieldset>
-                                                </form>
-                                            </aside>
-                                            </aside>
-                                        </fieldset>
-                                        </section><br/><br/>
-                                        --------------------------------------------------------------------------------------------
-                                        <section>
-                                            <aside>
-                                                <form name="form2" action="script.php" method="post">
-                                                    <fieldset id="examen">
-                                                        <legend>Examens Para-cliniques</legend>
-                                                        <aside>
-                                                            <form name="form2" action="script.php" method="post">
-                                                                <fieldset id="examen">
-                                                                    <legend>Biologique</legend>
-        
-                                                                    <input name="case1" id="case1" type="checkbox" value="1"/>
-                                                                    <label for="case1">Dosage de TSH</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case2" id="case2" type="checkbox" value="2"/>
-                                                                    <label for="case2">Dosage T4L</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case3" id="case3" type="checkbox" value="3"/>
-                                                                    <label for="case3">Doasge T3L</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case4" id="case4" type="checkbox" value="4"/>
-                                                                    <label for="case4">NFS</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case5" id="case5" type="checkbox" value="5"/>
-                                                                    <label for="case5">Plaquettes</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case6" id="case6" type="checkbox" value="6"/>
-                                                                    <label for="case6">Glycémie</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case6" id="case6" type="checkbox" value="6"/>
-                                                                    <label for="case6">Cholesterolémie</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case6" id="case6" type="checkbox" value="6"/>
-                                                                    <label for="case6">Protéinurie</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case6" id="case6" type="checkbox" value="6"/>
-                                                                    <label for="case6">Acétonurie</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case6" id="case6" type="checkbox" value="6"/>
-                                                                    <label for="case6">Acétonurie</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case6" id="case6" type="checkbox" value="6"/>
-                                                                    <label for="case6">Créatininémie</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case6" id="case6" type="checkbox" value="6"/>
-                                                                    <label for="case6">Iodémie</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case6" id="case6" type="checkbox" value="6"/>
-                                                                    <label for="case6">Anticorps antithyroïdiens</label>
-                                                                    <input type="text" name="valeur" placeholder="saisir la valeur"/>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-                                                                </fieldset>
-                                                            </form>
-                                                        </aside>
-                                                        ---------------------------------------------------------------------------------------------
-                                                        <aside>
-                                                            <form name="form2" action="script.php" method="post">
-                                                                <fieldset id="examen">
-                                                                    <legend>Morphologique</legend>
-        
-                                                                    <input name="case1" id="case1" type="checkbox" value="1"/>
-                                                                    <label for="case1">Echographie Doppler Cervicale</label>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case2" id="case2" type="checkbox" value="2"/>
-                                                                    <label for="case2">Radiographie du thorax</label>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case3" id="case3" type="checkbox" value="3"/>
-                                                                    <label for="case3">Scanner cervicomédiastinal</label>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                    <input name="case4" id="case4" type="checkbox" value="4"/>
-                                                                    <label for="case4">Scintographie thyroïdienne</label>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-                                                                </fieldset>
-                                                            </form>
-                                                        </aside>
-                                                        ---------------------------------------------------------------------------------------
-                                                        <aside>
-                                                            <form name="form2" action="script.php" method="post">
-                                                                <fieldset id="examen">
-                                                                    <legend>Fonctionnel</legend>
-        
-                                                                    <input name="case1" id="case1" type="checkbox" value="1"/>
-                                                                    <label for="case1">Cytoponction à l'aiguille fine</label>
-                                                                    <input type="text" name="interprétation" placeholder="interprétation"/><br/>
-        
-                                                                </fieldset>
-                                                            </form>
-                                                        </aside>                                                
-        
-                                                        </section>
-                                                    </fieldset>
-                                                </form>
-                                            </aside>
-                                        </section>-->
-
+       
     </body>
 </html>

@@ -44,16 +44,16 @@
             <thead>
                 <tr>
 
-                    <td>Nom</td>
-                    <td>Prenom</td>
-                    <td>Genre</td>
-                    <td>Date de Naissance</td>
-                    <td>Symptome</td>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Genre</th>
+                    <th>Date de Naissance</th>
+                    <th>Symptome</th>
                     <!--<td>Date de l'examen</td>
                     <td>Diagnostic</td>-->
-                    <td>Medecin</td>
-                    <td>Examens</td>
-                    <td>Actions</td>
+                    <th>Medecin</th>
+                    <th>Examens</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody th:each = "p:${patients}">
@@ -69,7 +69,7 @@
                     <td th:if = "${p.medecin_patient==null}">Medecin inconnu</td>
                     <td th:unless = "${p.medecin_patient==null}">[[${p.medecin_patient.nom}]]</td>
                     <td><a th:href="@{../examen/show(idPatient=${p.id_patient})}">Voir les examens</a></td>
-                    <td> <a th:href="@{../anamnese/add(idPatient=${p.id_patient})}"> Ajouter examens</a></td>
+                    <td> <a th:href="@{../anamnese/add(idPatient=${p.id_patient})}"> Ajouter l'anamnese</a></td>
                 </tr>
             </tbody>
         </table>

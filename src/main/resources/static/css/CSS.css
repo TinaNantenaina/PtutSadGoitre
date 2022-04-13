@@ -4,7 +4,7 @@
 body {
     
     font-family: 'Open Sans', sans-serif;
-    color: "6a859c";
+/*    color: "#6a859c";*/
     font-size: 16px;
     line-height: 20px;
 }
@@ -153,6 +153,9 @@ th {
   border-bottom: 1px solid #f5f8f8ce;
   text-align: center;
 }
+th{
+    background-color: #4BB4B3;
+}
 
 tbody tr:nth-child(even) {
   background-color: #3ff9e1;
@@ -160,6 +163,10 @@ tbody tr:nth-child(even) {
 /* CSS pour les examens*/
 .exa1men {
 
+}
+
+hr{
+    color: rgb(38,66,80);
 }
 
 .comment {
