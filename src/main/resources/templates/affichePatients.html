@@ -48,9 +48,7 @@
                     <th>Prenom</th>
                     <th>Genre</th>
                     <th>Date de Naissance</th>
-                    <th>Symptome</th>
-                    <!--<td>Date de l'examen</td>
-                    <td>Diagnostic</td>-->
+       
                     <th>Medecin</th>
                     <th>Examens</th>
                     <th>Actions</th>
@@ -63,9 +61,7 @@
                     <td th:text = "${p.prenom}"></td>
                     <td th:text = "${p.genre}? 'Femme' : 'Homme'"></td>
                     <td th:text = "${p.date_naissance}"></td>
-                   <!--   <td th:text = "${p.anamnese.mes_symptomes.nom}"></td>
-                  <td th:text = "${p.patient_examen.date_examen}"></td>-->
-                    <td th:text = "${p.anamnese}">[[${p.anamnese}]]</td>
+               
                     <td th:if = "${p.medecin_patient==null}">Medecin inconnu</td>
                     <td th:unless = "${p.medecin_patient==null}">[[${p.medecin_patient.nom}]]</td>
                     <td><a th:href="@{../examen/show(idPatient=${p.id_patient})}">Voir les examens</a></td>

@@ -68,7 +68,7 @@ INSERT INTO Diagnostic(id_diagnostic,nom_diagnostic,pourcentage, id_patient) VAL
 (5,'Goitre Simple',70.0,5);
 
 INSERT INTO Examen(id_examen,nom_examen,est_Examen_Clinique,date_Examen, id_patient) VALUES
-(1,'Examen cervicale',true,'2022-01-12',1);
+(1,'Signes généraux',true,'2022-01-12',1);
 INSERT INTO Examen(id_examen,nom_examen,est_Examen_Clinique,date_Examen, id_patient) VALUES
 (2,'Examen cervicale',true,'2022-01-12',2);
 INSERT INTO Examen(id_examen,nom_examen,est_Examen_Clinique,date_Examen, id_patient) VALUES
