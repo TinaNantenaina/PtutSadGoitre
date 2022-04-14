@@ -1,0 +1,22 @@
+package KieRule;
+import SADGoitre.entity.Diagnostic;
+import SADGoitre.service.DroolAccessService;
+import SADGoitre.drool.DroolConfig;
+import SADGoitre.entity.Valeur_examen;
+
+global String idPatient;
+
+
+rule "Goitre_simple"
+
+when 
+    $service: DroolAccessService()
+    $symptomes : Valeur_examen() from $service.recupererValeurExamen()
+    $count: Number(intValue > 1) from accumulate (
+        	Symptom((nom_valeur=="Fièvre" && est_valeur==true) || (nom_valeur=="Toux" && est_valeur==true) ) from $symptomes,
+        	count(1)
+        )
+then
+    $diagnosticObject : Diagnostic(argument=="Euthyroidie", nom_diagnostic=="Goitre simple", pourcentage=$count*100/2, patient_diagnostique=daoPatient.getOne(idPatient))
+    $service.insererDiagnostic($diagnosticObject)
+end
